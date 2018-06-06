@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>vue test</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="mount-point"></div>
+
+
+    <div id="app">
+        <form>
+            <input type="text" v-model="message">
+            <p>Message is {{ message }}</p>
+        </form>
+    </div>
+<div id="app-2">
+  <span v-bind:title="message">
+    鼠标悬停几秒钟查看此处动态绑定的提示信息！
+  </span>
+</div>
+<div id="app-3">
+  <p v-if="seen">现在你看到我了</p>
+</div>
+
+<div id="app-4">
+  <ol>
+    <li v-for="todo in todos">
+      {{ todo.text }}
+    </li>
+  </ol>
+</div>
+
+<div id="app-5">
+  <p>{{ message }}</p>
+  <button v-on:click="reverseMessage">逆转消息</button>
+<button v-on:click="changeMessage">変わる</button>
+</div>
+
+<div id="app-6">
+  <p>{{ message }}</p>
+  <input v-model="message">
+</div>
+
+<div id="app-7">
+  <ol>
+    <!--
+      现在我们为每个 todo-item 提供 todo 对象
+      todo 对象是变量，即其内容可以是动态的。
+      我们也需要为每个组件提供一个“key”，稍后再
+      作详细解释。
+    -->
+    <todo-item
+      v-for="item in groceryList"
+      v-bind:todo="item"
+      v-bind:key="item.id">
+    </todo-item>
+  </ol>
+</div>
+
+    <!-- ViewModelはid設定した要素より後ろで読み込む -->
+    <script>
+ // 创建构造器
+var Profile = Vue.extend({
+  template: '<p>{{firstName}} {{lastName}} aka {{alias}}</p>',
+  data: function () {
+    return {
+      firstName: 'Walter',
+      lastName: 'White',
+      alias: 'Heisenberg'
+    }
+  }
+})
+// 创建 Profile 实例，并挂载到一个元素上。
+new Profile().$mount('#mount-point')
+
+
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        message: 'Hello Vue!'
+    }
+})
+
+var app2 = new Vue({
+  el: '#app-2',
+  data: {
+    message: '页面加载于 ' + new Date().toLocaleString()
+  }
+})
+
+var app3 = new Vue({
+  el: '#app-3',
+  data: {
+    seen: true
+  }
+})
+
+var app4 = new Vue({
+  el: '#app-4',
+  data: {
+    todos: [
+      { text: '学习 JavaScript' },
+      { text: '学习 Vue' },
+      { text: '整个牛项目' }
+    ]
+  }
+})
+
+var app5 = new Vue({
+  el: '#app-5',
+  data: {
+    message: 'Hello Vue.js! it is so good!'
+  },
+  methods: {
+    reverseMessage: function () {
+      this.message = this.message.split('').reverse().join('')
+    },
+    changeMessage: function () {
+      this.message = 'niubBIBIBI'
+    }
+  }
+})
+
+var app6 = new Vue({
+  el: '#app-6',
+  data: {
+    message: 'Hello Vue!'
+  }
+})
+
+Vue.component('todo-item', {
+  props: ['todo'],
+  template: '<li>{{ todo.text }}--{{todo.id}}</li>'
+})
+
+var app7 = new Vue({
+  el: '#app-7',
+  data: {
+    groceryList: [
+      { id: 0, text: '蔬菜' },
+      { id: 1, text: '奶酪' },
+      { id: 2, text: '随便其它什么人吃的东西' }
+    ]
+  }
+})   
+    </script>
+</body>
+</html>
