@@ -11,9 +11,12 @@
                 window.web3 = new Web3(web3.currentProvider);
             } else {
                 console.log('No Web3 Detected... using HTTP Provider')
-                window.web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/SockCQRLEtdDj6vi03nt"));
+                window.web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/SockCQRLEtdDj6vi03nt"));
             }
         })
+
+        web3.eth.defaultAccount = '0xe44613033c8c9952A3A5119cDD6B29A471bCEc38';
+
         function getBalance() {
             var address, wei, balance
             address = document.getElementById("address").value
@@ -28,6 +31,491 @@
                 document.getElementById("output").innerHTML = err;
             }
         }
+
+        var WorldCup2018Contract = web3.eth.contract(
+[
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_matchId",
+				"type": "uint8"
+			},
+			{
+				"name": "_prediction",
+				"type": "uint8"
+			}
+		],
+		"name": "betMatch",
+		"outputs": [
+			{
+				"name": "res",
+				"type": "bool"
+			}
+		],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "kill",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "pause",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_newCEO",
+				"type": "address"
+			}
+		],
+		"name": "setCEO",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_newCFO",
+				"type": "address"
+			}
+		],
+		"name": "setCFO",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_tax",
+				"type": "uint8"
+			}
+		],
+		"name": "setClamTax",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_newCOO",
+				"type": "address"
+			}
+		],
+		"name": "setCOO",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_matchId",
+				"type": "uint8"
+			},
+			{
+				"name": "_outcome",
+				"type": "uint8"
+			}
+		],
+		"name": "setOutcome",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "unpause",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_matchId",
+				"type": "uint8"
+			},
+			{
+				"name": "_hostTeamId",
+				"type": "uint8"
+			},
+			{
+				"name": "_guestTeamId",
+				"type": "uint8"
+			}
+		],
+		"name": "updateMatch",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "previousOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipRenounced",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "newContract",
+				"type": "address"
+			}
+		],
+		"name": "ContractUpgrade",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_invested",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "_prize",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "_balance",
+				"type": "uint256"
+			}
+		],
+		"name": "UserAccountInfo",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_matchIdArray",
+				"type": "uint8[]"
+			},
+			{
+				"indexed": false,
+				"name": "_hostTeamIdArray",
+				"type": "uint8[]"
+			},
+			{
+				"indexed": false,
+				"name": "_guestTeamIdArray",
+				"type": "uint8[]"
+			},
+			{
+				"indexed": false,
+				"name": "_startTimeArray",
+				"type": "uint256[]"
+			},
+			{
+				"indexed": false,
+				"name": "_outcomeArray",
+				"type": "uint8[]"
+			},
+			{
+				"indexed": false,
+				"name": "_winPredictionArray",
+				"type": "uint256[]"
+			},
+			{
+				"indexed": false,
+				"name": "_losePredictionArray",
+				"type": "uint256[]"
+			},
+			{
+				"indexed": false,
+				"name": "_tiePredictionArray",
+				"type": "uint256[]"
+			},
+			{
+				"indexed": false,
+				"name": "_winPredictionArrayForLoginUser",
+				"type": "uint256[]"
+			},
+			{
+				"indexed": false,
+				"name": "_losePredictionArrayForLoginUser",
+				"type": "uint256[]"
+			},
+			{
+				"indexed": false,
+				"name": "_tiePredictionArrayForLoginUser",
+				"type": "uint256[]"
+			}
+		],
+		"name": "MatchInfoList",
+		"type": "event"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_matchId",
+				"type": "uint8"
+			},
+			{
+				"name": "_startTime",
+				"type": "uint256"
+			}
+		],
+		"name": "updateMatchStartTime",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "withdrawPayments",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "fallback"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "ceoAddress",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "cfoAddress",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "cooAddress",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getUserAccountInfo",
+		"outputs": [
+			{
+				"name": "invested",
+				"type": "uint256"
+			},
+			{
+				"name": "prize",
+				"type": "uint256"
+			},
+			{
+				"name": "balance",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "paused",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "payments",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "totalPayments",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]);
+
+        var WorldCup2018 = WorldCup2018Contract.at('0xd9a7611d5e2608fd702925e73e596f66f3b91693');
+        console.log(WorldCup2018);
+
+        WorldCup2018.getUserAccountInfo(function(error, result){
+            if(!error)
+                {
+                    document.getElementById("userAccountInfo").innerHTML = 'invested : ' + result[0] + ' , prize : ' + result[1] + ' , balance : ' + result[1] + ' .');
+                    console.log(result);
+                }
+            else
+                console.error(error);
+        });
+
     </script>
 </head>
 <body>
@@ -38,5 +526,6 @@
     <br />
     <br />
     <div id="output"></div>
+    <div id="userAccountInfo"></div>
 </body>
 </html>
