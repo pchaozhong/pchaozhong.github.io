@@ -503,18 +503,24 @@
 	}
 ]);
 
-        var WorldCup2018 = WorldCup2018Contract.at('0xd9a7611d5e2608fd702925e73e596f66f3b91693');
-        console.log(WorldCup2018);
+        function getUserAccountInfo() {
+            try {
+		var WorldCup2018 = WorldCup2018Contract.at('0xd9a7611d5e2608fd702925e73e596f66f3b91693');
+		console.log(WorldCup2018);
 
-        WorldCup2018.getUserAccountInfo(function(error, result){
-            if(!error)
-                {
-                    document.getElementById("userAccountInfo").innerHTML = 'invested : ' + result[0] + ' , prize : ' + result[1] + ' , balance : ' + result[1] + ' .');
-                    console.log(result);
-                }
-            else
-                console.error(error);
-        });
+		WorldCup2018.getUserAccountInfo(function(error, result){
+		    if(!error)
+			{
+			    document.getElementById("userAccountInfo").innerHTML = 'invested : ' + result[0] + ' , prize : ' + result[1] + ' , balance : ' + result[1] + ' .');
+			    console.log(result);
+			}
+		    else
+			console.error(error);
+		});
+            } catch (err) {
+                document.getElementById("output").innerHTML = err;
+            }
+        }
 
     </script>
 </head>
@@ -526,6 +532,11 @@
     <br />
     <br />
     <div id="output"></div>
+    <br />
+    <br />
+    <button type="button" onClick="getUserAccountInfo();">Get User Account Info</button>
+    <br />
+    <br />
     <div id="userAccountInfo"></div>
 </body>
 </html>
