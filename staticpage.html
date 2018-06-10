@@ -620,7 +620,7 @@
 			{
 			    console.log(result);
 			    for (var intI = 1; intI <= 16; intI++) {
-				document.getElementById("matchInfo_" + intI).innerHTML = "matchId : " + result[intI][0] + " , hostTeamId : " + result[intI][1] + " , guestTeamId : " + result[intI][2] + " , startTime : " + result[intI][3] + " , outcome : " + result[intI][4] + " .";
+				document.getElementById("matchInfo_" + intI).innerHTML = "matchId : " + result[0][intI] + " , hostTeamId : " + result[1][intI] + " , guestTeamId : " + result[2][intI] + " , startTime : " + result[3][intI] + " , outcome : " + result[4][intI] + " .";
 			    }
 			}
 		    else
