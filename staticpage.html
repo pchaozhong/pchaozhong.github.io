@@ -32,6 +32,8 @@
             }
         }
 
+        function getUserAccountInfo() {
+            try {
         var WorldCup2018Contract = web3.eth.contract(
 [
 	{
@@ -503,8 +505,6 @@
 	}
 ]);
 
-        function getUserAccountInfo() {
-            try {
 		var WorldCup2018 = WorldCup2018Contract.at('0xd9a7611d5e2608fd702925e73e596f66f3b91693');
 		console.log(WorldCup2018);
 
@@ -518,7 +518,7 @@
 			console.error(error);
 		});
             } catch (err) {
-                document.getElementById("output").innerHTML = err;
+                document.getElementById("userAccountInfo").innerHTML = err;
             }
         }
 
