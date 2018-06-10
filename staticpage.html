@@ -5,6 +5,7 @@
     <script type="text/javascript" src="./web3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
     <script type="text/javascript">
+        var WorldCup2018Contract;
         window.addEventListener('load', function () {
             if (typeof web3 !== 'undefined') {
                 console.log('Web3 Detected! ' + web3.currentProvider.constructor.name)
@@ -16,7 +17,7 @@
 
             web3.eth.defaultAccount = '0xe44613033c8c9952A3A5119cDD6B29A471bCEc38';
 
-            var WorldCup2018Contract = web3.eth.contract([
+            WorldCup2018Contract = web3.eth.contract([
             {
                 "anonymous": false,
                 "inputs": [
