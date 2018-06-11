@@ -752,7 +752,10 @@
             {
                 console.log(result);
                 for (var intI = 0; intI < 64; intI++) {
-                document.getElementById("matchInfo_" + (intI + 1)).innerHTML = "matchId : " + result[0][intI] + " , hostTeamId : " + result[1][intI] + " , guestTeamId : " + result[2][intI] + " , startTime : " + result[3][intI] + " , outcome : " + result[4][intI] + " .";
+					var gmtDate  = new Date('1970-01-01 00:00:00+00:00');
+					// Match start at gmtDate([GMT Start Date] + [diffSeconds from contract])
+					gmtDate.setSeconds(gmtDate.getSeconds() + result[3][intI]);
+                	document.getElementById("matchInfo_" + (intI + 1)).innerHTML = "matchId : " + result[0][intI] + " , hostTeamId : " + result[1][intI] + " , guestTeamId : " + result[2][intI] + " , startTime(GMT / LOCAL) : " + gmtDate.toGMTString() + " / " + gmtDate.toLocaleString() + " , outcome : " + result[4][intI] + " .";
                 }
             }
             else
