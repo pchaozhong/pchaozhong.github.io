@@ -829,10 +829,18 @@
 					// StartTime(GMT/LOCAL)
 					{
 						var cellStartTime = row.insertCell(3);
-						var tStartTime = document.createElement("span");
-						tStartTime.id = "startTime_" + (intI + 1);
-						tStartTime.innerHTML = gmtDate.toGMTString() + " <br /> " + gmtDate.toLocaleString();
+						var tStartTimeGmt = document.createElement("span");
+						tStartTimeGmt.id = "startTimeGmt_" + (intI + 1);
+						tStartTimeGmt.innerHTML = gmtDate.toGMTString();
+						cellStartTime.appendChild(tStartTimeGmt);
+
+						var tStartTime = document.createElement("br");
 						cellStartTime.appendChild(tStartTime);
+
+						var tStartTimeLocal = document.createElement("span");
+						tStartTimeLocal.id = "startTimeLocal_" + (intI + 1);
+						tStartTimeLocal.innerHTML = gmtDate.toLocaleString();
+						cellStartTime.appendChild(tStartTimeLocal);
 					}
 					// Result
 					{
