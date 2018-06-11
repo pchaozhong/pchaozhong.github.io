@@ -61,7 +61,7 @@
 		web3.eth.defaultAccount = '0xe44613033c8c9952A3A5119cDD6B29A471bCEc38';
 		const transactionObject = {
 			from: web3.eth.accounts[0],
-			gas: '4700000'
+			gas: '4700000',
 			gasPrice: '21000'
 		};
 
@@ -867,6 +867,7 @@
 				value matchId = document.getElementById("inputMatchNo").value;
 				value prediction = document.getElementById("inputPrediction").value;
 				value investValue = document.getElementById("inputInvest").value;
+
 				WorldCup2018.betMatch(matchId, prediction, {from: web3.eth.accounts[0], gas: '4700000', gasPrice: '21000', value: web3.toWei(investValue, 'ether')}, function(error){
 					if(!error) {
 						document.getElementById("doPredictionInfo").innerHTML = "Prediction should be recorded in the next block of [Ethereum Block Chain] as soon.";
