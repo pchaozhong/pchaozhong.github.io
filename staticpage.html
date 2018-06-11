@@ -864,9 +864,15 @@
 		function doPrediction() {
 			try {
 				// uint8 _matchId, uint8 _prediction
-				value matchId = document.getElementById("inputMatchNo").value;
-				value prediction = document.getElementById("inputPrediction").value;
-				value investValue = document.getElementById("inputInvest").value;
+				var matchId = document.getElementById("inputMatchNo").value;
+				var predictionArray = document.getElementsByName("inputPrediction");
+				var prediction;
+				for (var intI = 0; intI < predictionArray.length; intI++) {
+					if (predictionArray[intI].checked) {
+						prediction = predictionArray[intI].value;
+					}
+				}
+				var investValue = document.getElementById("inputInvest").value;
 
 				WorldCup2018.betMatch(matchId, prediction, {from: web3.eth.accounts[0], gas: '4700000', gasPrice: '21000', value: web3.toWei(investValue, 'ether')}, function(error){
 					if(!error) {
