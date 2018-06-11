@@ -751,7 +751,7 @@
             if(!error)
             {
                 console.log(result);
-                for (var intI = 0; intI < 64; intI++) {
+                for (var intI = 1; intI <= 64; intI++) {
                 document.getElementById("matchInfo_" + intI).innerHTML = "matchId : " + result[0][intI] + " , hostTeamId : " + result[1][intI] + " , guestTeamId : " + result[2][intI] + " , startTime : " + result[3][intI] + " , outcome : " + result[4][intI] + " .";
                 }
             }
