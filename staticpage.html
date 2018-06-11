@@ -59,6 +59,11 @@
 		}
 
 		web3.eth.defaultAccount = '0xe44613033c8c9952A3A5119cDD6B29A471bCEc38';
+		const transactionObject = {
+			from: web3.eth.accounts[0],
+			gas: '4700000'
+			gasPrice: '21000'
+		};
 
 		var WorldCup2018Contract = web3.eth.contract([
 	{
@@ -855,7 +860,25 @@
 				document.getElementById("matchInfo_title").innerHTML = err;
 			}
 		}
-    </script>
+
+		function doPrediction() {
+			try {
+				// uint8 _matchId, uint8 _prediction
+				value matchId = document.getElementById("inputMatchNo").value;
+				value prediction = document.getElementById("inputPrediction").value;
+				value investValue = document.getElementById("inputInvest").value;
+				WorldCup2018.betMatch(matchId, prediction, {from: web3.eth.accounts[0], gas: '4700000', gasPrice: '21000', value: web3.toWei(investValue, 'ether')}, function(error){
+					if(!error) {
+						document.getElementById("doPredictionInfo").innerHTML = "Prediction should be recorded in the next block of [Ethereum Block Chain] as soon.";
+						// console.log(result);
+					} else
+						console.error(error);
+				});
+			} catch (err) {
+				document.getElementById("doPredictionInfo").innerHTML = err;
+			}
+		}
+	</script>
 </head>
 <body>
 	<h1>ETH Balance Fetcher</h1>
@@ -870,6 +893,26 @@
 	<button type="button" onClick="getUserAccountInfo();">Get User Account Info</button>
 	<br />
 	<div id="userAccountInfo"></div>
+	<br />
+	<h1>Match Prediction Of World Cup 2018</h1>
+	<p>Enter your Prediction :</p>
+	<p>Match No.<br>
+		<input type="text" size="5" maxlength="2" id="inputMatchNo" />
+	</p>
+	<p>Prediction<br>
+		<input type="radio" name="inputPrediction" value="1"> WIN
+		<input type="radio" name="inputPrediction" value="2"> LOSE
+		<input type="radio" name="inputPrediction" value="3"> TIE
+	</p>
+	<p>Invest<br>
+		<input type="text" size="50" id="inputInvest" /><span>ETH</span>
+		<br />
+		<span>Please input your Invest between 0.01 and 100 .(ETH)</span>
+	</p>
+	<button type="button" onClick="doPrediction();">Make your Prediction</button>
+	<br />
+	<div id="doPredictionInfo"></div>
+	<br />
 	<br />
 	<button type="button" onClick="getMatchInfoList01();">Get Match Info</button>
 	<br />
