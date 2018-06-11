@@ -795,16 +795,57 @@
             {
                 console.log(result);
 				// matchInfo_title
-				document.getElementById("matchInfo_title").innerHTML = "MatchNo \t HostTeamName \t\t GuestTeamName \t\t StartTime(GMT / LOCAL) \t\t\t Result";
+				var table = document.getElementById("matchInfoList");
                 for (var intI = 0; intI < 64; intI++) {
 					var gmtDate  = new Date('1970-01-01 00:00:00+00:00');
 					// Match start at gmtDate([GMT Start Date] + [diffSeconds from contract])
 					gmtDate.setSeconds(gmtDate.getSeconds() + result[3][intI]);
-					document.getElementById("matchInfo_" + (intI + 1)).innerHTML = result[0][intI] + "\t" + arrTeamName[result[1][intI]] + "\t\t" + arrTeamName[result[2][intI]] + "\t\t" + gmtDate.toGMTString() + " / " + gmtDate.toLocaleString() + "\t\t\t" + arrOutcomeName[result[4][intI]];
-                }
+
+					var row = table.insertRow(table.rows.length);
+					// Match No.
+					{
+						var cellMatchNo = row.insertCell(0);
+						var tMatchNo = document.createElement("span");
+						tMatchNo.id = "matchNo_" + (intI + 1);
+						tMatchNo.innerHTML = result[0][intI];
+						cellMatchNo.appendChild(tMatchNo);
+					}
+					// HostTeamName
+					{
+						var cellHostTeamName = row.insertCell(1);
+						var tHostTeamName = document.createElement("span");
+						tHostTeamName.id = "hostTeamName_" + (intI + 1);
+						tHostTeamName.innerHTML = arrTeamName[result[1][intI]];
+						cellHostTeamName.appendChild(tHostTeamName);
+					}
+					// GuestTeamName
+					{
+						var cellGuestTeamName = row.insertCell(2);
+						var tGuestTeamName = document.createElement("span");
+						tGuestTeamName.id = "guestTeamName_" + (intI + 1);
+						tGuestTeamName.innerHTML = arrTeamName[result[2][intI]];
+						cellGuestTeamName.appendChild(tGuestTeamName);
+					}
+					// StartTime(GMT/LOCAL)
+					{
+						var cellStartTime = row.insertCell(3);
+						var tStartTime = document.createElement("span");
+						tStartTime.id = "startTime_" + (intI + 1);
+						tStartTime.innerHTML = gmtDate.toGMTString() + " / " + gmtDate.toLocaleString();
+						cellStartTime.appendChild(tStartTime);
+					}
+					// Result
+					{
+						var cellResult = row.insertCell(4);
+						var tResult = document.createElement("span");
+						tResult.id = "result_" + (intI + 1);
+						tResult.innerHTML = arrOutcomeName[result[4][intI]];
+						cellResult.appendChild(tResult);
+					}
+               }
             }
             else
-            console.error(error);
+	            console.error(error);
         });
             } catch (err) {
                 document.getElementById("matchInfo_title").innerHTML = err;
@@ -830,135 +871,22 @@
     <br />
     <button type="button" onClick="getMatchInfoList01();">Get Match Info</button>
     <br />
-    <br />
     <div id="matchInfo_title"></div>
     <br />
-    <div id="matchInfo_1"></div>
+	<table id="matchInfoList">
+		<th>Match No.</th>
+		<th>HostTeamName</th>
+		<th>GuestTeamName</th>
+		<th>StartTime(GMT/LOCAL)</th>
+		<th>Result</th>
+		<tr>
+			<td><span>Ex : Match No.</span></td>
+			<td><span>Ex : HostTeamName</span></td>
+			<td><span>Ex : GuestTeamName</span></td>
+			<td><span>Ex : StartTime(GMT / LOCAL)</span></td>
+			<td><span>Ex : Result</span></td>
+		</tr>
+	</table>
     <br />
-    <div id="matchInfo_2"></div>
-    <br />
-    <div id="matchInfo_3"></div>
-    <br />
-    <div id="matchInfo_4"></div>
-    <br />
-    <div id="matchInfo_5"></div>
-    <br />
-    <div id="matchInfo_6"></div>
-    <br />
-    <div id="matchInfo_7"></div>
-    <br />
-    <div id="matchInfo_8"></div>
-    <br />
-    <div id="matchInfo_9"></div>
-    <br />
-    <div id="matchInfo_10"></div>
-    <br />
-    <div id="matchInfo_11"></div>
-    <br />
-    <div id="matchInfo_12"></div>
-    <br />
-    <div id="matchInfo_13"></div>
-    <br />
-    <div id="matchInfo_14"></div>
-    <br />
-    <div id="matchInfo_15"></div>
-    <br />
-    <div id="matchInfo_16"></div>
-    <br />
-    <div id="matchInfo_17"></div>
-    <br />
-    <div id="matchInfo_18"></div>
-    <br />
-    <div id="matchInfo_19"></div>
-    <br />
-    <div id="matchInfo_20"></div>
-    <br />
-    <div id="matchInfo_21"></div>
-    <br />
-    <div id="matchInfo_22"></div>
-    <br />
-    <div id="matchInfo_23"></div>
-    <br />
-    <div id="matchInfo_24"></div>
-    <br />
-    <div id="matchInfo_25"></div>
-    <br />
-    <div id="matchInfo_26"></div>
-    <br />
-    <div id="matchInfo_27"></div>
-    <br />
-    <div id="matchInfo_28"></div>
-    <br />
-    <div id="matchInfo_29"></div>
-    <br />
-    <div id="matchInfo_30"></div>
-    <br />
-    <div id="matchInfo_31"></div>
-    <br />
-    <div id="matchInfo_32"></div>
-    <br />
-    <div id="matchInfo_33"></div>
-    <br />
-    <div id="matchInfo_34"></div>
-    <br />
-    <div id="matchInfo_35"></div>
-    <br />
-    <div id="matchInfo_36"></div>
-    <br />
-    <div id="matchInfo_37"></div>
-    <br />
-    <div id="matchInfo_38"></div>
-    <br />
-    <div id="matchInfo_39"></div>
-    <br />
-    <div id="matchInfo_40"></div>
-    <br />
-    <div id="matchInfo_41"></div>
-    <br />
-    <div id="matchInfo_42"></div>
-    <br />
-    <div id="matchInfo_43"></div>
-    <br />
-    <div id="matchInfo_44"></div>
-    <br />
-    <div id="matchInfo_45"></div>
-    <br />
-    <div id="matchInfo_46"></div>
-    <br />
-    <div id="matchInfo_47"></div>
-    <br />
-    <div id="matchInfo_48"></div>
-    <br />
-    <div id="matchInfo_49"></div>
-    <br />
-    <div id="matchInfo_50"></div>
-    <br />
-    <div id="matchInfo_51"></div>
-    <br />
-    <div id="matchInfo_52"></div>
-    <br />
-    <div id="matchInfo_53"></div>
-    <br />
-    <div id="matchInfo_54"></div>
-    <br />
-    <div id="matchInfo_55"></div>
-    <br />
-    <div id="matchInfo_56"></div>
-    <br />
-    <div id="matchInfo_57"></div>
-    <br />
-    <div id="matchInfo_58"></div>
-    <br />
-    <div id="matchInfo_59"></div>
-    <br />
-    <div id="matchInfo_60"></div>
-    <br />
-    <div id="matchInfo_61"></div>
-    <br />
-    <div id="matchInfo_62"></div>
-    <br />
-    <div id="matchInfo_63"></div>
-    <br />
-    <div id="matchInfo_64"></div>
 </body>
 </html>
