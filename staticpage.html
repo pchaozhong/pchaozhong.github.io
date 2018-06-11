@@ -5,7 +5,7 @@
     <script type="text/javascript" src="./web3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
     <script type="text/javascript">
-        var WorldCup2018;
+		var WorldCup2018;
 		var arrOutcomeName = new Array(4);
 			{
 				arrOutcomeName[0] = "UNKNOWN";
@@ -49,18 +49,18 @@
 				arrTeamName[31] = "Colombia";
 				arrTeamName[32] = "Japan";
 			}
-        window.addEventListener('load', function () {
-            if (typeof web3 !== 'undefined') {
-                console.log('Web3 Detected! ' + web3.currentProvider.constructor.name)
-                window.web3 = new Web3(web3.currentProvider);
-            } else {
-                console.log('No Web3 Detected... using HTTP Provider')
-                window.web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/SockCQRLEtdDj6vi03nt"));
-            }
+		window.addEventListener('load', function () {
+		if (typeof web3 !== 'undefined') {
+			console.log('Web3 Detected! ' + web3.currentProvider.constructor.name)
+			window.web3 = new Web3(web3.currentProvider);
+		} else {
+			console.log('No Web3 Detected... using HTTP Provider')
+			window.web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/SockCQRLEtdDj6vi03nt"));
+		}
 
-            web3.eth.defaultAccount = '0xe44613033c8c9952A3A5119cDD6B29A471bCEc38';
+		web3.eth.defaultAccount = '0xe44613033c8c9952A3A5119cDD6B29A471bCEc38';
 
-            var WorldCup2018Contract = web3.eth.contract([
+		var WorldCup2018Contract = web3.eth.contract([
 	{
 		"constant": true,
 		"inputs": [],
@@ -752,113 +752,109 @@
 		"type": "event"
 	}
 ]);
-            // https://ropsten.etherscan.io/tx/0x8ab6951312c1d59e42a1f47b725fe72da6eada1a3c9efed31ebff63a770c651a
-            WorldCup2018 = WorldCup2018Contract.at('0xce35e70f8c1b23bee9b8b3221bb303fd49673d2a');
-            console.log(WorldCup2018);
-        })
+		// https://ropsten.etherscan.io/tx/0x8ab6951312c1d59e42a1f47b725fe72da6eada1a3c9efed31ebff63a770c651a
+		WorldCup2018 = WorldCup2018Contract.at('0xce35e70f8c1b23bee9b8b3221bb303fd49673d2a');
+		console.log(WorldCup2018);
+		})
 
-        function getBalance() {
-            var address, wei, balance
-            address = document.getElementById("address").value
-            try {
-                web3.eth.getBalance(address, function (error, wei) {
-                    if (!error) {
-                        var balance = web3.fromWei(wei, 'ether');
-                        document.getElementById("output").innerHTML = balance + " ETH";
-                    }
-                });
-            } catch (err) {
-                document.getElementById("output").innerHTML = err;
-            }
-        }
-
-        function getUserAccountInfo() {
-            try {
-        WorldCup2018.getUserAccountInfo(function(error, result){
-            if(!error)
-            {
-                document.getElementById("userAccountInfo").innerHTML = "invested : " + result[0] + " , prize : " + result[1] + " , balance : " + result[2] + " .";
-                console.log(result);
-            }
-            else
-            console.error(error);
-        });
-            } catch (err) {
-                document.getElementById("userAccountInfo").innerHTML = err;
-            }
-        }
-
-        function getMatchInfoList01() {
-            try {
-        WorldCup2018.getMatchInfoList01(function(error, result){
-            if(!error)
-            {
-                console.log(result);
-				// matchInfo_title
-				var table = document.getElementById("matchInfoList");
-                for (var intI = 0; intI < 64; intI++) {
-					var gmtDate  = new Date('1970-01-01 00:00:00+00:00');
-					// Match start at gmtDate([GMT Start Date] + [diffSeconds from contract])
-					gmtDate.setSeconds(gmtDate.getSeconds() + result[3][intI]);
-
-					var row = table.insertRow(table.rows.length);
-					// Match No.
-					{
-						var cellMatchNo = row.insertCell(0);
-						var tMatchNo = document.createElement("span");
-						tMatchNo.id = "matchNo_" + (intI + 1);
-						tMatchNo.innerHTML = result[0][intI];
-						cellMatchNo.appendChild(tMatchNo);
+		function getBalance() {
+			var address, wei, balance
+			address = document.getElementById("address").value
+			try {
+				web3.eth.getBalance(address, function (error, wei) {
+					if (!error) {
+						var balance = web3.fromWei(wei, 'ether');
+						document.getElementById("output").innerHTML = balance + " ETH";
 					}
-					// HostTeamName
-					{
-						var cellHostTeamName = row.insertCell(1);
-						var tHostTeamName = document.createElement("span");
-						tHostTeamName.id = "hostTeamName_" + (intI + 1);
-						tHostTeamName.innerHTML = arrTeamName[result[1][intI]];
-						cellHostTeamName.appendChild(tHostTeamName);
-					}
-					// GuestTeamName
-					{
-						var cellGuestTeamName = row.insertCell(2);
-						var tGuestTeamName = document.createElement("span");
-						tGuestTeamName.id = "guestTeamName_" + (intI + 1);
-						tGuestTeamName.innerHTML = arrTeamName[result[2][intI]];
-						cellGuestTeamName.appendChild(tGuestTeamName);
-					}
-					// StartTime(GMT/LOCAL)
-					{
-						var cellStartTime = row.insertCell(3);
-						var tStartTimeGmt = document.createElement("span");
-						tStartTimeGmt.id = "startTimeGmt_" + (intI + 1);
-						tStartTimeGmt.innerHTML = gmtDate.toGMTString();
-						cellStartTime.appendChild(tStartTimeGmt);
+				});
+			} catch (err) {
+				document.getElementById("output").innerHTML = err;
+			}
+		}
 
-						var tStartTime = document.createElement("br");
-						cellStartTime.appendChild(tStartTime);
+		function getUserAccountInfo() {
+			try {
+				WorldCup2018.getUserAccountInfo(function(error, result){
+					if(!error) {
+						document.getElementById("userAccountInfo").innerHTML = "invested : " + result[0] + " , prize : " + result[1] + " , balance : " + result[2] + " .";
+						console.log(result);
+					} else
+						console.error(error);
+				});
+			} catch (err) {
+				document.getElementById("userAccountInfo").innerHTML = err;
+			}
+		}
 
-						var tStartTimeLocal = document.createElement("span");
-						tStartTimeLocal.id = "startTimeLocal_" + (intI + 1);
-						tStartTimeLocal.innerHTML = gmtDate.toLocaleString();
-						cellStartTime.appendChild(tStartTimeLocal);
-					}
-					// Result
-					{
-						var cellResult = row.insertCell(4);
-						var tResult = document.createElement("span");
-						tResult.id = "result_" + (intI + 1);
-						tResult.innerHTML = arrOutcomeName[result[4][intI]];
-						cellResult.appendChild(tResult);
-					}
-               }
-            }
-            else
-	            console.error(error);
-        });
-            } catch (err) {
-                document.getElementById("matchInfo_title").innerHTML = err;
-            }
-        }
+		function getMatchInfoList01() {
+			try {
+				WorldCup2018.getMatchInfoList01(function(error, result){
+					if(!error) {
+						console.log(result);
+						// matchInfo_title
+						var table = document.getElementById("matchInfoList");
+						for (var intI = 0; intI < 64; intI++) {
+							var gmtDate  = new Date('1970-01-01 00:00:00+00:00');
+							// Match start at gmtDate([GMT Start Date] + [diffSeconds from contract])
+							gmtDate.setSeconds(gmtDate.getSeconds() + result[3][intI]);
+
+							var row = table.insertRow(table.rows.length);
+							// Match No.
+							{
+								var cellMatchNo = row.insertCell(0);
+								var tMatchNo = document.createElement("span");
+								tMatchNo.id = "matchNo_" + (intI + 1);
+								tMatchNo.innerHTML = result[0][intI];
+								cellMatchNo.appendChild(tMatchNo);
+							}
+							// HostTeamName
+							{
+								var cellHostTeamName = row.insertCell(1);
+								var tHostTeamName = document.createElement("span");
+								tHostTeamName.id = "hostTeamName_" + (intI + 1);
+								tHostTeamName.innerHTML = arrTeamName[result[1][intI]];
+								cellHostTeamName.appendChild(tHostTeamName);
+							}
+							// GuestTeamName
+							{
+								var cellGuestTeamName = row.insertCell(2);
+								var tGuestTeamName = document.createElement("span");
+								tGuestTeamName.id = "guestTeamName_" + (intI + 1);
+								tGuestTeamName.innerHTML = arrTeamName[result[2][intI]];
+								cellGuestTeamName.appendChild(tGuestTeamName);
+							}
+							// StartTime(GMT/LOCAL)
+							{
+								var cellStartTime = row.insertCell(3);
+								var tStartTimeGmt = document.createElement("span");
+								tStartTimeGmt.id = "startTimeGmt_" + (intI + 1);
+								tStartTimeGmt.innerHTML = gmtDate.toGMTString();
+								cellStartTime.appendChild(tStartTimeGmt);
+
+								var tStartTime = document.createElement("br");
+								cellStartTime.appendChild(tStartTime);
+
+								var tStartTimeLocal = document.createElement("span");
+								tStartTimeLocal.id = "startTimeLocal_" + (intI + 1);
+								tStartTimeLocal.innerHTML = gmtDate.toLocaleString();
+								cellStartTime.appendChild(tStartTimeLocal);
+							}
+							// Result
+							{
+								var cellResult = row.insertCell(4);
+								var tResult = document.createElement("span");
+								tResult.id = "result_" + (intI + 1);
+								tResult.innerHTML = arrOutcomeName[result[4][intI]];
+								cellResult.appendChild(tResult);
+							}
+						}
+					} else
+						console.error(error);
+				});
+			} catch (err) {
+				document.getElementById("matchInfo_title").innerHTML = err;
+			}
+		}
     </script>
 </head>
 <body>
