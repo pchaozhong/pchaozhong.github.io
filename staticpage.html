@@ -18,567 +18,699 @@
             web3.eth.defaultAccount = '0xe44613033c8c9952A3A5119cDD6B29A471bCEc38';
 
             var WorldCup2018Contract = web3.eth.contract([
-            {
-                "anonymous": false,
-                "inputs": [
-                    {
-                        "indexed": true,
-                        "name": "previousOwner",
-                        "type": "address"
-                    },
-                    {
-                        "indexed": true,
-                        "name": "newOwner",
-                        "type": "address"
-                    }
-                ],
-                "name": "OwnershipTransferred",
-                "type": "event"
-            },
-            {
-                "constant": false,
-                "inputs": [
-                    {
-                        "name": "_matchId",
-                        "type": "uint8"
-                    },
-                    {
-                        "name": "_prediction",
-                        "type": "uint8"
-                    }
-                ],
-                "name": "betMatch",
-                "outputs": [],
-                "payable": true,
-                "stateMutability": "payable",
-                "type": "function"
-            },
-            {
-                "constant": false,
-                "inputs": [],
-                "name": "kill",
-                "outputs": [],
-                "payable": false,
-                "stateMutability": "nonpayable",
-                "type": "function"
-            },
-            {
-                "anonymous": false,
-                "inputs": [
-                    {
-                        "indexed": false,
-                        "name": "_matchIdArray",
-                        "type": "uint8[]"
-                    },
-                    {
-                        "indexed": false,
-                        "name": "_hostTeamIdArray",
-                        "type": "uint8[]"
-                    },
-                    {
-                        "indexed": false,
-                        "name": "_guestTeamIdArray",
-                        "type": "uint8[]"
-                    },
-                    {
-                        "indexed": false,
-                        "name": "_startTimeArray",
-                        "type": "uint256[]"
-                    },
-                    {
-                        "indexed": false,
-                        "name": "_outcomeArray",
-                        "type": "uint8[]"
-                    }
-                ],
-                "name": "MatchInfoList01",
-                "type": "event"
-            },
-            {
-                "anonymous": false,
-                "inputs": [
-                    {
-                        "indexed": false,
-                        "name": "_winPredictionArrayForLoginUser",
-                        "type": "uint256[]"
-                    },
-                    {
-                        "indexed": false,
-                        "name": "_losePredictionArrayForLoginUser",
-                        "type": "uint256[]"
-                    },
-                    {
-                        "indexed": false,
-                        "name": "_tiePredictionArrayForLoginUser",
-                        "type": "uint256[]"
-                    }
-                ],
-                "name": "MatchInfoList03",
-                "type": "event"
-            },
-            {
-                "anonymous": false,
-                "inputs": [
-                    {
-                        "indexed": false,
-                        "name": "_invested",
-                        "type": "uint256"
-                    },
-                    {
-                        "indexed": false,
-                        "name": "_prize",
-                        "type": "uint256"
-                    },
-                    {
-                        "indexed": false,
-                        "name": "_balance",
-                        "type": "uint256"
-                    }
-                ],
-                "name": "UserAccountInfo",
-                "type": "event"
-            },
-            {
-                "anonymous": false,
-                "inputs": [
-                    {
-                        "indexed": false,
-                        "name": "newContract",
-                        "type": "address"
-                    }
-                ],
-                "name": "ContractUpgrade",
-                "type": "event"
-            },
-            {
-                "anonymous": false,
-                "inputs": [
-                    {
-                        "indexed": false,
-                        "name": "_winPredictionArray",
-                        "type": "uint256[]"
-                    },
-                    {
-                        "indexed": false,
-                        "name": "_losePredictionArray",
-                        "type": "uint256[]"
-                    },
-                    {
-                        "indexed": false,
-                        "name": "_tiePredictionArray",
-                        "type": "uint256[]"
-                    }
-                ],
-                "name": "MatchInfoList02",
-                "type": "event"
-            },
-            {
-                "anonymous": false,
-                "inputs": [
-                    {
-                        "indexed": true,
-                        "name": "previousOwner",
-                        "type": "address"
-                    }
-                ],
-                "name": "OwnershipRenounced",
-                "type": "event"
-            },
-            {
-                "constant": false,
-                "inputs": [],
-                "name": "pause",
-                "outputs": [],
-                "payable": false,
-                "stateMutability": "nonpayable",
-                "type": "function"
-            },
-            {
-                "constant": false,
-                "inputs": [],
-                "name": "renounceOwnership",
-                "outputs": [],
-                "payable": false,
-                "stateMutability": "nonpayable",
-                "type": "function"
-            },
-            {
-                "constant": false,
-                "inputs": [
-                    {
-                        "name": "_newCEO",
-                        "type": "address"
-                    }
-                ],
-                "name": "setCEO",
-                "outputs": [],
-                "payable": false,
-                "stateMutability": "nonpayable",
-                "type": "function"
-            },
-            {
-                "constant": false,
-                "inputs": [
-                    {
-                        "name": "_newCFO",
-                        "type": "address"
-                    }
-                ],
-                "name": "setCFO",
-                "outputs": [],
-                "payable": false,
-                "stateMutability": "nonpayable",
-                "type": "function"
-            },
-            {
-                "constant": false,
-                "inputs": [
-                    {
-                        "name": "_tax",
-                        "type": "uint8"
-                    }
-                ],
-                "name": "setClamTax",
-                "outputs": [
-                    {
-                        "name": "",
-                        "type": "bool"
-                    }
-                ],
-                "payable": false,
-                "stateMutability": "nonpayable",
-                "type": "function"
-            },
-            {
-                "constant": false,
-                "inputs": [
-                    {
-                        "name": "_newCOO",
-                        "type": "address"
-                    }
-                ],
-                "name": "setCOO",
-                "outputs": [],
-                "payable": false,
-                "stateMutability": "nonpayable",
-                "type": "function"
-            },
-            {
-                "constant": false,
-                "inputs": [
-                    {
-                        "name": "_matchId",
-                        "type": "uint8"
-                    },
-                    {
-                        "name": "_outcome",
-                        "type": "uint8"
-                    }
-                ],
-                "name": "setOutcome",
-                "outputs": [
-                    {
-                        "name": "",
-                        "type": "bool"
-                    }
-                ],
-                "payable": false,
-                "stateMutability": "nonpayable",
-                "type": "function"
-            },
-            {
-                "constant": false,
-                "inputs": [
-                    {
-                        "name": "newOwner",
-                        "type": "address"
-                    }
-                ],
-                "name": "transferOwnership",
-                "outputs": [],
-                "payable": false,
-                "stateMutability": "nonpayable",
-                "type": "function"
-            },
-            {
-                "inputs": [],
-                "payable": false,
-                "stateMutability": "nonpayable",
-                "type": "constructor"
-            },
-            {
-                "payable": true,
-                "stateMutability": "payable",
-                "type": "fallback"
-            },
-            {
-                "constant": false,
-                "inputs": [],
-                "name": "unpause",
-                "outputs": [],
-                "payable": false,
-                "stateMutability": "nonpayable",
-                "type": "function"
-            },
-            {
-                "constant": false,
-                "inputs": [
-                    {
-                        "name": "_matchId",
-                        "type": "uint8"
-                    },
-                    {
-                        "name": "_hostTeamId",
-                        "type": "uint8"
-                    },
-                    {
-                        "name": "_guestTeamId",
-                        "type": "uint8"
-                    }
-                ],
-                "name": "updateMatch",
-                "outputs": [],
-                "payable": false,
-                "stateMutability": "nonpayable",
-                "type": "function"
-            },
-            {
-                "constant": false,
-                "inputs": [
-                    {
-                        "name": "_matchId",
-                        "type": "uint8"
-                    },
-                    {
-                        "name": "_startTime",
-                        "type": "uint256"
-                    }
-                ],
-                "name": "updateMatchStartTime",
-                "outputs": [],
-                "payable": false,
-                "stateMutability": "nonpayable",
-                "type": "function"
-            },
-            {
-                "constant": false,
-                "inputs": [],
-                "name": "withdrawPayments",
-                "outputs": [],
-                "payable": false,
-                "stateMutability": "nonpayable",
-                "type": "function"
-            },
-            {
-                "constant": true,
-                "inputs": [],
-                "name": "ceoAddress",
-                "outputs": [
-                    {
-                        "name": "",
-                        "type": "address"
-                    }
-                ],
-                "payable": false,
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "constant": true,
-                "inputs": [],
-                "name": "cfoAddress",
-                "outputs": [
-                    {
-                        "name": "",
-                        "type": "address"
-                    }
-                ],
-                "payable": false,
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "constant": true,
-                "inputs": [],
-                "name": "cooAddress",
-                "outputs": [
-                    {
-                        "name": "",
-                        "type": "address"
-                    }
-                ],
-                "payable": false,
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "constant": true,
-                "inputs": [],
-                "name": "getMatchInfoList01",
-                "outputs": [
-                    {
-                        "name": "matchIdArray",
-                        "type": "uint8[]"
-                    },
-                    {
-                        "name": "hostTeamIdArray",
-                        "type": "uint8[]"
-                    },
-                    {
-                        "name": "guestTeamIdArray",
-                        "type": "uint8[]"
-                    },
-                    {
-                        "name": "startTimeArray",
-                        "type": "uint256[]"
-                    },
-                    {
-                        "name": "outcomeArray",
-                        "type": "uint8[]"
-                    }
-                ],
-                "payable": false,
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "constant": true,
-                "inputs": [],
-                "name": "getMatchInfoList02",
-                "outputs": [
-                    {
-                        "name": "winPredictionArray",
-                        "type": "uint256[]"
-                    },
-                    {
-                        "name": "losePredictionArray",
-                        "type": "uint256[]"
-                    },
-                    {
-                        "name": "tiePredictionArray",
-                        "type": "uint256[]"
-                    }
-                ],
-                "payable": false,
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "constant": true,
-                "inputs": [],
-                "name": "getMatchInfoList03",
-                "outputs": [
-                    {
-                        "name": "winPredictionArrayForLoginUser",
-                        "type": "uint256[]"
-                    },
-                    {
-                        "name": "losePredictionArrayForLoginUser",
-                        "type": "uint256[]"
-                    },
-                    {
-                        "name": "tiePredictionArrayForLoginUser",
-                        "type": "uint256[]"
-                    }
-                ],
-                "payable": false,
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "constant": true,
-                "inputs": [],
-                "name": "getUserAccountInfo",
-                "outputs": [
-                    {
-                        "name": "invested",
-                        "type": "uint256"
-                    },
-                    {
-                        "name": "prize",
-                        "type": "uint256"
-                    },
-                    {
-                        "name": "balance",
-                        "type": "uint256"
-                    }
-                ],
-                "payable": false,
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "constant": true,
-                "inputs": [],
-                "name": "owner",
-                "outputs": [
-                    {
-                        "name": "",
-                        "type": "address"
-                    }
-                ],
-                "payable": false,
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "constant": true,
-                "inputs": [],
-                "name": "pageInfoEmit",
-                "outputs": [],
-                "payable": false,
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "constant": true,
-                "inputs": [],
-                "name": "paused",
-                "outputs": [
-                    {
-                        "name": "",
-                        "type": "bool"
-                    }
-                ],
-                "payable": false,
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "constant": true,
-                "inputs": [
-                    {
-                        "name": "",
-                        "type": "address"
-                    }
-                ],
-                "name": "payments",
-                "outputs": [
-                    {
-                        "name": "",
-                        "type": "uint256"
-                    }
-                ],
-                "payable": false,
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "constant": true,
-                "inputs": [],
-                "name": "totalPayments",
-                "outputs": [
-                    {
-                        "name": "",
-                        "type": "uint256"
-                    }
-                ],
-                "payable": false,
-                "stateMutability": "view",
-                "type": "function"
-            }
-            ]);
-            WorldCup2018 = WorldCup2018Contract.at('0xa428d98fbef2940aba6096fdc6ae1d7233832ac9');
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "totalPayments",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_tax",
+				"type": "uint8"
+			}
+		],
+		"name": "setClamTax",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "cfoAddress",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "ceoAddress",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_newCEO",
+				"type": "address"
+			}
+		],
+		"name": "setCEO",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_matchId",
+				"type": "uint8"
+			},
+			{
+				"name": "_prediction",
+				"type": "uint8"
+			}
+		],
+		"name": "betMatch",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_newCOO",
+				"type": "address"
+			}
+		],
+		"name": "setCOO",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "unpause",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "kill",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "nm_players",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_newCFO",
+				"type": "address"
+			}
+		],
+		"name": "setCFO",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getUserAccountInfo",
+		"outputs": [
+			{
+				"name": "invested",
+				"type": "uint256"
+			},
+			{
+				"name": "prize",
+				"type": "uint256"
+			},
+			{
+				"name": "balance",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getMatchInfoList01",
+		"outputs": [
+			{
+				"name": "matchIdArray",
+				"type": "uint8[64]"
+			},
+			{
+				"name": "hostTeamIdArray",
+				"type": "uint8[64]"
+			},
+			{
+				"name": "guestTeamIdArray",
+				"type": "uint8[64]"
+			},
+			{
+				"name": "startTimeArray",
+				"type": "uint256[64]"
+			},
+			{
+				"name": "outcomeArray",
+				"type": "uint8[64]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "paused",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "withdrawPayments",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "totalInvest",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_matchId",
+				"type": "uint8"
+			},
+			{
+				"name": "_startTime",
+				"type": "uint256"
+			}
+		],
+		"name": "updateMatchStartTime",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "pause",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "accountInfos",
+		"outputs": [
+			{
+				"name": "invested",
+				"type": "uint256"
+			},
+			{
+				"name": "prize",
+				"type": "uint256"
+			},
+			{
+				"name": "claimed",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"name": "matchs",
+		"outputs": [
+			{
+				"name": "matchId",
+				"type": "uint8"
+			},
+			{
+				"name": "hostTeamId",
+				"type": "uint8"
+			},
+			{
+				"name": "guestTeamId",
+				"type": "uint8"
+			},
+			{
+				"name": "startTime",
+				"type": "uint256"
+			},
+			{
+				"name": "outcome",
+				"type": "uint8"
+			},
+			{
+				"name": "totalInvest",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getMatchInfoList02",
+		"outputs": [
+			{
+				"name": "winPredictionArray",
+				"type": "uint256[64]"
+			},
+			{
+				"name": "losePredictionArray",
+				"type": "uint256[64]"
+			},
+			{
+				"name": "tiePredictionArray",
+				"type": "uint256[64]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_matchId",
+				"type": "uint8"
+			},
+			{
+				"name": "_hostTeamId",
+				"type": "uint8"
+			},
+			{
+				"name": "_guestTeamId",
+				"type": "uint8"
+			}
+		],
+		"name": "updateMatch",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_matchId",
+				"type": "uint8"
+			},
+			{
+				"name": "_outcome",
+				"type": "uint8"
+			}
+		],
+		"name": "setOutcome",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "pageInfoEmit",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "cooAddress",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "match_pools",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "payments",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "CLAIM_TAX",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getMatchInfoList03",
+		"outputs": [
+			{
+				"name": "winPredictionArrayForLoginUser",
+				"type": "uint256[64]"
+			},
+			{
+				"name": "losePredictionArrayForLoginUser",
+				"type": "uint256[64]"
+			},
+			{
+				"name": "tiePredictionArrayForLoginUser",
+				"type": "uint256[64]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "fallback"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_matchIdArray",
+				"type": "uint8[64]"
+			},
+			{
+				"indexed": false,
+				"name": "_hostTeamIdArray",
+				"type": "uint8[64]"
+			},
+			{
+				"indexed": false,
+				"name": "_guestTeamIdArray",
+				"type": "uint8[64]"
+			},
+			{
+				"indexed": false,
+				"name": "_startTimeArray",
+				"type": "uint256[64]"
+			},
+			{
+				"indexed": false,
+				"name": "_outcomeArray",
+				"type": "uint8[64]"
+			}
+		],
+		"name": "MatchInfoList01",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_winPredictionArray",
+				"type": "uint256[64]"
+			},
+			{
+				"indexed": false,
+				"name": "_losePredictionArray",
+				"type": "uint256[64]"
+			},
+			{
+				"indexed": false,
+				"name": "_tiePredictionArray",
+				"type": "uint256[64]"
+			}
+		],
+		"name": "MatchInfoList02",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_winPredictionArrayForLoginUser",
+				"type": "uint256[64]"
+			},
+			{
+				"indexed": false,
+				"name": "_losePredictionArrayForLoginUser",
+				"type": "uint256[64]"
+			},
+			{
+				"indexed": false,
+				"name": "_tiePredictionArrayForLoginUser",
+				"type": "uint256[64]"
+			}
+		],
+		"name": "MatchInfoList03",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "_invested",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "_prize",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "_balance",
+				"type": "uint256"
+			}
+		],
+		"name": "UserAccountInfo",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "newContract",
+				"type": "address"
+			}
+		],
+		"name": "ContractUpgrade",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "previousOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipRenounced",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	}
+]);
+            // https://ropsten.etherscan.io/tx/0x8ab6951312c1d59e42a1f47b725fe72da6eada1a3c9efed31ebff63a770c651a
+            WorldCup2018 = WorldCup2018Contract.at('0xce35e70f8c1b23bee9b8b3221bb303fd49673d2a');
             console.log(WorldCup2018);
         })
 
@@ -619,7 +751,7 @@
             if(!error)
             {
                 console.log(result);
-                for (var intI = 1; intI <= 16; intI++) {
+                for (var intI = 1; intI <= 64; intI++) {
                 document.getElementById("matchInfo_" + intI).innerHTML = "matchId : " + result[0][intI] + " , hostTeamId : " + result[1][intI] + " , guestTeamId : " + result[2][intI] + " , startTime : " + result[3][intI] + " , outcome : " + result[4][intI] + " .";
                 }
             }
@@ -682,5 +814,101 @@
     <div id="matchInfo_15"></div>
     <br />
     <div id="matchInfo_16"></div>
+    <br />
+    <div id="matchInfo_17"></div>
+    <br />
+    <div id="matchInfo_18"></div>
+    <br />
+    <div id="matchInfo_19"></div>
+    <br />
+    <div id="matchInfo_20"></div>
+    <br />
+    <div id="matchInfo_21"></div>
+    <br />
+    <div id="matchInfo_22"></div>
+    <br />
+    <div id="matchInfo_23"></div>
+    <br />
+    <div id="matchInfo_24"></div>
+    <br />
+    <div id="matchInfo_25"></div>
+    <br />
+    <div id="matchInfo_26"></div>
+    <br />
+    <div id="matchInfo_27"></div>
+    <br />
+    <div id="matchInfo_28"></div>
+    <br />
+    <div id="matchInfo_29"></div>
+    <br />
+    <div id="matchInfo_30"></div>
+    <br />
+    <div id="matchInfo_31"></div>
+    <br />
+    <div id="matchInfo_32"></div>
+    <br />
+    <div id="matchInfo_33"></div>
+    <br />
+    <div id="matchInfo_34"></div>
+    <br />
+    <div id="matchInfo_35"></div>
+    <br />
+    <div id="matchInfo_36"></div>
+    <br />
+    <div id="matchInfo_37"></div>
+    <br />
+    <div id="matchInfo_38"></div>
+    <br />
+    <div id="matchInfo_39"></div>
+    <br />
+    <div id="matchInfo_40"></div>
+    <br />
+    <div id="matchInfo_41"></div>
+    <br />
+    <div id="matchInfo_42"></div>
+    <br />
+    <div id="matchInfo_43"></div>
+    <br />
+    <div id="matchInfo_44"></div>
+    <br />
+    <div id="matchInfo_45"></div>
+    <br />
+    <div id="matchInfo_46"></div>
+    <br />
+    <div id="matchInfo_47"></div>
+    <br />
+    <div id="matchInfo_48"></div>
+    <br />
+    <div id="matchInfo_49"></div>
+    <br />
+    <div id="matchInfo_50"></div>
+    <br />
+    <div id="matchInfo_51"></div>
+    <br />
+    <div id="matchInfo_52"></div>
+    <br />
+    <div id="matchInfo_53"></div>
+    <br />
+    <div id="matchInfo_54"></div>
+    <br />
+    <div id="matchInfo_55"></div>
+    <br />
+    <div id="matchInfo_56"></div>
+    <br />
+    <div id="matchInfo_57"></div>
+    <br />
+    <div id="matchInfo_58"></div>
+    <br />
+    <div id="matchInfo_59"></div>
+    <br />
+    <div id="matchInfo_60"></div>
+    <br />
+    <div id="matchInfo_61"></div>
+    <br />
+    <div id="matchInfo_62"></div>
+    <br />
+    <div id="matchInfo_63"></div>
+    <br />
+    <div id="matchInfo_64"></div>
 </body>
 </html>
