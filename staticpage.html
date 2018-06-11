@@ -879,20 +879,25 @@
     <br />
     <button type="button" onClick="getMatchInfoList01();">Get Match Info</button>
     <br />
-    <div align="left" id="matchInfo_title" style="height: 288px; width: 940px; overflow: auto; overflow-y: auto; overflow-x: hidden;">
-    <br />
-		<table id="matchInfoList" border="1" cellpadding="0" cellspacing="0">
+    <div align="left" id="matchInfo_title_hd" style="height: 50px; width: 1000px; overflow: auto; overflow-y: hidden; overflow-x: hidden;">
+    	<br />
+		<table id="matchInfoList_hd" border="1" cellpadding="0" cellspacing="0">
 			<th width="150">Match No.</th>
 			<th width="200">HostTeamName</th>
 			<th width="200">GuestTeamName</th>
-			<th width="440">StartTime(GMT/LOCAL)</th>
-			<th width="50">Result</th>
+			<th width="400">StartTime(GMT/LOCAL)</th>
+			<th width="100">Result</th>
+		</table>
+	</div>
+    <div align="left" id="matchInfo_title" style="height: 300px; width: 1000px; overflow: auto; overflow-y: auto; overflow-x: hidden;">
+    	<br />
+		<table id="matchInfoList" border="1" cellpadding="0" cellspacing="0">
 			<tr height="24">
-				<td width="130"><span>Ex : Match No.</span></td>
-				<td width="200"><span>Ex : HostTeamName</span></td>
-				<td width="200"><span>Ex : GuestTeamName</span></td>
-				<td width="440"><span>Ex : StartTime(GMT / LOCAL)</span></td>
-				<td width="70"><span>Ex : Result</span></td>
+				<td align="center" width="150"><span>Ex : Match No.</span></td>
+				<td align="left" width="175"><span>Ex : HostTeamName</span></td>
+				<td align="left" width="175"><span>Ex : GuestTeamName</span></td>
+				<td align="right" width="400"><span>Ex : StartTime(GMT / LOCAL)</span></td>
+				<td align="center" width="100"><span>Ex : Result</span></td>
 			</tr>
 		</table>
 	</div>
