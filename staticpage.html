@@ -62,7 +62,7 @@
 		const transactionObject = {
 			from: web3.eth.accounts[0],
 			gas: '4700000',
-			gasPrice: '21000'
+			gasPrice: '2000000000' // 2Gwei
 		};
 
 		var WorldCup2018Contract = web3.eth.contract([
@@ -717,7 +717,7 @@
 				}
 				var investValue = document.getElementById("inputInvest").value;
 
-				WorldCup2018.betMatch(matchId, prediction, {from: web3.eth.accounts[0], gas: '4700000', gasPrice: '21000', value: web3.toWei(investValue, 'ether')}, function(error){
+				WorldCup2018.betMatch(matchId, prediction, {from: web3.eth.accounts[0], gas: '4700000', gasPrice: '2000000000', value: web3.toWei(investValue, 'ether')}, function(error){
 					if(!error) {
 						document.getElementById("doPredictionInfo").innerHTML = "Prediction should be recorded in the next block of [Ethereum Block Chain] as soon.";
 						// console.log(result);
