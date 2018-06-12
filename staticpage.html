@@ -624,8 +624,27 @@
 			try {
 				WorldCup2018.getUserAccountInfo(function(error, result){
 					if(!error) {
-						document.getElementById("userAccountInfo").innerHTML = "invested : " + web3.fromWei(result[0], 'ether') + " ETH, prize : " + web3.fromWei(result[1], 'ether') + " ETH, balance : " + web3.fromWei(result[2], 'ether') + " ETH.";
 						console.log(result);
+
+						document.getElementById("userAccountInfo_Invested").innerHTML = "invested : " + web3.fromWei(result[0], 'ether') + " ETH.";
+						document.getElementById("userAccountInfo_Prize").innerHTML = "prize : " + web3.fromWei(result[1], 'ether') + " ETH.";
+						document.getElementById("userAccountInfo_Balance").innerHTML = "balance : " + web3.fromWei(result[2], 'ether') + " ETH.";
+						if (result[2] > 0) {
+							document.getElementById("withdrawBalance").disabled = false;
+						}
+					} else
+						console.error(error);
+				});
+			} catch (err) {
+				document.getElementById("userAccountInfo").innerHTML = err;
+			}
+		}
+
+		function doWithdrawBalance() {
+			try {
+				WorldCup2018.withdrawPayments({from: web3.eth.accounts[0], gas: '1000000', gasPrice: '2000000000'}, function(error){
+					if(!error) {
+						document.getElementById("withdrawBalance").disabled = true;
 					} else
 						console.error(error);
 				});
@@ -831,7 +850,10 @@
 	<br />
 	<button type="button" onClick="getUserAccountInfo();">Get User Account Info</button>
 	<br />
-	<div id="userAccountInfo"></div>
+	<div id="userAccountInfo_Invested"></div>
+	<div id="userAccountInfo_Prize"></div>
+	<div id="userAccountInfo_Balance"></div>
+	<button type="button" id="withdrawBalance" onClick="doWithdrawBalance();" disabled="disabled">Withdraw Balance</button>
 	<br />
 	<h1>Match Prediction Of World Cup 2018</h1>
 	<p>Enter your Prediction :</p>
