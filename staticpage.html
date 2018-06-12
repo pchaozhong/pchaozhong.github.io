@@ -61,7 +61,7 @@
 		web3.eth.defaultAccount = '0xe44613033c8c9952A3A5119cDD6B29A471bCEc38';
 		const transactionObject = {
 			from: web3.eth.accounts[0],
-			gas: '4700000',
+			gas: '1000000',
 			gasPrice: '2000000000' // 2Gwei
 		};
 
@@ -641,6 +641,13 @@
 						console.log(result);
 						// matchInfo_title
 						var table = document.getElementById("matchInfoList");
+
+						var tableRows = table.getElementsByTagName('tr');
+						var rowCount = tableRows.length;
+						for (var intI = rowCount - 1; intI > 0; intI--) {
+						   table.removeChild(tableRows[intI]);
+						}
+
 						for (var intI = 0; intI < 64; intI++) {
 							var gmtDate  = new Date('1970-01-01 00:00:00+00:00');
 							// Match start at gmtDate([GMT Start Date] + [diffSeconds from contract])
@@ -717,7 +724,7 @@
 				}
 				var investValue = document.getElementById("inputInvest").value;
 
-				WorldCup2018.betMatch(matchId, prediction, {from: web3.eth.accounts[0], gas: '4700000', gasPrice: '2000000000', value: web3.toWei(investValue, 'ether')}, function(error){
+				WorldCup2018.betMatch(matchId, prediction, {from: web3.eth.accounts[0], gas: '1000000', gasPrice: '2000000000', value: web3.toWei(investValue, 'ether')}, function(error){
 					if(!error) {
 						document.getElementById("doPredictionInfo").innerHTML = "Prediction should be recorded in the next block of [Ethereum Block Chain] as soon.";
 						// console.log(result);
