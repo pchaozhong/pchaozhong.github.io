@@ -633,12 +633,20 @@
 				document.getElementById("userAccountInfo").innerHTML = err;
 			}
 		}
-
+		var matchInfoList = []; // array[64][11]
 		function getMatchInfoList01() {
 			try {
 				WorldCup2018.getMatchInfoList01(function(error, result){
 					if(!error) {
 						console.log(result);
+
+						matchInfoList[0] = result[0];
+						matchInfoList[1] = result[1];
+						matchInfoList[2] = result[2];
+						matchInfoList[3] = result[3];
+						matchInfoList[4] = result[4];
+						console.log(matchInfoList);
+
 						// matchInfo_title
 						var table = document.getElementById("matchInfoList");
 
