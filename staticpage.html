@@ -641,35 +641,33 @@
 					if(!error) {
 						console.log(result);
 
-						matchInfoList = new Array(11);
-
 						matchInfoList[0] = result[0];
 						matchInfoList[1] = result[1];
 						matchInfoList[2] = result[2];
 						matchInfoList[3] = result[3];
 						matchInfoList[4] = result[4];
-					} else
-						console.error(error);
-				});
 
-				WorldCup2018.getMatchInfoList02(function(error, result){
-					if(!error) {
-						console.log(result);
+						WorldCup2018.getMatchInfoList02(function(error, result){
+							if(!error) {
+								console.log(result);
 
-						matchInfoList[5] = result[0];
-						matchInfoList[6] = result[1];
-						matchInfoList[7] = result[2];
-					} else
-						console.error(error);
-				});
+								matchInfoList[5] = result[0];
+								matchInfoList[6] = result[1];
+								matchInfoList[7] = result[2];
 
-				WorldCup2018.getMatchInfoList03(function(error, result){
-					if(!error) {
-						console.log(result);
+								WorldCup2018.getMatchInfoList03(function(error, result){
+									if(!error) {
+										console.log(result);
 
-						matchInfoList[8] = result[0];
-						matchInfoList[9] = result[1];
-						matchInfoList[10] = result[2];
+										matchInfoList[8] = result[0];
+										matchInfoList[9] = result[1];
+										matchInfoList[10] = result[2];
+									} else
+										console.error(error);
+								});
+							} else
+								console.error(error);
+						});
 					} else
 						console.error(error);
 				});
