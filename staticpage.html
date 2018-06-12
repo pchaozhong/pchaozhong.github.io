@@ -633,6 +633,7 @@
 				document.getElementById("userAccountInfo").innerHTML = err;
 			}
 		}
+
 		var matchInfoList = []; // array[64][11]
 		function getMatchInfoList01() {
 			try {
@@ -648,7 +649,7 @@
 					} else
 						console.error(error);
 				});
-			try {
+
 				WorldCup2018.getMatchInfoList02(function(error, result){
 					if(!error) {
 						console.log(result);
@@ -659,7 +660,7 @@
 					} else
 						console.error(error);
 				});
-			try {
+
 				WorldCup2018.getMatchInfoList03(function(error, result){
 					if(!error) {
 						console.log(result);
