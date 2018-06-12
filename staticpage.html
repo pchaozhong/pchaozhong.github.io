@@ -624,7 +624,7 @@
 			try {
 				WorldCup2018.getUserAccountInfo(function(error, result){
 					if(!error) {
-						document.getElementById("userAccountInfo").innerHTML = "invested : " + result[0] + " , prize : " + result[1] + " , balance : " + result[2] + " .";
+						document.getElementById("userAccountInfo").innerHTML = "invested : " + web3.fromWei(result[0], 'ether') + " ETH, prize : " + web3.fromWei(result[1], 'ether') + " ETH, balance : " + web3.fromWei(result[2], 'ether') + " ETH.";
 						console.log(result);
 					} else
 						console.error(error);
@@ -757,7 +757,7 @@
 	<p>Invest<br>
 		<input type="text" size="50" id="inputInvest" /><span>&nbsp ETH</span>
 		<br />
-		<span>Attention : Please input your Invest between 0.01 and 100.(***Amount in ETH***)</span>
+		<span>Attention : Please input your Invest between 0.001 ETH and 100 ETH.(* Amount in ETH *)</span>
 	</p>
 	<button type="button" onClick="doPrediction();">Make your Prediction</button>
 	<br />
