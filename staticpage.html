@@ -645,7 +645,7 @@
 						var tableRows = table.getElementsByTagName('tr');
 						var rowCount = tableRows.length;
 						for (var intI = rowCount - 1; intI > 0; intI--) {
-						   table.removeChild(tableRows[intI]);
+						   table.deleteRow(intI);
 						}
 
 						for (var intI = 0; intI < 64; intI++) {
