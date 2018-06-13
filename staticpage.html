@@ -25,7 +25,9 @@
 			// Withdraw Balance
 			{"EN":"Withdraw Balance","ZH":"余额取回","JA":"残高引出"},
 			// Match Prediction Of World Cup 2018
-			{"EN":"Match Prediction Of World Cup 2018","ZH":"2018年度世界杯赛事竞猜","JA":"2018年度FIFAワールドカップ試合結果予測"}
+			{"EN":"Match Prediction Of World Cup 2018","ZH":"2018年度世界杯赛事竞猜","JA":"2018年度FIFAワールドカップ試合結果予測"},
+			// radio button group [WIN], [LOSE], [TIE]
+			{"EN":"WIN","ZH":"赢","JA":"勝ち"},{"EN":"LOSE","ZH":"负","JA":"負け"},{"EN":"TIE","ZH":"平","JA":"引き分け"}
 		];
 
 		function translate(ele, lng){
@@ -808,9 +810,9 @@
 		<input type="text" size="5" maxlength="2" id="inputMatchNo" />
 	</p>
 	<p class='translatable'>Prediction<br>
-		<input class='translatable' type="radio" name="inputPrediction" value="1"> WIN
-		<input class='translatable' type="radio" name="inputPrediction" value="2"> LOSE
-		<input class='translatable' type="radio" name="inputPrediction" value="3"> TIE
+		<span>&nbsp </span><input class='translatable' type="radio" name="inputPrediction" value="1">WIN
+		<span>&nbsp </span><input class='translatable' type="radio" name="inputPrediction" value="2">LOSE
+		<span>&nbsp </span><input class='translatable' type="radio" name="inputPrediction" value="3">TIE
 	</p>
 	<p class='translatable'>Invest<br>
 		<input type="text" size="10" maxlength="25" id="inputInvest" /><span>&nbsp ETH</span>
