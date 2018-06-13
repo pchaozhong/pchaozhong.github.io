@@ -2,9 +2,45 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <script type="text/javascript" src="./web3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript">
+		var voc = [
+			{
+				"EN":"English",
+				"ZH":"英语",
+				"JA":"英語"
+			},
+			{
+				"EN":"Chinese",
+				"ZH":"中文",
+				"JA":"中国語"
+			},
+			{
+				"EN":"Japanese",
+				"ZH":"日语",
+				"JA":"日本語"
+			}
+		];
+
+		function translate(ele, lng){
+			for(var i = 0; i < voc.length; i++){
+				for(var k in voc[i]){
+					if(voc[i][k] == ele.innerText.trim()){
+						ele.innerText = voc[i][lng];
+						break;
+					}
+				}
+			}
+		}
+
+		function translateTo(lng){
+			var trc = document.getElementsByClassName("translatable");
+			for(var i = 0;i < trc.length; i++){
+				translate(trc[i], lng);
+			}
+		}
+
 		var WorldCup2018;
 		var arrOutcomeName = new Array(4);
 		{
@@ -732,76 +768,85 @@
 	</script>
 </head>
 <body>
-	<h1>ETH Balance Fetcher</h1>
-	<p>Enter your Ethereum Address:</p>
+	<br />
+	<br />
+	<select onchange='translateTo(this.value)'>
+		<option class='translatable' value='EN'>English</option>
+		<option class='translatable' value='ZH'>Chinese</option>
+		<option class='translatable' value='JA'>Japanese</option>
+	</select>
+	<br />
+	<br />
+	<h1 class='translatable'>ETH Balance Fetcher</h1>
+	<p class='translatable'>Enter your Ethereum Address:</p>
 	<input type="text" size="50" id="address" />
-	<button type="button" onClick="getBalance();">Get Balance</button>
+	<button class='translatable' type="button" onClick="getBalance();">Get Balance</button>
 	<br />
 	<br />
 	<div id="output"></div>
 	<br />
 	<br />
-	<button type="button" onClick="getUserAccountInfo();">Get User Account Info</button>
+	<button class='translatable' type="button" onClick="getUserAccountInfo();">Get User Account Info</button>
 	<br />
 	<div>
-		<span id="userAccountInfo_Invested">&nbsp    Invested : </span>
+		<span class='translatable' id="userAccountInfo_Invested">&nbsp    Invested : </span>
 		<br />
-		<span id="userAccountInfo_Prize">&nbsp    Prize : </span>
+		<span class='translatable' id="userAccountInfo_Prize">&nbsp    Prize : </span>
 		<br />
-		<span id="userAccountInfo_Balance">&nbsp    Balance : &nbsp    </span>
-		<button type="button" id="withdrawBalance" onClick="doWithdrawBalance();" disabled="disabled">Withdraw Balance</button>
+		<span class='translatable' id="userAccountInfo_Balance">&nbsp    Balance : &nbsp    </span>
+		<button class='translatable' type="button" id="withdrawBalance" onClick="doWithdrawBalance();" disabled="disabled">Withdraw Balance</button>
 	</div>
 	<br />
-	<h1>Match Prediction Of World Cup 2018</h1>
-	<p>Enter your Prediction :</p>
-	<p>Match No.<br>
+	<h1 class='translatable'>Match Prediction Of World Cup 2018</h1>
+	<p class='translatable'>Enter your Prediction :</p>
+	<p class='translatable'>Match No.<br>
 		<input type="text" size="5" maxlength="2" id="inputMatchNo" />
 	</p>
-	<p>Prediction<br>
-		<input type="radio" name="inputPrediction" value="1"> WIN
-		<input type="radio" name="inputPrediction" value="2"> LOSE
-		<input type="radio" name="inputPrediction" value="3"> TIE
+	<p class='translatable'>Prediction<br>
+		<input class='translatable' type="radio" name="inputPrediction" value="1"> WIN
+		<input class='translatable' type="radio" name="inputPrediction" value="2"> LOSE
+		<input class='translatable' type="radio" name="inputPrediction" value="3"> TIE
 	</p>
-	<p>Invest<br>
+	<p class='translatable'>Invest<br>
 		<input type="text" size="10" maxlength="25" id="inputInvest" /><span>&nbsp ETH</span>
 		<br />
-		<span>Attention : Please input your Invest between 0.001 ETH and 100 ETH.(* Amount in ETH *)</span>
+		<span class='translatable'>Attention : Please input your Invest between 0.001 ETH and 100 ETH.(* Amount in ETH *)</span>
 	</p>
-	<button type="button" onClick="doPrediction();">Make your Prediction</button>
+	<button class='translatable' type="button" onClick="doPrediction();">Make your Prediction</button>
 	<br />
-	<div id="doPredictionInfo"></div>
+	<div class='translatable' id="doPredictionInfo"></div>
 	<br />
 	<br />
-	<button type="button" onClick="getMatchInfoList01();">Get Match Info</button>
+	<button class='translatable' type="button" onClick="getMatchInfoList01();">Get Match Info</button>
 	<br />
 	<div align="left" id="matchInfo_title" style="width: 1000px; overflow: auto; overflow-y: hidden; overflow-x: auto;">
 		<table id="matchInfoList_hd" border="1" cellpadding="0" cellspacing="0" style="height: 30px; width: 2750px;">
-			<th style="width:150px">Match No.</th>
-			<th style="width:175px">HostTeamName</th>
-			<th style="width:175px">GuestTeamName</th>
-			<th style="width:300px">StartTime(GMT/LOCAL)</th>
-			<th style="width:150px">Result</th>
-			<th style="width:300px">WinInvest(Match)</th>
-			<th style="width:300px">LoseInvest(Match)</th>
-			<th style="width:300px">TieInvest(Match)</th>
-			<th style="width:300px">WinInvest(You)</th>
-			<th style="width:300px">LoseInvest(You)</th>
-			<th style="width:300px">TieInvest(You)</th>
+			<th class='translatable' style="width:150px">Match No.</th>
+			<th class='translatable' style="width:175px">HostTeamName</th>
+			<th class='translatable' style="width:175px">GuestTeamName</th>
+			<th class='translatable' style="width:300px">StartTime(GMT/LOCAL)</th>
+			<th class='translatable' style="width:150px">Result</th>
+			<th class='translatable' style="width:300px">WinInvest(Match)</th>
+			<th class='translatable' style="width:300px">LoseInvest(Match)</th>
+			<th class='translatable' style="width:300px">TieInvest(Match)</th>
+			<th class='translatable' style="width:300px">WinInvest(You)</th>
+			<th class='translatable' style="width:300px">LoseInvest(You)</th>
+			<th class='translatable' style="width:300px">TieInvest(You)</th>
 		</table>
 		<div align="left" id="matchInfo_title" style="height: 288px; width: 2768px; overflow: auto; overflow-y: auto; overflow-x: hidden;">
 			<table id="matchInfoList" border="1" cellpadding="0" cellspacing="0" style="width: 2750px;">
 				<tr height="24">
-					<td style="width:150px"><span>Ex : Match No.</span></td>
-					<td style="width:175px"><span>Ex : HostTeamName</span></td>
-					<td style="width:175px"><span>Ex : GuestTeamName</span></td>
-					<td style="width:300px"><span>Ex : StartTime(GMT / LOCAL)</span></td>
-					<td style="width:150px"><span>Ex : Result</span></td>
-					<td style="width:300px"><span>Ex : WinInvest(Match)</span></td>
-					<td style="width:300px"><span>Ex : LoseInvest(Match)</span></td>
-					<td style="width:300px"><span>Ex : TieInvest(Match)</span></td>
-					<td style="width:300px"><span>Ex : WinInvest(You)</span></td>
-					<td style="width:300px"><span>Ex : LoseInvest(You)</span></td>
-					<td style="width:300px"><span>Ex : TieInvest(You)</span></td>
+					<td class='translatable' style="width:150px"><span>Ex : Match No.</span></td>
+					<td class='translatable' style="width:175px"><span>Ex : HostTeamName</span></td>
+					<td class='translatable' style="width:175px"><span>Ex : GuestTeamName</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : StartTime(GMT / LOCAL)</span></td>
+					<td class='translatable' style="width:150px"><span>Ex : Result</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : WinInvest(Match)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : LoseInvest(Match)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : TieInvest(Match)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : WinInvest(You)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : LoseInvest(You)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : TieInvest(You)</span></td>
 				</tr>
 			</table>
 		</div>
