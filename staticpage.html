@@ -70,42 +70,11 @@
 		"constant": false,
 		"inputs": [
 			{
-				"name": "_matchId",
-				"type": "uint8"
-			},
-			{
-				"name": "_prediction",
+				"name": "_tax",
 				"type": "uint8"
 			}
 		],
-		"name": "betMatch",
-		"outputs": [],
-		"payable": true,
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "kill",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "pause",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "renounceOwnership",
+		"name": "setClamTax",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -129,28 +98,18 @@
 		"constant": false,
 		"inputs": [
 			{
-				"name": "_newCFO",
-				"type": "address"
-			}
-		],
-		"name": "setCFO",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
+				"name": "_matchId",
+				"type": "uint8"
+			},
 			{
-				"name": "_tax",
+				"name": "_prediction",
 				"type": "uint8"
 			}
 		],
-		"name": "setClamTax",
+		"name": "betMatch",
 		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
+		"payable": true,
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
@@ -169,38 +128,6 @@
 	},
 	{
 		"constant": false,
-		"inputs": [
-			{
-				"name": "_matchId",
-				"type": "uint8"
-			},
-			{
-				"name": "_outcome",
-				"type": "uint8"
-			}
-		],
-		"name": "setOutcome",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "transferOwnership",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
 		"inputs": [],
 		"name": "unpause",
 		"outputs": [],
@@ -210,21 +137,8 @@
 	},
 	{
 		"constant": false,
-		"inputs": [
-			{
-				"name": "_matchId",
-				"type": "uint8"
-			},
-			{
-				"name": "_hostTeamId",
-				"type": "uint8"
-			},
-			{
-				"name": "_guestTeamId",
-				"type": "uint8"
-			}
-		],
-		"name": "updateMatch",
+		"inputs": [],
+		"name": "kill",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -234,208 +148,14 @@
 		"constant": false,
 		"inputs": [
 			{
-				"name": "_matchId",
-				"type": "uint8"
-			},
-			{
-				"name": "_startTime",
-				"type": "uint256"
+				"name": "_newCFO",
+				"type": "address"
 			}
 		],
-		"name": "updateMatchStartTime",
+		"name": "setCFO",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"name": "_invested",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "_prize",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "_balance",
-				"type": "uint256"
-			}
-		],
-		"name": "UserAccountInfo",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"name": "_winPredictionArrayForLoginUser",
-				"type": "uint256[64]"
-			},
-			{
-				"indexed": false,
-				"name": "_losePredictionArrayForLoginUser",
-				"type": "uint256[64]"
-			},
-			{
-				"indexed": false,
-				"name": "_tiePredictionArrayForLoginUser",
-				"type": "uint256[64]"
-			}
-		],
-		"name": "MatchInfoList03",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"name": "_player",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"name": "_value",
-				"type": "uint256"
-			}
-		],
-		"name": "WithdrawPayments",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"name": "_winPredictionArray",
-				"type": "uint256[64]"
-			},
-			{
-				"indexed": false,
-				"name": "_losePredictionArray",
-				"type": "uint256[64]"
-			},
-			{
-				"indexed": false,
-				"name": "_tiePredictionArray",
-				"type": "uint256[64]"
-			}
-		],
-		"name": "MatchInfoList02",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"name": "_matchIdArray",
-				"type": "uint8[64]"
-			},
-			{
-				"indexed": false,
-				"name": "_hostTeamIdArray",
-				"type": "uint8[64]"
-			},
-			{
-				"indexed": false,
-				"name": "_guestTeamIdArray",
-				"type": "uint8[64]"
-			},
-			{
-				"indexed": false,
-				"name": "_startTimeArray",
-				"type": "uint256[64]"
-			},
-			{
-				"indexed": false,
-				"name": "_outcomeArray",
-				"type": "uint8[64]"
-			}
-		],
-		"name": "MatchInfoList01",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"name": "previousOwner",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "OwnershipTransferred",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"name": "previousOwner",
-				"type": "address"
-			}
-		],
-		"name": "OwnershipRenounced",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"name": "newContract",
-				"type": "address"
-			}
-		],
-		"name": "ContractUpgrade",
-		"type": "event"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "withdrawPayments",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"payable": true,
-		"stateMutability": "payable",
-		"type": "fallback"
-	},
-	{
-		"inputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "getCFO",
-		"outputs": [
-			{
-				"name": "retCFOAddress",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -446,6 +166,28 @@
 			{
 				"name": "claimTax",
 				"type": "uint8"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getUserAccountInfo",
+		"outputs": [
+			{
+				"name": "invested",
+				"type": "uint256"
+			},
+			{
+				"name": "prize",
+				"type": "uint256"
+			},
+			{
+				"name": "balance",
+				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -485,6 +227,107 @@
 	{
 		"constant": true,
 		"inputs": [],
+		"name": "getTotalInvest",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "withdrawPayments",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getTotalPayments",
+		"outputs": [
+			{
+				"name": "retTotalPayments",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_matchId",
+				"type": "uint8"
+			},
+			{
+				"name": "_startTime",
+				"type": "uint256"
+			}
+		],
+		"name": "updateMatchStartTime",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getCFO",
+		"outputs": [
+			{
+				"name": "retCFOAddress",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "pause",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getOwner",
+		"outputs": [
+			{
+				"name": "retOwnerAddress",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
 		"name": "getMatchInfoList02",
 		"outputs": [
 			{
@@ -502,6 +345,60 @@
 		],
 		"payable": false,
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_matchId",
+				"type": "uint8"
+			},
+			{
+				"name": "_hostTeamId",
+				"type": "uint8"
+			},
+			{
+				"name": "_guestTeamId",
+				"type": "uint8"
+			}
+		],
+		"name": "updateMatch",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_matchId",
+				"type": "uint8"
+			},
+			{
+				"name": "_outcome",
+				"type": "uint8"
+			}
+		],
+		"name": "setOutcome",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -527,77 +424,73 @@
 		"type": "function"
 	},
 	{
-		"constant": true,
 		"inputs": [],
-		"name": "getOwner",
-		"outputs": [
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "fallback"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
 			{
-				"name": "retOwnerAddress",
+				"indexed": true,
+				"name": "_player",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_value",
+				"type": "uint256"
+			}
+		],
+		"name": "WithdrawPayments",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "newContract",
 				"type": "address"
 			}
 		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
+		"name": "ContractUpgrade",
+		"type": "event"
 	},
 	{
-		"constant": true,
-		"inputs": [],
-		"name": "getTotalInvest",
-		"outputs": [
+		"anonymous": false,
+		"inputs": [
 			{
-				"name": "",
-				"type": "uint256"
+				"indexed": true,
+				"name": "previousOwner",
+				"type": "address"
 			}
 		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
+		"name": "OwnershipRenounced",
+		"type": "event"
 	},
 	{
-		"constant": true,
-		"inputs": [],
-		"name": "getTotalPayments",
-		"outputs": [
+		"anonymous": false,
+		"inputs": [
 			{
-				"name": "retTotalPayments",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "getUserAccountInfo",
-		"outputs": [
-			{
-				"name": "invested",
-				"type": "uint256"
+				"indexed": true,
+				"name": "previousOwner",
+				"type": "address"
 			},
 			{
-				"name": "prize",
-				"type": "uint256"
-			},
-			{
-				"name": "balance",
-				"type": "uint256"
+				"indexed": true,
+				"name": "newOwner",
+				"type": "address"
 			}
 		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "pageInfoEmit",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
+		"name": "OwnershipTransferred",
+		"type": "event"
 	}
 ]);
 		// https://ropsten.etherscan.io/tx/0xf7eb13a8aafb47b92160616c21948778ee00ad268233e2d3e1361342cf601863
