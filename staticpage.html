@@ -16,12 +16,12 @@
 			{"EN":"Get Balance","ZH":"余额查询","JA":"残高確認"},
 			// Get User Account Info
 			{"EN":"Get User Account Info","ZH":"用户帐户状况取得","JA":"ユーザーアカウント情報確認"},
-			// &nbsp    Invested : 
-			{"EN":"  Invested : ","ZH":"  投注共计： ","JA":"  ベット合計： "},
-			// &nbsp    Prize : 
-			{"EN":"  Prize : ","ZH":"  奖金 ： ","JA":"  賞金 ： "},
-			// &nbsp    Balance : &nbsp    
-			{"EN":"  Balance :   ","ZH":"  余额 :   ","JA":"  残高 :   "},
+			// Invested : 
+			{"EN":"Invested : ","ZH":"投注共计： ","JA":"ベット合計： "},
+			// Prize : 
+			{"EN":"Prize : ","ZH":"奖金 ： ","JA":"賞金 ： "},
+			// Balance : 
+			{"EN":"Balance : ","ZH":"余额 : ","JA":"残高 : "},
 			// Withdraw Balance
 			{"EN":"Withdraw Balance","ZH":"余额取回","JA":"残高引出"},
 			// Match Prediction Of World Cup 2018
@@ -794,11 +794,11 @@
 	<button class='translatable' type="button" onClick="getUserAccountInfo();">Get User Account Info</button>
 	<br />
 	<div>
-		<span class='translatable' id="userAccountInfo_Invested">&nbsp    Invested : </span>
+		<span>&nbsp    </span><span class='translatable' id="userAccountInfo_Invested">Invested : </span>
 		<br />
-		<span class='translatable' id="userAccountInfo_Prize">&nbsp    Prize : </span>
+		<span>&nbsp    </span><span class='translatable' id="userAccountInfo_Prize">Prize : </span>
 		<br />
-		<span class='translatable' id="userAccountInfo_Balance">&nbsp    Balance : &nbsp    </span>
+		<span>&nbsp    </span><span class='translatable' id="userAccountInfo_Balance">Balance : </span><span>&nbsp    </span>
 		<button class='translatable' type="button" id="withdrawBalance" onClick="doWithdrawBalance();" disabled="disabled">Withdraw Balance</button>
 	</div>
 	<br />
