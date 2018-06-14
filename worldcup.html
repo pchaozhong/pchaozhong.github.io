@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
@@ -858,30 +858,27 @@
 	<p class='translatable'>Enter your Prediction</p>
 	<br />
 	<div>
-		<p>
-			<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-			<span class="translatable">No.</span>
-			<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-			<input type="text" size="5" maxlength="2" id="inputMatchNo" />
-		</p>
-		<p>
-			<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-			<span class="translatable">Prediction</span>
-			<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-			<input type="radio" name="inputPrediction" value="1"><span class="translatable">Win</span></input>
-			<input type="radio" name="inputPrediction" value="3"><span class="translatable">Draw</span></input>
-			<input type="radio" name="inputPrediction" value="2"><span class="translatable">Fail</span></input>
-		</p>
-		<p>
-			<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-			<span class="translatable">Wager</span>
-			<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-			<input type="text" size="10" maxlength="25" id="inputInvest" /><span>&nbsp;&nbsp;ETH</span>
-		</p>
+		<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		<span class="translatable">No.</span>
+		<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		<input type="text" size="5" maxlength="2" id="inputMatchNo" />
+		<br />
+		<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		<span class="translatable">Prediction</span>
+		<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		<input type="radio" name="inputPrediction" value="1"><span class="translatable">Win</span></input>
+		<input type="radio" name="inputPrediction" value="3"><span class="translatable">Draw</span></input>
+		<input type="radio" name="inputPrediction" value="2"><span class="translatable">Fail</span></input>
+		<br />
+		<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		<span class="translatable">Wager</span>
+		<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		<input type="text" size="10" maxlength="25" id="inputInvest" /><span>&nbsp;&nbsp;ETH</span>
+		<br />
 		<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 		<button class="translatable" type="button" onClick="doPrediction();">Buy</button>
 		<br />
-		<div class="translatable" id="doPredictionInfo"></div>
+		<span class="translatable" id="doPredictionInfo"></span>
 	</div>
 	<br />
 	<br />
