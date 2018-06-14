@@ -19,18 +19,6 @@
 	    	lang = "EN"
 	    }
 
-// 		$(document).ready(function() {
-// 		    $('#matchInfoList').DataTable();
-// 			if (userLang == 'zh-CN') {
-// 				alert ("The language iscn: " + userLang);
-// 			} else if (userLang == 'ja') {
-// 				alert ("The language isjp: " + userLang);
-// 			} else {
-
-// 			}
-
-// 		} );
-
 		var voc = [ 
 					{"EN":"English","ZH":"英语","JA":"英語"},{"EN":"Chinese","ZH":"中文","JA":"中国語"},{"EN":"Japanese","ZH":"日语","JA":"日本語"},
 					{"EN":"2018 World Cup Lottery","ZH":"2018世界杯彩票","JA":"2018ワールドカップ宝くじ"},
@@ -130,16 +118,9 @@
 			console.log('Web3 Detected! ' + web3.currentProvider.constructor.name)
 			window.web3 = new Web3(web3.currentProvider);
 		} else {
-			console.log('No Web3 Detected... using HTTP Provider')
-			window.web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/SockCQRLEtdDj6vi03nt"));
+			console.warn("No web3 detected. Falling back to http://localhost:8545.");
+			window.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 		}
-
-		web3.eth.defaultAccount = '0x81b7e08f65bdf5648606c89998a9cc8164397647';
-		const transactionObject = {
-			from: web3.eth.accounts[0],
-			gas: '1000000',
-			gasPrice: '2000000000' // 2Gwei
-		};
 
 		var WorldCup2018Contract = web3.eth.contract([
 	{
@@ -187,6 +168,40 @@
 		"type": "function"
 	},
 	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "previousOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipRenounced",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "_setterAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_matchId",
+				"type": "uint8"
+			},
+			{
+				"indexed": false,
+				"name": "_startTime",
+				"type": "uint256"
+			}
+		],
+		"name": "UpdateMatchStartTime",
+		"type": "event"
+	},
+	{
 		"constant": false,
 		"inputs": [],
 		"name": "pause",
@@ -194,6 +209,111 @@
 		"payable": false,
 		"stateMutability": "nonpayable",
 		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "_setterAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_matchId",
+				"type": "uint8"
+			},
+			{
+				"indexed": false,
+				"name": "_hostTeamId",
+				"type": "uint8"
+			},
+			{
+				"indexed": false,
+				"name": "_guestTeamId",
+				"type": "uint8"
+			}
+		],
+		"name": "UpdateMatch",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "_setterAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_matchId",
+				"type": "uint8"
+			},
+			{
+				"indexed": false,
+				"name": "_outcome",
+				"type": "uint8"
+			}
+		],
+		"name": "SetOutcome",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "_betterAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_invested",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "_matchId",
+				"type": "uint8"
+			},
+			{
+				"indexed": false,
+				"name": "_prediction",
+				"type": "uint8"
+			}
+		],
+		"name": "BetMatch",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "newContract",
+				"type": "address"
+			}
+		],
+		"name": "ContractUpgrade",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "_player",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_value",
+				"type": "uint256"
+			}
+		],
+		"name": "WithdrawPayments",
+		"type": "event"
 	},
 	{
 		"constant": false,
@@ -233,35 +353,6 @@
 		"type": "function"
 	},
 	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"name": "_player",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"name": "_value",
-				"type": "uint256"
-			}
-		],
-		"name": "WithdrawPayments",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"name": "newContract",
-				"type": "address"
-			}
-		],
-		"name": "ContractUpgrade",
-		"type": "event"
-	},
-	{
 		"constant": false,
 		"inputs": [
 			{
@@ -274,18 +365,6 @@
 		"payable": false,
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"name": "previousOwner",
-				"type": "address"
-			}
-		],
-		"name": "OwnershipRenounced",
-		"type": "event"
 	},
 	{
 		"constant": false,
@@ -383,12 +462,6 @@
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
 		"constant": false,
 		"inputs": [],
 		"name": "withdrawPayments",
@@ -396,6 +469,12 @@
 		"payable": false,
 		"stateMutability": "nonpayable",
 		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
 	},
 	{
 		"payable": true,
@@ -569,8 +648,8 @@
 		"type": "function"
 	}
 ]);
-		// https://ropsten.etherscan.io/tx/0xf7eb13a8aafb47b92160616c21948778ee00ad268233e2d3e1361342cf601863
-		WorldCup2018 = WorldCup2018Contract.at('0xb4259472f480a01f522eb3bd0fda872166ffcef6');
+		// https://ropsten.etherscan.io/tx/0x38ac92f87243c703484564aed402238905d4b3f69c12faa483686969c2076bf4
+		WorldCup2018 = WorldCup2018Contract.at('0x2c5b48007f79cac9f097dc5b8cd9570c806dc749');
 		console.log(WorldCup2018);
 
 		translateTo(lang);
