@@ -142,14 +142,62 @@
 
 		var WorldCup2018Contract = web3.eth.contract([
 	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "previousOwner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	},
+	{
 		"constant": false,
 		"inputs": [
 			{
-				"name": "_tax",
+				"name": "_matchId",
+				"type": "uint8"
+			},
+			{
+				"name": "_prediction",
 				"type": "uint8"
 			}
 		],
-		"name": "setClamTax",
+		"name": "betMatch",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "kill",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "pause",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "renounceOwnership",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -173,19 +221,70 @@
 		"constant": false,
 		"inputs": [
 			{
-				"name": "_matchId",
-				"type": "uint8"
+				"name": "_newCFO",
+				"type": "address"
+			}
+		],
+		"name": "setCFO",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "_player",
+				"type": "address"
 			},
 			{
-				"name": "_prediction",
+				"indexed": false,
+				"name": "_value",
+				"type": "uint256"
+			}
+		],
+		"name": "WithdrawPayments",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "newContract",
+				"type": "address"
+			}
+		],
+		"name": "ContractUpgrade",
+		"type": "event"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_tax",
 				"type": "uint8"
 			}
 		],
-		"name": "betMatch",
+		"name": "setClamTax",
 		"outputs": [],
-		"payable": true,
-		"stateMutability": "payable",
+		"payable": false,
+		"stateMutability": "nonpayable",
 		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "previousOwner",
+				"type": "address"
+			}
+		],
+		"name": "OwnershipRenounced",
+		"type": "event"
 	},
 	{
 		"constant": false,
@@ -203,17 +302,17 @@
 	},
 	{
 		"constant": false,
-		"inputs": [],
-		"name": "unpause",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "kill",
+		"inputs": [
+			{
+				"name": "_matchId",
+				"type": "uint8"
+			},
+			{
+				"name": "_outcome",
+				"type": "uint8"
+			}
+		],
+		"name": "setOutcome",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -223,14 +322,97 @@
 		"constant": false,
 		"inputs": [
 			{
-				"name": "_newCFO",
+				"name": "newOwner",
 				"type": "address"
 			}
 		],
-		"name": "setCFO",
+		"name": "transferOwnership",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "unpause",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_matchId",
+				"type": "uint8"
+			},
+			{
+				"name": "_hostTeamId",
+				"type": "uint8"
+			},
+			{
+				"name": "_guestTeamId",
+				"type": "uint8"
+			}
+		],
+		"name": "updateMatch",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_matchId",
+				"type": "uint8"
+			},
+			{
+				"name": "_startTime",
+				"type": "uint256"
+			}
+		],
+		"name": "updateMatchStartTime",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "withdrawPayments",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "fallback"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getCFO",
+		"outputs": [
+			{
+				"name": "retCFOAddress",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -241,28 +423,6 @@
 			{
 				"name": "claimTax",
 				"type": "uint8"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "getUserAccountInfo",
-		"outputs": [
-			{
-				"name": "invested",
-				"type": "uint256"
-			},
-			{
-				"name": "prize",
-				"type": "uint256"
-			},
-			{
-				"name": "balance",
-				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -302,107 +462,6 @@
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "getTotalInvest",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "withdrawPayments",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "getTotalPayments",
-		"outputs": [
-			{
-				"name": "retTotalPayments",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "renounceOwnership",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_matchId",
-				"type": "uint8"
-			},
-			{
-				"name": "_startTime",
-				"type": "uint256"
-			}
-		],
-		"name": "updateMatchStartTime",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "getCFO",
-		"outputs": [
-			{
-				"name": "retCFOAddress",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [],
-		"name": "pause",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "getOwner",
-		"outputs": [
-			{
-				"name": "retOwnerAddress",
-				"type": "address"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
 		"name": "getMatchInfoList02",
 		"outputs": [
 			{
@@ -420,60 +479,6 @@
 		],
 		"payable": false,
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_matchId",
-				"type": "uint8"
-			},
-			{
-				"name": "_hostTeamId",
-				"type": "uint8"
-			},
-			{
-				"name": "_guestTeamId",
-				"type": "uint8"
-			}
-		],
-		"name": "updateMatch",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_matchId",
-				"type": "uint8"
-			},
-			{
-				"name": "_outcome",
-				"type": "uint8"
-			}
-		],
-		"name": "setOutcome",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "newOwner",
-				"type": "address"
-			}
-		],
-		"name": "transferOwnership",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -499,77 +504,72 @@
 		"type": "function"
 	},
 	{
+		"constant": true,
 		"inputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
-		"payable": true,
-		"stateMutability": "payable",
-		"type": "fallback"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
+		"name": "getOwner",
+		"outputs": [
 			{
-				"indexed": true,
-				"name": "_player",
+				"name": "retOwnerAddress",
 				"type": "address"
-			},
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getTotalInvest",
+		"outputs": [
 			{
-				"indexed": false,
-				"name": "_value",
+				"name": "",
 				"type": "uint256"
 			}
 		],
-		"name": "WithdrawPayments",
-		"type": "event"
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
-		"anonymous": false,
-		"inputs": [
+		"constant": true,
+		"inputs": [],
+		"name": "getTotalPayments",
+		"outputs": [
 			{
-				"indexed": false,
-				"name": "newContract",
-				"type": "address"
+				"name": "retTotalPayments",
+				"type": "uint256"
 			}
 		],
-		"name": "ContractUpgrade",
-		"type": "event"
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
 	},
 	{
-		"anonymous": false,
-		"inputs": [
+		"constant": true,
+		"inputs": [],
+		"name": "getUserAccountInfo",
+		"outputs": [
 			{
-				"indexed": true,
-				"name": "previousOwner",
-				"type": "address"
-			}
-		],
-		"name": "OwnershipRenounced",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"name": "previousOwner",
-				"type": "address"
+				"name": "invested",
+				"type": "uint256"
 			},
 			{
-				"indexed": true,
-				"name": "newOwner",
-				"type": "address"
+				"name": "prize",
+				"type": "uint256"
+			},
+			{
+				"name": "balance",
+				"type": "uint256"
 			}
 		],
-		"name": "OwnershipTransferred",
-		"type": "event"
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
 	}
 ]);
 		// https://ropsten.etherscan.io/tx/0xf7eb13a8aafb47b92160616c21948778ee00ad268233e2d3e1361342cf601863
-		WorldCup2018 = WorldCup2018Contract.at('0xefd211ad3ed71429e9e310cd70645eea711ce554');
+		WorldCup2018 = WorldCup2018Contract.at('0xb4259472f480a01f522eb3bd0fda872166ffcef6');
 		console.log(WorldCup2018);
 
 		translateTo(lang);
