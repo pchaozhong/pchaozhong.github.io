@@ -40,14 +40,15 @@
 					{"EN":"Winning bonus","ZH":"我赢得的奖金","JA":"マイ賞金"},
 					{"EN":"No convertible bonus","ZH":"未兑换的奖金","JA":"未受領賞金"},
 					{"EN":"Withdraw My bonus","ZH":"领取奖金","JA":"受領賞金"},
-					{"EN":"Buy","ZH":"下注","JA":"購入"},
 					{"EN":"Enter Your Prediction","ZH":"预测登陆","JA":"予測エントリ"},
 					{"EN":"No.","ZH":"场次","JA":"試合No"},
 					{"EN":"Prediction","ZH":"预测结果","JA":"予測結果"},
-					{"EN":"Wager","ZH":"下注额","JA":"ウェイジャー"},
 					{"EN":"Fail","ZH":"输","JA":"負"},
 					{"EN":"Win","ZH":"赢","JA":"勝"},
 					{"EN":"Draw","ZH":"平","JA":"引分"},
+					{"EN":"Wager","ZH":"下注额","JA":"ウェイジャー"},
+					{"EN":"Buy","ZH":"下注","JA":"購入"},
+					{"EN":"Prediction should be recorded in the next block of [Ethereum Block Chain] as soon.","ZH":"预测内容将很快被记录到[以太坊区块链]的下一个区块中。","JA":"予測内容は、もうすぐ[イーサリアムブロックチェーン]の次のブロックに記録されます。"},
 					{"EN":"Match","ZH":"比赛双方","JA":"対戦チーム"},
 					{"EN":"Start Time(Local)","ZH":"开始时间(本地)","JA":"開始時刻(ローカル)"},
 					{"EN":"My holdings","ZH":"下注额","JA":"マイウェイジャー"},
@@ -795,13 +796,11 @@
 </head>
 <body>
 	<br />
-	<br />
 	<select id="langSelect" onchange='doTranslateTo(this.value)'>
 		<option class="translatable" value='EN'>English</option>
 		<option class="translatable" value='ZH'>Chinese</option>
 		<option class="translatable" value='JA'>Japanese</option>
 	</select>
-	<br />
 	<br />
 	<h1>
 		<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -834,7 +833,6 @@
 			<button class="translatable" type="button" id="withdrawBalance" onClick="doWithdrawBalance();" disabled="disabled">Withdraw My bonus</button>
 		</div>
 	</div>
-	<br />
 	<br />
 	<div style="border:1px solid Black;width:400px;">
 		<span class='translatable'>Enter Your Prediction</span>
@@ -871,26 +869,26 @@
 	<button class="translatable" type="button" onClick="getMatchInfoList01();">Refresh</button>
 	<br />
 	<div align="left" id="matchInfo_title" style="width: 1315px; overflow: auto; overflow-y: auto; overflow-x: hidden;">
-	<table id="matchInfoList" border="1" cellpadding="0" cellspacing="0">
-		<thead>
-			<th style="width:100px"><span class="translatable">No.</span></th>
-			<th style="width:300px"><span class="translatable">Match</span></th>
-			<th style="width:235px"><span class="translatable">Start Time(Local)</span></th>
-			<th style="width:300px"><span class="translatable">My holdings</span></th>
-			<th style="width:300px"><span class="translatable">Bonus pool</span></th>
-			<th style="width:80px"><span class="translatable">Result</span></th>
-		</thead>
-		<tbody>
-			<tr height="24" style='display:none'>
-				<td style="width:100px">Ex : Match No.</td>
-				<td style="width:300px">Ex : HostTeam</span><span>&nbsp;vs&nbsp;</span>Ex : GuestTeam</td>
-				<td style="width:235px">Ex : StartTime(Local)</td>
-				<td style="width:300px">Ex : My holdings</td>
-				<td style="width:300px">Ex : Bonus pool</td>
-				<td style="width:80px">Ex : Result</td>
-			</tr>
-		</tbody>
-	</table>
+		<table id="matchInfoList" border="1" cellpadding="0" cellspacing="0">
+			<thead>
+				<th style="width:100px"><span class="translatable">No.</span></th>
+				<th style="width:300px"><span class="translatable">Match</span></th>
+				<th style="width:235px"><span class="translatable">Start Time(Local)</span></th>
+				<th style="width:300px"><span class="translatable">My holdings</span></th>
+				<th style="width:300px"><span class="translatable">Bonus pool</span></th>
+				<th style="width:80px"><span class="translatable">Result</span></th>
+			</thead>
+			<tbody>
+				<tr height="24" style='display:none'>
+					<td style="width:100px">Ex : Match No.</td>
+					<td style="width:300px">Ex : HostTeam</span><span>&nbsp;vs&nbsp;</span>Ex : GuestTeam</td>
+					<td style="width:235px">Ex : StartTime(Local)</td>
+					<td style="width:300px">Ex : My holdings</td>
+					<td style="width:300px">Ex : Bonus pool</td>
+					<td style="width:80px">Ex : Result</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 	<br />
 </body>
