@@ -832,7 +832,7 @@
 	<br />
 	<button class='translatable' type="button" onClick="getUserAccountInfo();">Refresh</button>
 	<br />
-	<div style="border:2px solid Black;width:450px;">
+	<div style="border:2px solid Black;width:400px;">
 		<span class="translatable">My Account Info</span>
 		<br />
 		<div>
@@ -857,7 +857,12 @@
 		</div>
 	</div>
 	<br />
-	<div style="border:2px solid Black;width:450px;">
+	<br />
+		<button class="translatable" type="button" onClick="doPrediction();">Buy</button>
+		<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+		<span class="translatable" id="doPredictionInfo"></span>
+	<br />
+	<div style="border:2px solid Black;width:400px;">
 		<span class='translatable'>Enter your Prediction</span>
 		<br />
 		<div>
@@ -876,13 +881,10 @@
 			<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 			<span class="translatable">Wager</span>
 			<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-			<input type="text" size="10" maxlength="25" id="inputInvest" /><span>&nbsp;&nbsp;ETH</span>
+			<input type="text" size="10" maxlength="25" id="inputInvest" /><span>&nbsp;&nbsp;ETH&nbsp;(0.001ETH ~ 100ETH)</span>
 			<br />
 			<br />
 			<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-			<button class="translatable" type="button" onClick="doPrediction();">Buy</button>
-			<br />
-			<span class="translatable" id="doPredictionInfo"></span>
 		</div>
 	</div>
 	<br />
