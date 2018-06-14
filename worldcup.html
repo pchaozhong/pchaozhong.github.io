@@ -832,54 +832,58 @@
 	<br />
 	<button class='translatable' type="button" onClick="getUserAccountInfo();">Refresh</button>
 	<br />
-	<span class="translatable">My Account Info</span>
-	<br />
-	<div>
-		<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-		<span class="translatable">Total amont of wager</span>
-		<span>:&nbsp;&nbsp;</span>
-		<span id="userAccountInfo_Invested"></span>
+	<div style="border:3px solid Black;width:350px;">
+		<span class="translatable">My Account Info</span>
 		<br />
-		<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-		<span class="translatable">Winning bonus</span>
-		<span>:&nbsp;&nbsp;</span>
-		<span id="userAccountInfo_Prize"></span>
-		<br />
-		<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-		<span class="translatable">No convertible bonus</span>
-		<span>:&nbsp;&nbsp;</span>
-		<span id="userAccountInfo_Balance"></span>
-		<br />
-		<br />
-		<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-		<button class="translatable" type="button" id="withdrawBalance" onClick="doWithdrawBalance();" disabled="disabled">Withdraw My bonus</button>
+		<div>
+			<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<span class="translatable">Total amont of wager</span>
+			<span>:&nbsp;&nbsp;</span>
+			<span id="userAccountInfo_Invested"></span>
+			<br />
+			<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<span class="translatable">Winning bonus</span>
+			<span>:&nbsp;&nbsp;</span>
+			<span id="userAccountInfo_Prize"></span>
+			<br />
+			<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<span class="translatable">No convertible bonus</span>
+			<span>:&nbsp;&nbsp;</span>
+			<span id="userAccountInfo_Balance"></span>
+			<br />
+			<br />
+			<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<button class="translatable" type="button" id="withdrawBalance" onClick="doWithdrawBalance();" disabled="disabled">Withdraw My bonus</button>
+		</div>
 	</div>
 	<br />
-	<span class='translatable'>Enter your Prediction</span>
-	<br />
-	<div>
-		<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-		<span class="translatable">No.</span>
-		<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-		<input type="text" size="5" maxlength="2" id="inputMatchNo" />
+	<div style="border:3px solid Black;width:350px;">
+		<span class='translatable'>Enter your Prediction</span>
 		<br />
-		<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-		<span class="translatable">Prediction</span>
-		<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-		<input type="radio" name="inputPrediction" value="1"><span class="translatable">Win</span></input>
-		<input type="radio" name="inputPrediction" value="3"><span class="translatable">Draw</span></input>
-		<input type="radio" name="inputPrediction" value="2"><span class="translatable">Fail</span></input>
-		<br />
-		<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-		<span class="translatable">Wager</span>
-		<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-		<input type="text" size="10" maxlength="25" id="inputInvest" /><span>&nbsp;&nbsp;ETH</span>
-		<br />
-		<br />
-		<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-		<button class="translatable" type="button" onClick="doPrediction();">Buy</button>
-		<br />
-		<span class="translatable" id="doPredictionInfo"></span>
+		<div>
+			<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<span class="translatable">No.</span>
+			<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<input type="text" size="5" maxlength="2" id="inputMatchNo" />
+			<br />
+			<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<span class="translatable">Prediction</span>
+			<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<input type="radio" name="inputPrediction" value="1"><span class="translatable">Win</span></input>
+			<input type="radio" name="inputPrediction" value="3"><span class="translatable">Draw</span></input>
+			<input type="radio" name="inputPrediction" value="2"><span class="translatable">Fail</span></input>
+			<br />
+			<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<span class="translatable">Wager</span>
+			<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<input type="text" size="10" maxlength="25" id="inputInvest" /><span>&nbsp;&nbsp;ETH</span>
+			<br />
+			<br />
+			<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<button class="translatable" type="button" onClick="doPrediction();">Buy</button>
+			<br />
+			<span class="translatable" id="doPredictionInfo"></span>
+		</div>
 	</div>
 	<br />
 	<br />
