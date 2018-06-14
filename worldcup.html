@@ -19,17 +19,17 @@
 	    	lang = "EN"
 	    }
 
-		$(document).ready(function() {
-		    $('#matchInfoList').DataTable();
-			if (userLang == 'zh-CN') {
-				alert ("The language iscn: " + userLang);
-			} else if (userLang == 'ja') {
-				alert ("The language isjp: " + userLang);
-			} else {
+// 		$(document).ready(function() {
+// 		    $('#matchInfoList').DataTable();
+// 			if (userLang == 'zh-CN') {
+// 				alert ("The language iscn: " + userLang);
+// 			} else if (userLang == 'ja') {
+// 				alert ("The language isjp: " + userLang);
+// 			} else {
 
-			}
+// 			}
 
-		} );
+// 		} );
 
 		var voc = [ 
 					{"EN":"English","ZH":"英语","JA":"英語"},{"EN":"Chinese","ZH":"中文","JA":"中国語"},{"EN":"Japanese","ZH":"日语","JA":"日本語"},
@@ -575,6 +575,7 @@
 		translateTo(lang);
 		getUserAccountInfo();
 		getMatchInfoList01();
+		document.getElementById('langSelect').value=lang;
 		})
 
 		function getBalance() {
@@ -795,7 +796,7 @@
 <body>
 	<br />
 	<br />
-	<select onchange='doTranslateTo(this.value)'>
+	<select id="langSelect" onchange='doTranslateTo(this.value)'>
 		<option class="translatable" value='EN'>English</option>
 		<option class="translatable" value='ZH'>Chinese</option>
 		<option class="translatable" value='JA'>Japanese</option>
