@@ -9,7 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 		<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 		<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript">
+		<script type="text/javascript">
 	    var lang;
 	    var userLang = navigator.language || navigator.userLanguage;
 	    if (userLang == 'zh-CN') {
@@ -23,7 +23,7 @@
 	    }
 
 		var voc = [ 
-					{"EN":"2018 World Cup Lottery","ZH":"2018世界杯彩票","JA":"2018ワールドカップ宝くじ"},
+					{"EN":"World Cup 2018 Lottery","ZH":"世界杯 2018 竞猜","JA":"ワールドカップ 2018 予測"},
 					{"EN":"Refresh","ZH":"刷新","JA":"リフレッシュ"},
 					{"EN":"My Account Info","ZH":"用户帐户状况","JA":"ユーザーアカウント情報"},
 					{"EN":"Total amount of wager","ZH":"总下注额","JA":"総計ウェイジャー"},
@@ -38,6 +38,8 @@
 					{"EN":"Draw","ZH":"平","JA":"引分"},
 					{"EN":"Wager","ZH":"下注额","JA":"ｳｪｲｼﾞｬｰ"},
 					{"EN":"Buy","ZH":"下注","JA":"購入"},
+					{"EN":"[No.] must be between [3 ～ 48].","ZH":"[场次]，请在[3 ～ 48]范围内填写。","JA":"[試合No]、[3 ～ 48]の範囲内に入力してください。"},
+					{"EN":"[Wager] must be between [0.001 ETH ～ 100 ETH].","ZH":"[下注额]，请在[0.001 ETH ～ 100 ETH]范围内填写。","JA":"[ｳｪｲｼﾞｬｰ]、[0.001 ETH ～ 100 ETH]の範囲内に入力してください。"},
 					{"EN":"Prediction should be recorded in the next block of [Ethereum Block Chain] as soon.","ZH":"预测内容将很快被记录到[以太坊区块链]的下一个区块中。","JA":"予測内容は、もうすぐ[イーサリアムブロックチェーン]の次のブロックに記録されます。"},
 					{"EN":"Match","ZH":"比赛双方","JA":"対戦チーム"},
 					{"EN":"Start Time(Local)","ZH":"开始时间(本地)","JA":"開始時刻(ローカル)"},
@@ -120,8 +122,10 @@
 			console.log('Web3 Detected! ' + web3.currentProvider.constructor.name)
 			window.web3 = new Web3(web3.currentProvider);
 		} else {
-			console.warn("No web3 detected. Falling back to http://localhost:8545.");
-			window.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+			// console.warn("No web3 detected. Falling back to http://localhost:8545.");
+			// window.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+			// (‘Unable to connect to Metamask’)
+			document.getElementById("doPredictionInfo").innerHTML = "Unable to connect to Metamask.";
 		}
 
 		var WorldCup2018Contract = web3.eth.contract([
@@ -832,6 +836,17 @@
 				}
 				var investValue = document.getElementById("inputInvest").value;
 
+				// input check
+				// No. [1 ～ 48]
+				if (matchId < 3 || matchId > 48) {
+					document.getElementById("doPredictionInfo").innerHTML = "[No.] must be between [3 ～ 48].";
+					return;
+				}
+				// Wager [0.001 ETH ～ 100 ETH]
+				if (parseInt(inputInvest) < 0.001 || parseInt(inputInvest) > 100) {
+					document.getElementById("doPredictionInfo").innerHTML = "[Wager] must be between [0.001 ETH ～ 100 ETH].";
+					return;
+				}
 				WorldCup2018.betMatch(matchId, prediction, {from: web3.eth.accounts[0], gas: '1000000', gasPrice: '2000000000', value: web3.toWei(investValue, 'ether')}, function(error){
 					if(!error) {
 						document.getElementById("doPredictionInfo").innerHTML = "Prediction should be recorded in the next block of [Ethereum Block Chain] as soon.";
@@ -867,7 +882,7 @@
 			<div id="main">
 				<section class="wrapper style1">
 				<div class="inner">
-					<h2 id="content">World Cup 2018 Lottery</h2>
+					<h2 id="content" class="translatable">World Cup 2018 Lottery</h2>
 				<!-- Intro -->
 					<div class="row">
 						<section class="2u 12u$(medium)">
@@ -882,6 +897,9 @@
 					</div> -->
 					</div>
 
+				<br />
+				<span class="translatable" id="doPredictionInfo"></span>
+				<br />
 				<hr class="major" />
 				<div class="row">
 					<div class="5u 12u$(small)">
