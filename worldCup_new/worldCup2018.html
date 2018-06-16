@@ -786,7 +786,11 @@
 													var cellMyHoldings = row.insertCell(3);
 													var tMyHoldings = document.createElement("span");
 													tMyHoldings.id = "myHoldings_" + (intI + 1);
-													tMyHoldings.innerHTML = web3.fromWei((parseInt(matchInfoList[8][intI])+parseInt(matchInfoList[9][intI])+parseInt(matchInfoList[10][intI])), 'ether') + " ETH";
+													if (intI > 1) {
+														tMyHoldings.innerHTML = web3.fromWei((parseInt(matchInfoList[8][intI])+parseInt(matchInfoList[9][intI])+parseInt(matchInfoList[10][intI])), 'ether') + " ETH";
+													} else {
+														tMyHoldings.innerHTML = "-";
+													}
 													cellMyHoldings.appendChild(tMyHoldings);
 												}
 												// Bonus pool = WinInvest(Match)+LoseInvest(Match)+TieInvest(Match)
@@ -794,7 +798,11 @@
 													var cellBonusPool = row.insertCell(4);
 													var tBonusPool = document.createElement("span");
 													tBonusPool.id = "bonusPool_" + (intI + 1);
-													tBonusPool.innerHTML = web3.fromWei((parseInt(matchInfoList[5][intI])+parseInt(matchInfoList[6][intI])+parseInt(matchInfoList[7][intI])), 'ether') + " ETH";
+													if (intI > 1) {
+														tBonusPool.innerHTML = web3.fromWei((parseInt(matchInfoList[5][intI])+parseInt(matchInfoList[6][intI])+parseInt(matchInfoList[7][intI])), 'ether') + " ETH";
+													} else {
+														tBonusPool.innerHTML = "-";
+													}
 													cellBonusPool.appendChild(tBonusPool);
 												}
 												// Result
@@ -843,7 +851,7 @@
 					return;
 				}
 				// Wager [0.001 ETH ～ 100 ETH]
-				if (parseInt(inputInvest) < 0.001 || parseInt(inputInvest) > 100) {
+				if (parseFloat(inputInvest) < parseFloat(0.001) || parseFloat(inputInvest) > parseFloat(100)) {
 					document.getElementById("doPredictionInfo").innerHTML = "[Wager] must be between [0.001 ETH ～ 100 ETH].";
 					return;
 				}
