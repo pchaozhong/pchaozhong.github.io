@@ -890,11 +890,10 @@
 		function changePhaseTab(tab) {
 			var tabs = document.getElementsByClassName('phase-tab-head')[0].getElementsByTagName('h2');
 			var contents_temp = document.getElementsByClassName('phase-tab-content')[0].getElementsByTagName('div');
-			var len = tabs.length;
-			var contents = new Array(len);
-			var intJ = 0;
+			var contents = new Array(tabs.length);
 
-			for(var intIndex = 0; intIndex < len; intIndex++) {
+			var intJ = 0;
+			for(var intIndex = 0; intIndex < contents_temp.length; intIndex++) {
 				if(contents_temp[intIndex].id === "") {
 					contents[intJ] = contents_temp[intIndex];
 					intJ++;
