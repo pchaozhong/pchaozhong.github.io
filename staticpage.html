@@ -762,6 +762,7 @@
 												// StartTime(GMT/LOCAL)
 												{
 													var cellStartTime = row.insertCell(3);
+
 													var tStartTimeGmt = document.createElement("span");
 													tStartTimeGmt.id = "startTimeGmt_" + (intI + 1);
 													tStartTimeGmt.innerHTML = gmtDate.toGMTString();
@@ -948,7 +949,7 @@
 
 		.phase-tab-content {
 			width: 1250px;
-			height: 340px;
+			height: 336px;
 			overflow-x: auto;
 			overflow-y: hidden;
 		}
@@ -956,7 +957,7 @@
 		.phase-tab-content .show {
 			display: block;
 			height: 288px;
-			width: 2768px;
+			width: 2918px;
 			overflow-x: hidden;
 			overflow-y: auto;
 		}
@@ -1036,11 +1037,11 @@
 		<phase-h2 onmouseover="changePhaseTab(this)">Final&nbsp;</phase-h2>
 	</div>
 	<div align="left" class="phase-tab-content">
-		<table id="matchInfoList_hd" border="1" cellpadding="0" cellspacing="0" style="height: 30px; width: 2750px;">
+		<table id="matchInfoList_hd" border="1" cellpadding="0" cellspacing="0" style="height: 30px; width: 2900px;">
 			<th class='translatable' style="width:150px">Match No.</th>
 			<th class='translatable' style="width:175px">HostTeamName</th>
 			<th class='translatable' style="width:175px">GuestTeamName</th>
-			<th class='translatable' style="width:300px">StartTime(GMT/LOCAL)</th>
+			<th class='translatable' style="width:450px">StartTime(GMT/LOCAL)</th>
 			<th class='translatable' style="width:150px">Result</th>
 			<th class='translatable' style="width:300px">WinInvest(Match)</th>
 			<th class='translatable' style="width:300px">LoseInvest(Match)</th>
@@ -1051,12 +1052,12 @@
 		</table>
 
 		<div align="left" id="matchInfo_body" class="show">
-			<table id="matchInfoList" border="1" cellpadding="0" cellspacing="0" style="height: 288px; width: 2750px;">
+			<table id="matchInfoList" border="1" cellpadding="0" cellspacing="0" style="height: 288px; width: 2900px;">
 				<tr height="24" style="display:none">
 					<td class='translatable' style="width:150px"><span>Ex : Match No.</span></td>
 					<td class='translatable' style="width:175px"><span>Ex : HostTeamName</span></td>
 					<td class='translatable' style="width:175px"><span>Ex : GuestTeamName</span></td>
-					<td class='translatable' style="width:300px"><span>Ex : StartTime(GMT / LOCAL)</span></td>
+					<td class='translatable' style="width:450px"><span>Ex : StartTime(GMT / LOCAL)</span></td>
 					<td class='translatable' style="width:150px"><span>Ex : Result</span></td>
 					<td class='translatable' style="width:300px"><span>Ex : WinInvest(Match)</span></td>
 					<td class='translatable' style="width:300px"><span>Ex : LoseInvest(Match)</span></td>
