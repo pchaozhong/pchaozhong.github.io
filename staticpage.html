@@ -961,15 +961,23 @@
 		.phase-tab-content {
 			border: solid cornflowerblue 2px;
 			width: 1250px;
-			height: 365px;
-		}
-
-		.phase-tab-content .noshow {
-			display: none;
+			height: 320px;
+			overflow: auto;
+			overflow-x: auto;
+			overflow-y: hidden;
 		}
 
 		.phase-tab-content .show {
 			display: contents;
+			height: 288px;
+			width: 2768px;
+			overflow: auto;
+			overflow-x: hidden;
+			overflow-y: auto;
+		}
+
+		.phase-tab-content .noshow {
+			display: none;
 		}
 	</style>
 </head>
@@ -1043,49 +1051,45 @@
 		<phase-h2 onmouseover="changePhaseTab(this)">PlayOffForThirdPlace</phase-h2>
 		<phase-h2 onmouseover="changePhaseTab(this)">Final</phase-h2>
 	</div>
-	<div class="phase-tab-content">
-		<div align="left" id="matchInfo_title" style="width: 1250px; overflow: auto; overflow-y: hidden; overflow-x: auto;">
-			<table id="matchInfoList_hd" border="1" cellpadding="0" cellspacing="0" style="height: 30px; width: 2750px;">
-				<th class='translatable' style="width:150px">Match No.</th>
-				<th class='translatable' style="width:175px">HostTeamName</th>
-				<th class='translatable' style="width:175px">GuestTeamName</th>
-				<th class='translatable' style="width:300px">StartTime(GMT/LOCAL)</th>
-				<th class='translatable' style="width:150px">Result</th>
-				<th class='translatable' style="width:300px">WinInvest(Match)</th>
-				<th class='translatable' style="width:300px">LoseInvest(Match)</th>
-				<th class='translatable' style="width:300px">TieInvest(Match)</th>
-				<th class='translatable' style="width:300px">WinInvest(You)</th>
-				<th class='translatable' style="width:300px">LoseInvest(You)</th>
-				<th class='translatable' style="width:300px">TieInvest(You)</th>
+	<div align="left" class="phase-tab-content">
+		<table id="matchInfoList_hd" border="1" cellpadding="0" cellspacing="0" style="height: 30px; width: 2750px;">
+			<th class='translatable' style="width:150px">Match No.</th>
+			<th class='translatable' style="width:175px">HostTeamName</th>
+			<th class='translatable' style="width:175px">GuestTeamName</th>
+			<th class='translatable' style="width:300px">StartTime(GMT/LOCAL)</th>
+			<th class='translatable' style="width:150px">Result</th>
+			<th class='translatable' style="width:300px">WinInvest(Match)</th>
+			<th class='translatable' style="width:300px">LoseInvest(Match)</th>
+			<th class='translatable' style="width:300px">TieInvest(Match)</th>
+			<th class='translatable' style="width:300px">WinInvest(You)</th>
+			<th class='translatable' style="width:300px">LoseInvest(You)</th>
+			<th class='translatable' style="width:300px">TieInvest(You)</th>
+		</table>
+
+		<div align="left" id="matchInfo_body" class="show">
+			<table id="matchInfoList" border="1" cellpadding="0" cellspacing="0" style="width: 2750px;">
+				<tr height="24" style="display:none">
+					<td class='translatable' style="width:150px"><span>Ex : Match No.</span></td>
+					<td class='translatable' style="width:175px"><span>Ex : HostTeamName</span></td>
+					<td class='translatable' style="width:175px"><span>Ex : GuestTeamName</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : StartTime(GMT / LOCAL)</span></td>
+					<td class='translatable' style="width:150px"><span>Ex : Result</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : WinInvest(Match)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : LoseInvest(Match)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : TieInvest(Match)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : WinInvest(You)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : LoseInvest(You)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : TieInvest(You)</span></td>
+				</tr>
 			</table>
-			<div align="left" id="matchInfo_body" style="height: 288px; width: 2768px; overflow: auto; overflow-y: auto; overflow-x: hidden;">
-
-				<div class="show">
-					<table id="matchInfoList" border="1" cellpadding="0" cellspacing="0" style="width: 2750px;">
-						<tr height="24" style="display:none">
-							<td class='translatable' style="width:150px"><span>Ex : Match No.</span></td>
-							<td class='translatable' style="width:175px"><span>Ex : HostTeamName</span></td>
-							<td class='translatable' style="width:175px"><span>Ex : GuestTeamName</span></td>
-							<td class='translatable' style="width:300px"><span>Ex : StartTime(GMT / LOCAL)</span></td>
-							<td class='translatable' style="width:150px"><span>Ex : Result</span></td>
-							<td class='translatable' style="width:300px"><span>Ex : WinInvest(Match)</span></td>
-							<td class='translatable' style="width:300px"><span>Ex : LoseInvest(Match)</span></td>
-							<td class='translatable' style="width:300px"><span>Ex : TieInvest(Match)</span></td>
-							<td class='translatable' style="width:300px"><span>Ex : WinInvest(You)</span></td>
-							<td class='translatable' style="width:300px"><span>Ex : LoseInvest(You)</span></td>
-							<td class='translatable' style="width:300px"><span>Ex : TieInvest(You)</span></td>
-						</tr>
-					</table>
-				</div>
-
-				<div class="noshow">RoundOf16</div>
-				<div class="noshow">Quarter-Finals</div>
-				<div class="noshow">Semi-Finals</div>
-				<div class="noshow">Play-offForThirdPlace</div>
-				<div class="noshow">Final</div>
-
-			</div>
 		</div>
+
+		<div class="noshow">RoundOf16</div>
+		<div class="noshow">Quarter-Finals</div>
+		<div class="noshow">Semi-Finals</div>
+		<div class="noshow">Play-offForThirdPlace</div>
+		<div class="noshow">Final</div>
+
 	</div>
 	<br />
 </body>
