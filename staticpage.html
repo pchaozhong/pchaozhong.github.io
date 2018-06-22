@@ -661,9 +661,9 @@
 					if(!error) {
 						console.log(result);
 
-						document.getElementById("userAccountInfo_Invested").innerHTML = "&nbsp    Invested : " + web3.fromWei(result[0], 'ether') + " ETH.";
-						document.getElementById("userAccountInfo_Prize").innerHTML = "&nbsp    Prize : " + web3.fromWei(result[1], 'ether') + " ETH.";
-						document.getElementById("userAccountInfo_Balance").innerHTML = "&nbsp    Balance : " + web3.fromWei(result[2], 'ether') + " ETH.&nbsp    ";
+						document.getElementById("userAccountInfo_Invested").innerHTML = "&nbsp;    Invested : " + web3.fromWei(result[0], 'ether') + " ETH.";
+						document.getElementById("userAccountInfo_Prize").innerHTML = "&nbsp;    Prize : " + web3.fromWei(result[1], 'ether') + " ETH.";
+						document.getElementById("userAccountInfo_Balance").innerHTML = "&nbsp;    Balance : " + web3.fromWei(result[2], 'ether') + " ETH.&nbsp    ";
 						if (result[2] > 0) {
 							document.getElementById("withdrawBalance").disabled = false;
 						}
@@ -1005,11 +1005,11 @@
 	<button class='translatable' type="button" onClick="getUserAccountInfo();">Get User Account Info</button>
 	<br />
 	<div>
-		<span>&nbsp    </span><span class='translatable' id="userAccountInfo_Invested">Invested :</span><span>&nbsp </span>
+		<span>&nbsp;    </span><span class='translatable' id="userAccountInfo_Invested">Invested :</span><span>&nbsp; </span>
 		<br />
-		<span>&nbsp    </span><span class='translatable' id="userAccountInfo_Prize">Prize :</span><span>&nbsp </span>
+		<span>&nbsp;    </span><span class='translatable' id="userAccountInfo_Prize">Prize :</span><span>&nbsp; </span>
 		<br />
-		<span>&nbsp    </span><span class='translatable' id="userAccountInfo_Balance">Balance :</span><span>&nbsp    </span>
+		<span>&nbsp;    </span><span class='translatable' id="userAccountInfo_Balance">Balance :</span><span>&nbsp;    </span>
 		<button class='translatable' type="button" id="withdrawBalance" onClick="doWithdrawBalance();" disabled="disabled">Withdraw Balance</button>
 	</div>
 	<br />
@@ -1019,12 +1019,12 @@
 		<input type="text" size="5" maxlength="2" id="inputMatchNo" />
 	</p>
 	<p class='translatable'>Prediction<br>
-		<span>&nbsp </span><input class='translatable' type="radio" name="inputPrediction" value="1">WIN</input>
-		<span>&nbsp </span><input class='translatable' type="radio" name="inputPrediction" value="2">LOSE</input>
-		<span>&nbsp </span><input class='translatable' type="radio" name="inputPrediction" value="3">TIE</input>
+		<span>&nbsp; </span><input class='translatable' type="radio" name="inputPrediction" value="1">WIN</input>
+		<span>&nbsp; </span><input class='translatable' type="radio" name="inputPrediction" value="2">LOSE</input>
+		<span>&nbsp; </span><input class='translatable' type="radio" name="inputPrediction" value="3">TIE</input>
 	</p>
 	<p class='translatable'>Invest<br>
-		<input type="text" size="10" maxlength="25" id="inputInvest" /><span>&nbsp ETH</span>
+		<input type="text" size="10" maxlength="25" id="inputInvest" /><span>&nbsp; ETH</span>
 		<br />
 		<span class='translatable'>Attention : Please input your Invest between 0.001 ETH and 100 ETH.(* Amount in ETH *)</span>
 	</p>
