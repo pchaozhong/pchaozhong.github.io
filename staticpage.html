@@ -886,6 +886,21 @@
 				}
 			}
 		}
+
+		function changePhaseTab(tab) {
+			var tabs = document.getElementsByClassName('phase-tab-head')[0].getElementsByTagName('h2');
+			var contents = document.getElementsByClassName('phase-tab-content')[0].getElementsByTagName('div');
+
+			for(var i = 0, len = tabs.length; i < len; i++) {
+				if(tabs[i] === tab) {
+					tabs[i].className = 'selected';
+					contents[i].className = 'show';
+				} else {
+					tabs[i].className = '';
+					contents[i].className = '';
+				}
+			}
+		}
 	</script>
 	<style>
 		h2 {
@@ -913,6 +928,20 @@
 		}
 
 		.tab-content .show{
+			display: block;
+		}
+
+		.phase-tab-content {
+			border: solid cornflowerblue 1px;
+			width: 1000px;
+			height: 320px;
+		}
+
+		.phase-tab-content div{
+			display: none;
+		}
+
+		.phase-tab-content .show{
 			display: block;
 		}
 	</style>
@@ -979,37 +1008,54 @@
 	<br />
 	<button class='translatable' type="button" onClick="getMatchInfoList01();">Get Match Info</button>
 	<br />
-	<div align="left" id="matchInfo_title" style="width: 1000px; overflow: auto; overflow-y: hidden; overflow-x: auto;">
-		<table id="matchInfoList_hd" border="1" cellpadding="0" cellspacing="0" style="height: 30px; width: 2750px;">
-			<th class='translatable' style="width:150px">Match No.</th>
-			<th class='translatable' style="width:175px">HostTeamName</th>
-			<th class='translatable' style="width:175px">GuestTeamName</th>
-			<th class='translatable' style="width:300px">StartTime(GMT/LOCAL)</th>
-			<th class='translatable' style="width:150px">Result</th>
-			<th class='translatable' style="width:300px">WinInvest(Match)</th>
-			<th class='translatable' style="width:300px">LoseInvest(Match)</th>
-			<th class='translatable' style="width:300px">TieInvest(Match)</th>
-			<th class='translatable' style="width:300px">WinInvest(You)</th>
-			<th class='translatable' style="width:300px">LoseInvest(You)</th>
-			<th class='translatable' style="width:300px">TieInvest(You)</th>
-		</table>
-		<div align="left" id="matchInfo_title" style="height: 288px; width: 2768px; overflow: auto; overflow-y: auto; overflow-x: hidden;">
-			<table id="matchInfoList" border="1" cellpadding="0" cellspacing="0" style="width: 2750px;">
-				<tr height="24">
-					<td class='translatable' style="width:150px"><span>Ex : Match No.</span></td>
-					<td class='translatable' style="width:175px"><span>Ex : HostTeamName</span></td>
-					<td class='translatable' style="width:175px"><span>Ex : GuestTeamName</span></td>
-					<td class='translatable' style="width:300px"><span>Ex : StartTime(GMT / LOCAL)</span></td>
-					<td class='translatable' style="width:150px"><span>Ex : Result</span></td>
-					<td class='translatable' style="width:300px"><span>Ex : WinInvest(Match)</span></td>
-					<td class='translatable' style="width:300px"><span>Ex : LoseInvest(Match)</span></td>
-					<td class='translatable' style="width:300px"><span>Ex : TieInvest(Match)</span></td>
-					<td class='translatable' style="width:300px"><span>Ex : WinInvest(You)</span></td>
-					<td class='translatable' style="width:300px"><span>Ex : LoseInvest(You)</span></td>
-					<td class='translatable' style="width:300px"><span>Ex : TieInvest(You)</span></td>
-				</tr>
-			</table>
+	<div class="phase-tab-head">
+		<h2 onmouseover="changePhaseTab(this)" class="selected">Group</h2>
+		<h2 onmouseover="changePhaseTab(this)">RoundOf16</h2>
+		<h2 onmouseover="changePhaseTab(this)">Quarter-Finals</h2>
+		<h2 onmouseover="changePhaseTab(this)">Semi-Finals</h2>
+		<h2 onmouseover="changePhaseTab(this)">Play-offForThirdPlace</h2>
+		<h2 onmouseover="changePhaseTab(this)">Final</h2>
+	</div>
+	<div class="phase-tab-content">
+		<div class="show">
+			<div align="left" id="matchInfo_title" style="width: 1000px; overflow: auto; overflow-y: hidden; overflow-x: auto;">
+				<table id="matchInfoList_hd" border="1" cellpadding="0" cellspacing="0" style="height: 30px; width: 2750px;">
+					<th class='translatable' style="width:150px">Match No.</th>
+					<th class='translatable' style="width:175px">HostTeamName</th>
+					<th class='translatable' style="width:175px">GuestTeamName</th>
+					<th class='translatable' style="width:300px">StartTime(GMT/LOCAL)</th>
+					<th class='translatable' style="width:150px">Result</th>
+					<th class='translatable' style="width:300px">WinInvest(Match)</th>
+					<th class='translatable' style="width:300px">LoseInvest(Match)</th>
+					<th class='translatable' style="width:300px">TieInvest(Match)</th>
+					<th class='translatable' style="width:300px">WinInvest(You)</th>
+					<th class='translatable' style="width:300px">LoseInvest(You)</th>
+					<th class='translatable' style="width:300px">TieInvest(You)</th>
+				</table>
+				<div align="left" id="matchInfo_title" style="height: 288px; width: 2768px; overflow: auto; overflow-y: auto; overflow-x: hidden;">
+					<table id="matchInfoList" border="1" cellpadding="0" cellspacing="0" style="width: 2750px;">
+						<tr height="24">
+							<td class='translatable' style="width:150px"><span>Ex : Match No.</span></td>
+							<td class='translatable' style="width:175px"><span>Ex : HostTeamName</span></td>
+							<td class='translatable' style="width:175px"><span>Ex : GuestTeamName</span></td>
+							<td class='translatable' style="width:300px"><span>Ex : StartTime(GMT / LOCAL)</span></td>
+							<td class='translatable' style="width:150px"><span>Ex : Result</span></td>
+							<td class='translatable' style="width:300px"><span>Ex : WinInvest(Match)</span></td>
+							<td class='translatable' style="width:300px"><span>Ex : LoseInvest(Match)</span></td>
+							<td class='translatable' style="width:300px"><span>Ex : TieInvest(Match)</span></td>
+							<td class='translatable' style="width:300px"><span>Ex : WinInvest(You)</span></td>
+							<td class='translatable' style="width:300px"><span>Ex : LoseInvest(You)</span></td>
+							<td class='translatable' style="width:300px"><span>Ex : TieInvest(You)</span></td>
+						</tr>
+					</table>
+				</div>
+			</div>
 		</div>
+		<div>RoundOf16</div>
+		<div>Quarter-Finals</div>
+		<div>Semi-Finals</div>
+		<div>Play-offForThirdPlace</div>
+		<div>Final</div>
 	</div>
 	<br />
 </body>
