@@ -888,7 +888,7 @@
 		}
 
 		function changePhaseTab(tab) {
-			var tabs = document.getElementsByClassName('phase-tab-head')[0].getElementsByTagName('h2');
+			var tabs = document.getElementsByClassName('phase-tab-head')[0].getElementsByTagName('phase-h2');
 			var contents_temp = document.getElementsByClassName('phase-tab-content')[0].getElementsByTagName('div');
 			var contents = new Array(tabs.length);
 
@@ -938,6 +938,16 @@
 
 		.tab-content .show{
 			display: block;
+		}
+
+		phase-h2 {
+			border-top: solid cornflowerblue 1px;
+			border-left: solid cornflowerblue 1px;
+			width: 150px;
+			height: 35px;
+			margin: 0;
+			float: left;
+			text-align: center;
 		}
 
 		.phase-tab-content {
@@ -1018,12 +1028,12 @@
 	<button class='translatable' type="button" onClick="getMatchInfoList01();">Get Match Info</button>
 	<br />
 	<div class="phase-tab-head">
-		<h2 onmouseover="changePhaseTab(this)" class="selected">Group</h2>
-		<h2 onmouseover="changePhaseTab(this)">RoundOf16</h2>
-		<h2 onmouseover="changePhaseTab(this)">Quarter-Finals</h2>
-		<h2 onmouseover="changePhaseTab(this)">Semi-Finals</h2>
-		<h2 onmouseover="changePhaseTab(this)">Play-offForThirdPlace</h2>
-		<h2 onmouseover="changePhaseTab(this)">Final</h2>
+		<phase-h2 onmouseover="changePhaseTab(this)" class="selected">Group</phase-h2>
+		<phase-h2 onmouseover="changePhaseTab(this)">RoundOf16</phase-h2>
+		<phase-h2 onmouseover="changePhaseTab(this)">Quarter-Finals</phase-h2>
+		<phase-h2 onmouseover="changePhaseTab(this)">Semi-Finals</phase-h2>
+		<phase-h2 onmouseover="changePhaseTab(this)">Play-offForThirdPlace</phase-h2>
+		<phase-h2 onmouseover="changePhaseTab(this)">Final</phase-h2>
 	</div>
 	<div class="phase-tab-content">
 		<div class="show">
