@@ -889,16 +889,7 @@
 
 		function changePhaseTab(tab) {
 			var tabs = document.getElementsByClassName('phase-tab-head')[0].getElementsByTagName('phase-h2');
-			var contents_temp = document.getElementsByClassName('phase-tab-content')[0].getElementsByTagName('div');
-			var contents = new Array(tabs.length);
-
-			var intJ = 0;
-			for(var intIndex = 0; intIndex < contents_temp.length; intIndex++) {
-				if(contents_temp[intIndex].id === "") {
-					contents[intJ] = contents_temp[intIndex];
-					intJ++;
-				}
-			}
+			var contents = document.getElementsByClassName('phase-tab-content')[0].getElementsByTagName('div');
 
 			for(var i = 0, len = tabs.length; i < len; i++) {
 				if(tabs[i] === tab) {
