@@ -889,7 +889,17 @@
 
 		function changePhaseTab(tab) {
 			var tabs = document.getElementsByClassName('phase-tab-head')[0].getElementsByTagName('h2');
-			var contents = document.getElementsByClassName('phase-tab-content')[0].getElementsByTagName('div');
+			var contents_temp = document.getElementsByClassName('phase-tab-content')[0].getElementsByTagName('div');
+			var len = tabs.length;
+			var contents = new Array(len);
+			var intJ = 0;
+
+			for(var intIndex = 0, intIndex < len; intIndex++) {
+				if(contents_temp[intIndex].id === "") {
+					contents[intJ] = contents_temp[intIndex];
+					intJ++;
+				}
+			}
 
 			for(var i = 0, len = tabs.length; i < len; i++) {
 				if(tabs[i] === tab) {
@@ -1032,7 +1042,7 @@
 					<th class='translatable' style="width:300px">LoseInvest(You)</th>
 					<th class='translatable' style="width:300px">TieInvest(You)</th>
 				</table>
-				<div align="left" id="matchInfo_title" style="height: 288px; width: 2768px; overflow: auto; overflow-y: auto; overflow-x: hidden;">
+				<div align="left" id="matchInfo_body" style="height: 288px; width: 2768px; overflow: auto; overflow-y: auto; overflow-x: hidden;">
 					<table id="matchInfoList" border="1" cellpadding="0" cellspacing="0" style="width: 2750px;">
 						<tr height="24">
 							<td class='translatable' style="width:150px"><span>Ex : Match No.</span></td>
