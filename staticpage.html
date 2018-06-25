@@ -719,121 +719,18 @@
 
 										console.log(matchInfoList);
 
-										if (matchInfoList["length"] > 0) {
-											// matchInfo_title
-											var table = document.getElementById("matchInfoList");
-
-											var tableRows = table.getElementsByTagName('tr');
-											var rowCount = tableRows.length;
-											for (var intI = rowCount - 1; intI > 0; intI--) {
-											   table.deleteRow(intI);
-											}
-
-											for (var intI = 0; intI < 64; intI++) {
-												var gmtDate  = new Date('1970-01-01 00:00:00+00:00');
-												// Match start at gmtDate([GMT Start Date] + [diffSeconds from contract])
-												gmtDate.setSeconds(gmtDate.getSeconds() + matchInfoList[3][intI]);
-
-												var row = table.insertRow(table.rows.length);
-												// Match No.
-												{
-													var cellMatchNo = row.insertCell(0);
-													var tMatchNo = document.createElement("span");
-													tMatchNo.id = "matchNo_" + (intI + 1);
-													tMatchNo.innerHTML = matchInfoList[0][intI];
-													cellMatchNo.appendChild(tMatchNo);
-												}
-												// HostTeamName
-												{
-													var cellHostTeamName = row.insertCell(1);
-													var tHostTeamName = document.createElement("span");
-													tHostTeamName.id = "hostTeamName_" + (intI + 1);
-													tHostTeamName.innerHTML = arrTeamName[matchInfoList[1][intI]];
-													cellHostTeamName.appendChild(tHostTeamName);
-												}
-												// GuestTeamName
-												{
-													var cellGuestTeamName = row.insertCell(2);
-													var tGuestTeamName = document.createElement("span");
-													tGuestTeamName.id = "guestTeamName_" + (intI + 1);
-													tGuestTeamName.innerHTML = arrTeamName[matchInfoList[2][intI]];
-													cellGuestTeamName.appendChild(tGuestTeamName);
-												}
-												// StartTime(GMT/LOCAL)
-												{
-													var cellStartTime = row.insertCell(3);
-
-													var tStartTimeGmt = document.createElement("span");
-													tStartTimeGmt.id = "startTimeGmt_" + (intI + 1);
-													tStartTimeGmt.innerHTML = gmtDate.toGMTString();
-													cellStartTime.appendChild(tStartTimeGmt);
-
-													var tStartTime = document.createElement("br");
-													cellStartTime.appendChild(tStartTime);
-
-													var tStartTimeLocal = document.createElement("span");
-													tStartTimeLocal.id = "startTimeLocal_" + (intI + 1);
-													tStartTimeLocal.innerHTML = gmtDate.toLocaleString();
-													cellStartTime.appendChild(tStartTimeLocal);
-												}
-												// Result
-												{
-													var cellResult = row.insertCell(4);
-													var tResult = document.createElement("span");
-													tResult.id = "result_" + (intI + 1);
-													tResult.innerHTML = arrOutcomeName[matchInfoList[4][intI]];
-													cellResult.appendChild(tResult);
-												}
-												// WinInvest(Match)
-												{
-													var cellWinInvestM = row.insertCell(5);
-													var tWinInvestM = document.createElement("span");
-													tWinInvestM.id = "winInvestM_" + (intI + 1);
-													tWinInvestM.innerHTML = web3.fromWei(matchInfoList[5][intI], 'ether') + " ETH";
-													cellWinInvestM.appendChild(tWinInvestM);
-												}
-												// LoseInvest(Match)
-												{
-													var cellLoseInvestM = row.insertCell(6);
-													var tLoseInvestM = document.createElement("span");
-													tLoseInvestM.id = "loseInvestM_" + (intI + 1);
-													tLoseInvestM.innerHTML = web3.fromWei(matchInfoList[6][intI], 'ether') + " ETH";
-													cellLoseInvestM.appendChild(tLoseInvestM);
-												}
-												// TieInvest(Match)
-												{
-													var cellTieInvestM = row.insertCell(7);
-													var tTieInvestM = document.createElement("span");
-													tTieInvestM.id = "tieInvestM_" + (intI + 1);
-													tTieInvestM.innerHTML = web3.fromWei(matchInfoList[7][intI], 'ether') + " ETH";
-													cellTieInvestM.appendChild(tTieInvestM);
-												}
-												// WinInvest(You)
-												{
-													var cellWinInvestY = row.insertCell(8);
-													var tWinInvestY = document.createElement("span");
-													tWinInvestY.id = "winInvestY_" + (intI + 1);
-													tWinInvestY.innerHTML = web3.fromWei(matchInfoList[8][intI], 'ether') + " ETH";
-													cellWinInvestY.appendChild(tWinInvestY);
-												}
-												// LoseInvest(You)
-												{
-													var cellLoseInvestY = row.insertCell(9);
-													var tLoseInvestY = document.createElement("span");
-													tLoseInvestY.id = "loseInvestY_" + (intI + 1);
-													tLoseInvestY.innerHTML = web3.fromWei(matchInfoList[9][intI], 'ether') + " ETH";
-													cellLoseInvestY.appendChild(tLoseInvestY);
-												}
-												// TieInvest(You)
-												{
-													var cellTieInvestY = row.insertCell(10);
-													var tTieInvestY = document.createElement("span");
-													tTieInvestY.id = "tieInvestY_" + (intI + 1);
-													tTieInvestY.innerHTML = web3.fromWei(matchInfoList[10][intI], 'ether') + " ETH";
-													cellTieInvestY.appendChild(tTieInvestY);
-												}
-											}
-										}
+										// Group : "matchInfoList"
+										updateTableWithMatchInfoList(matchInfoList, 1, 48, "matchInfoList");
+										// Round Of 16 : "matchInfoList"
+										updateTableWithMatchInfoList(matchInfoList, 49, 56, "matchInfoList");
+										// QuarterFinals : "matchInfoList"
+										updateTableWithMatchInfoList(matchInfoList, 57, 60, "matchInfoList");
+										// SemiFinals : "matchInfoList"
+										updateTableWithMatchInfoList(matchInfoList, 61, 62, "matchInfoList");
+										// Play Off For Third Place : "matchInfoList"
+										updateTableWithMatchInfoList(matchInfoList, 63, 63, "matchInfoList");
+										// Final : "matchInfoList"
+										updateTableWithMatchInfoList(matchInfoList, 64, 64, "matchInfoList");
 									} else
 										console.error(error);
 								});
@@ -845,6 +742,124 @@
 				});
 			} catch (err) {
 				document.getElementById("matchInfo_title").innerHTML = err;
+			}
+		}
+
+		function updateTableWithMatchInfoList(tableList, startMatchId, endMatchId, tableId) {
+			if (tableList["length"] > 0) {
+				// matchInfo_title : "matchInfoList"
+				var table = document.getElementById(tableId);
+
+				var tableRows = table.getElementsByTagName('tr');
+				var rowCount = tableRows.length;
+				for (var intI = rowCount - 1; intI > 0; intI--) {
+				   table.deleteRow(intI);
+				}
+
+				for (var intI = (startMatchId - 1); intI < endMatchId; intI++) {
+					var gmtDate  = new Date('1970-01-01 00:00:00+00:00');
+					// Match start at gmtDate([GMT Start Date] + [diffSeconds from contract])
+					gmtDate.setSeconds(gmtDate.getSeconds() + matchInfoList[3][intI]);
+
+					var row = table.insertRow(table.rows.length);
+					// Match No.
+					{
+						var cellMatchNo = row.insertCell(0);
+						var tMatchNo = document.createElement("span");
+						tMatchNo.id = "matchNo_" + (intI + 1);
+						tMatchNo.innerHTML = matchInfoList[0][intI];
+						cellMatchNo.appendChild(tMatchNo);
+					}
+					// HostTeamName
+					{
+						var cellHostTeamName = row.insertCell(1);
+						var tHostTeamName = document.createElement("span");
+						tHostTeamName.id = "hostTeamName_" + (intI + 1);
+						tHostTeamName.innerHTML = arrTeamName[matchInfoList[1][intI]];
+						cellHostTeamName.appendChild(tHostTeamName);
+					}
+					// GuestTeamName
+					{
+						var cellGuestTeamName = row.insertCell(2);
+						var tGuestTeamName = document.createElement("span");
+						tGuestTeamName.id = "guestTeamName_" + (intI + 1);
+						tGuestTeamName.innerHTML = arrTeamName[matchInfoList[2][intI]];
+						cellGuestTeamName.appendChild(tGuestTeamName);
+					}
+					// StartTime(GMT/LOCAL)
+					{
+						var cellStartTime = row.insertCell(3);
+
+						var tStartTimeGmt = document.createElement("span");
+						tStartTimeGmt.id = "startTimeGmt_" + (intI + 1);
+						tStartTimeGmt.innerHTML = gmtDate.toGMTString();
+						cellStartTime.appendChild(tStartTimeGmt);
+
+						var tStartTime = document.createElement("br");
+						cellStartTime.appendChild(tStartTime);
+
+						var tStartTimeLocal = document.createElement("span");
+						tStartTimeLocal.id = "startTimeLocal_" + (intI + 1);
+						tStartTimeLocal.innerHTML = gmtDate.toLocaleString();
+						cellStartTime.appendChild(tStartTimeLocal);
+					}
+					// Result
+					{
+						var cellResult = row.insertCell(4);
+						var tResult = document.createElement("span");
+						tResult.id = "result_" + (intI + 1);
+						tResult.innerHTML = arrOutcomeName[matchInfoList[4][intI]];
+						cellResult.appendChild(tResult);
+					}
+					// WinInvest(Match)
+					{
+						var cellWinInvestM = row.insertCell(5);
+						var tWinInvestM = document.createElement("span");
+						tWinInvestM.id = "winInvestM_" + (intI + 1);
+						tWinInvestM.innerHTML = web3.fromWei(matchInfoList[5][intI], 'ether') + " ETH";
+						cellWinInvestM.appendChild(tWinInvestM);
+					}
+					// LoseInvest(Match)
+					{
+						var cellLoseInvestM = row.insertCell(6);
+						var tLoseInvestM = document.createElement("span");
+						tLoseInvestM.id = "loseInvestM_" + (intI + 1);
+						tLoseInvestM.innerHTML = web3.fromWei(matchInfoList[6][intI], 'ether') + " ETH";
+						cellLoseInvestM.appendChild(tLoseInvestM);
+					}
+					// TieInvest(Match)
+					{
+						var cellTieInvestM = row.insertCell(7);
+						var tTieInvestM = document.createElement("span");
+						tTieInvestM.id = "tieInvestM_" + (intI + 1);
+						tTieInvestM.innerHTML = web3.fromWei(matchInfoList[7][intI], 'ether') + " ETH";
+						cellTieInvestM.appendChild(tTieInvestM);
+					}
+					// WinInvest(You)
+					{
+						var cellWinInvestY = row.insertCell(8);
+						var tWinInvestY = document.createElement("span");
+						tWinInvestY.id = "winInvestY_" + (intI + 1);
+						tWinInvestY.innerHTML = web3.fromWei(matchInfoList[8][intI], 'ether') + " ETH";
+						cellWinInvestY.appendChild(tWinInvestY);
+					}
+					// LoseInvest(You)
+					{
+						var cellLoseInvestY = row.insertCell(9);
+						var tLoseInvestY = document.createElement("span");
+						tLoseInvestY.id = "loseInvestY_" + (intI + 1);
+						tLoseInvestY.innerHTML = web3.fromWei(matchInfoList[9][intI], 'ether') + " ETH";
+						cellLoseInvestY.appendChild(tLoseInvestY);
+					}
+					// TieInvest(You)
+					{
+						var cellTieInvestY = row.insertCell(10);
+						var tTieInvestY = document.createElement("span");
+						tTieInvestY.id = "tieInvestY_" + (intI + 1);
+						tTieInvestY.innerHTML = web3.fromWei(matchInfoList[10][intI], 'ether') + " ETH";
+						cellTieInvestY.appendChild(tTieInvestY);
+					}
+				}
 			}
 		}
 
@@ -1069,11 +1084,91 @@
 			</table>
 		</div>
 
-		<div class="noshow">RoundOf16</div>
-		<div class="noshow">Quarter-Finals</div>
-		<div class="noshow">Semi-Finals</div>
-		<div class="noshow">Play-offForThirdPlace</div>
-		<div class="noshow">Final</div>
+		<div class="noshow">
+			<table id="matchInfoList_1" border="1" cellpadding="0" cellspacing="0" style="height:288px; width:2750px;">
+				<tr style="height:24px; visibility:collapse;">
+					<td class='translatable' style="width:150px"><span>Ex : Match No.</span></td>
+					<td class='translatable' style="width:175px"><span>Ex : HostTeamName</span></td>
+					<td class='translatable' style="width:175px"><span>Ex : GuestTeamName</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : StartTime(GMT / LOCAL)</span></td>
+					<td class='translatable' style="width:150px"><span>Ex : Result</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : WinInvest(Match)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : LoseInvest(Match)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : TieInvest(Match)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : WinInvest(You)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : LoseInvest(You)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : TieInvest(You)</span></td>
+				</tr>
+			</table>
+		</div>
+		<div class="noshow">
+			<table id="matchInfoList_2" border="1" cellpadding="0" cellspacing="0" style="height:288px; width:2750px;">
+				<tr style="height:24px; visibility:collapse;">
+					<td class='translatable' style="width:150px"><span>Ex : Match No.</span></td>
+					<td class='translatable' style="width:175px"><span>Ex : HostTeamName</span></td>
+					<td class='translatable' style="width:175px"><span>Ex : GuestTeamName</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : StartTime(GMT / LOCAL)</span></td>
+					<td class='translatable' style="width:150px"><span>Ex : Result</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : WinInvest(Match)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : LoseInvest(Match)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : TieInvest(Match)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : WinInvest(You)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : LoseInvest(You)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : TieInvest(You)</span></td>
+				</tr>
+			</table>
+		</div>
+		<div class="noshow">
+			<table id="matchInfoList_3" border="1" cellpadding="0" cellspacing="0" style="height:288px; width:2750px;">
+				<tr style="height:24px; visibility:collapse;">
+					<td class='translatable' style="width:150px"><span>Ex : Match No.</span></td>
+					<td class='translatable' style="width:175px"><span>Ex : HostTeamName</span></td>
+					<td class='translatable' style="width:175px"><span>Ex : GuestTeamName</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : StartTime(GMT / LOCAL)</span></td>
+					<td class='translatable' style="width:150px"><span>Ex : Result</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : WinInvest(Match)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : LoseInvest(Match)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : TieInvest(Match)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : WinInvest(You)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : LoseInvest(You)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : TieInvest(You)</span></td>
+				</tr>
+			</table>
+		</div>
+		<div class="noshow">
+			<table id="matchInfoList_4" border="1" cellpadding="0" cellspacing="0" style="height:288px; width:2750px;">
+				<tr style="height:24px; visibility:collapse;">
+					<td class='translatable' style="width:150px"><span>Ex : Match No.</span></td>
+					<td class='translatable' style="width:175px"><span>Ex : HostTeamName</span></td>
+					<td class='translatable' style="width:175px"><span>Ex : GuestTeamName</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : StartTime(GMT / LOCAL)</span></td>
+					<td class='translatable' style="width:150px"><span>Ex : Result</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : WinInvest(Match)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : LoseInvest(Match)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : TieInvest(Match)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : WinInvest(You)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : LoseInvest(You)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : TieInvest(You)</span></td>
+				</tr>
+			</table>
+		</div>
+		<div class="noshow">
+			<table id="matchInfoList_5" border="1" cellpadding="0" cellspacing="0" style="height:288px; width:2750px;">
+				<tr style="height:24px; visibility:collapse;">
+					<td class='translatable' style="width:150px"><span>Ex : Match No.</span></td>
+					<td class='translatable' style="width:175px"><span>Ex : HostTeamName</span></td>
+					<td class='translatable' style="width:175px"><span>Ex : GuestTeamName</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : StartTime(GMT / LOCAL)</span></td>
+					<td class='translatable' style="width:150px"><span>Ex : Result</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : WinInvest(Match)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : LoseInvest(Match)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : TieInvest(Match)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : WinInvest(You)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : LoseInvest(You)</span></td>
+					<td class='translatable' style="width:300px"><span>Ex : TieInvest(You)</span></td>
+				</tr>
+			</table>
+		</div>
 
 	</div>
 	<br />
