@@ -859,8 +859,6 @@
 						tTieInvestY.innerHTML = web3.fromWei(matchInfoList[10][intI], 'ether') + " ETH";
 						cellTieInvestY.appendChild(tTieInvestY);
 					}
-
-					row.style = "height:24px";
 				}
 			}
 		}
@@ -982,6 +980,11 @@
 		.phase-tab-content .noshow {
 			display: none;
 		}
+
+		tbody tr {
+			height:24px;
+		}
+
 	</style>
 </head>
 <body>
