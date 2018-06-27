@@ -744,6 +744,8 @@ function getMatchInfoList01() {
 								updateTableWithMatchInfoList(matchInfoList, 63, 63, "matchInfoList_4");
 								// Final : "matchInfoList_5"
 								updateTableWithMatchInfoList(matchInfoList, 64, 64, "matchInfoList_5");
+
+								translateTo(lang);
 							} else
 								console.error(error);
 						});
