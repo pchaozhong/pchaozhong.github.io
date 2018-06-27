@@ -56,80 +56,96 @@
 					<font color="red"><span class="translatable" id="msgArea"></span></font>
 					<br />
 					<hr class="major" />
-					<div class="row">
-						<div class="5u 12u$(small)">
-							<span class="translatable">My Account Info</span>
-							<div class="box">
-								<div>
-									<span class="translatable">Total amount of wager</span>
-									<span>&nbsp;:&nbsp;&nbsp;</span>
-									<span id="userAccountInfo_Invested"></span>
-									<br/>
-									<span class="translatable">Total winning bonus</span>
-									<span>&nbsp;:&nbsp;&nbsp;</span>
-									<span id="userAccountInfo_Prize"></span>
-									<br/>
-									<span class="translatable">No convertible amount</span>
-									<span>&nbsp;:&nbsp;&nbsp;</span>
-									<span id="userAccountInfo_Balance"></span>
-									<br/>
-									<br/>
-									<a href="javascript:getUserAccountInfo();" class="button alt"><span class="translatable">Refresh</span></a>
-									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-									<button class="translatable" type="button" id="withdrawBalance" onClick="doWithdrawBalance();" disabled="disabled">Withdraw My bonus</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<font color="red"><span class="translatable" id="userAccountInfo"></span></font>
-					<div class="row">
-						<div class="5u 12u$(small)">
-							<span class='translatable'>Enter Your Prediction</span>
-							<div class="box">
-								<div class="row uniform">
-									<div class="3u 12u$(small)">
-										<span class="translatable">No.</span>
-									</div>
-									<div class="4u 12u$(small)">
-										<input type="text" style="text-align:center;" size="3" maxlength="2" id="inputMatchNo"/>
-									</div>
-									<div class="5u$ 12u$(small)">&nbsp;&nbsp;&nbsp;</div>
-									<div class="3u 12u$(small)">
-											<span class="translatable">Prediction</span>
-									</div>
-									<div class="3u 12u$(small)">
-										<input type="radio" id="win" name="inputPrediction" value="1" checked>
-										<label for="win"><span class="translatable">Win</span></label>
-									</div>
-									<div class="3u 12u$(small)">
-										<input type="radio" id="Draw" name="inputPrediction" value="3">
-										<label for="Draw"><span class="translatable">Draw</span></label>
-									</div>
-									<div class="3u$ 12u$(small)">
-										<input type="radio" id="Fail" name="inputPrediction" value="2">
-										<label for="Fail"><span class="translatable">Fail</span></label>
-									</div>
-									<div class="3u 12u$(small)">
-										<span class="translatable">Wager</span>
-									</div>
-									<div class="4u 12u$(small)">
-										<input type="text" style="text-align:right;" size="8" maxlength="6" id="inputInvest" name="inputInvest"/>
-									</div>
-									<div class="5u$ 12u$(small)">
-										<span>ETH<br>[0.001 ETH ～ 100 ETH].</span>
-									</div>
-									<div class="2u 12u$(small)">&nbsp;</div>
-									<div class="7u 12u$(small)">
-										<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-									</div>
-									<div class="3u$ 12u$(small)">
-										<a href="javascript:doPrediction();" class="button alt"><span class="translatable">BUY</span></a>
+					<table>
+						<tr>
+							<td>
+								<div class="row">
+									<div class="5u 12u$(small)">
+										<span class="translatable">My Account Info</span>
+										<div class="box">
+											<div>
+												<span class="translatable">Total amount of wager</span>
+												<span>&nbsp;:&nbsp;&nbsp;</span>
+												<span id="userAccountInfo_Invested"></span>
+												<br/>
+												<span class="translatable">Total winning bonus</span>
+												<span>&nbsp;:&nbsp;&nbsp;</span>
+												<span id="userAccountInfo_Prize"></span>
+												<br/>
+												<span class="translatable">No convertible amount</span>
+												<span>&nbsp;:&nbsp;&nbsp;</span>
+												<span id="userAccountInfo_Balance"></span>
+												<br/>
+												<br/>
+												<a href="javascript:getUserAccountInfo();" class="button alt"><span class="translatable">Refresh</span></a>
+												<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+												<button class="translatable" type="button" id="withdrawBalance" onClick="doWithdrawBalance();" disabled="disabled">Withdraw My bonus</button>
+											</div>
+										</div>
 									</div>
 								</div>
-							</div>
-						</div>
-						<font color="red"><span class="translatable" id="doPredictionInfo"></span></font>
-					</div>
+							</td>
+							<td>
+								<div class="row">
+									<div class="5u 12u$(small)">
+										<span class='translatable'>Enter Your Prediction</span>
+										<div class="box">
+											<div class="row uniform">
+												<div class="3u 12u$(small)">
+													<span class="translatable">No.</span>
+												</div>
+												<div class="4u 12u$(small)">
+													<input type="text" style="text-align:center;" size="3" maxlength="2" id="inputMatchNo"/>
+												</div>
+												<div class="5u$ 12u$(small)">&nbsp;&nbsp;&nbsp;</div>
+												<div class="3u 12u$(small)">
+														<span class="translatable">Prediction</span>
+												</div>
+												<div class="3u 12u$(small)">
+													<input type="radio" id="win" name="inputPrediction" value="1" checked>
+													<label for="win"><span class="translatable">Win</span></label>
+												</div>
+												<div class="3u 12u$(small)">
+													<input type="radio" id="Draw" name="inputPrediction" value="3">
+													<label for="Draw"><span class="translatable">Draw</span></label>
+												</div>
+												<div class="3u$ 12u$(small)">
+													<input type="radio" id="Fail" name="inputPrediction" value="2">
+													<label for="Fail"><span class="translatable">Fail</span></label>
+												</div>
+												<div class="3u 12u$(small)">
+													<span class="translatable">Wager</span>
+												</div>
+												<div class="4u 12u$(small)">
+													<input type="text" style="text-align:right;" size="8" maxlength="6" id="inputInvest" name="inputInvest"/>
+												</div>
+												<div class="5u$ 12u$(small)">
+													<span>ETH<br>[0.001 ETH ～ 100 ETH].</span>
+												</div>
+												<div class="2u 12u$(small)">&nbsp;</div>
+												<div class="7u 12u$(small)">
+													<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+												</div>
+												<div class="3u$ 12u$(small)">
+													<a href="javascript:doPrediction();" class="button alt"><span class="translatable">BUY</span></a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<font color="red"><span class="translatable" id="userAccountInfo"></span></font>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<font color="red"><span class="translatable" id="doPredictionInfo"></span></font>
+							</td>
+						</tr>
+					</table>
 					<a href="javascript:getMatchInfoList01();" class="button alt"><span class="translatable">Refresh</span></a>
 					<hr class="major" />
 					<div class="row">
