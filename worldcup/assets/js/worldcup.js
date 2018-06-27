@@ -29,6 +29,14 @@ var voc = [
 	{"EN":"[No.] must be between [8 ～ 48].","ZH":"[场次]，请在[8 ～ 48]范围内填写。","JA":"[試合No]、[8 ～ 48]の範囲内に入力してください。"},
 	{"EN":"[Wager] must be between [0.001 ETH ～ 100 ETH].","ZH":"[下注额]，请在[0.001 ETH ～ 100 ETH]范围内填写。","JA":"[ｳｪｲｼﾞｬｰ]、[0.001 ETH ～ 100 ETH]の範囲内に入力してください。"},
 	{"EN":"The purchase was successful and is being processed. Please wait a moment!","ZH":"您的购入已经成功,正在处理,请稍等!","JA":"購入成功、今処理中です、しばらくお待ち下さい！"},
+
+	{"EN":"Group","ZH":"小组赛","JA":"グループステージ"},
+	{"EN":"RoundOf16","ZH":"1/8决赛","JA":"ベスト１６"},
+	{"EN":"QuarterFinals","ZH":"1/4决赛","JA":"準々決勝戦"},
+	{"EN":"SemiFinals","ZH":"半决赛","JA":"準決勝戦"},
+	{"EN":"PlayOffForThirdPlace","ZH":"季军赛","JA":"3位決定戦"},
+	{"EN":"Final","ZH":"冠军赛","JA":"決勝戦"},
+
 	{"EN":"Match","ZH":"比赛双方","JA":"対戦チーム"},
 	{"EN":"Start Time(Local)","ZH":"开始时间(本地)","JA":"開始時刻(ローカル)"},
 	{"EN":"My holdings","ZH":"下注额","JA":"マイウェイジャー"},
@@ -724,95 +732,18 @@ function getMatchInfoList01() {
 
 								console.log(matchInfoList);
 
-								if (matchInfoList["length"] > 0) {
-									// matchInfo_title
-									var table = document.getElementById("matchInfoList");
-
-									var tableRows = table.getElementsByTagName('tr');
-									var rowCount = tableRows.length;
-									for (var intI = rowCount - 1; intI > 0; intI--) {
-									   table.deleteRow(intI);
-									}
-
-									for (var intI = 0; intI < 48; intI++) {
-										var gmtDate  = new Date('1970-01-01 00:00:00+00:00');
-										// Match start at gmtDate([GMT Start Date] + [diffSeconds from contract])
-										gmtDate.setSeconds(gmtDate.getSeconds() + matchInfoList[3][intI]);
-
-										var row = table.insertRow(table.rows.length);
-										// Match No.
-										{
-											var cellMatchNo = row.insertCell(0);
-											var tMatchNo = document.createElement("span");
-											tMatchNo.id = "matchNo_" + (intI + 1);
-											tMatchNo.innerHTML = matchInfoList[0][intI];
-											cellMatchNo.appendChild(tMatchNo);
-										}
-										// HostTeam vs GuestTeam
-										{
-											var cellHvsG = row.insertCell(1);
-
-											var tHostTeamName = document.createElement("span");
-											tHostTeamName.id = "hostTeamName_" + (intI + 1);
-											tHostTeamName.className = "translatable";
-											tHostTeamName.innerHTML = arrTeamName[matchInfoList[1][intI]];
-											cellHvsG.appendChild(tHostTeamName);
-
-											var tVS = document.createElement("span");
-											tVS.innerHTML = "  vs  "
-											cellHvsG.appendChild(tVS);
-
-											var tGuestTeamName = document.createElement("span");
-											tGuestTeamName.id = "guestTeamName_" + (intI + 1);
-											tGuestTeamName.className = "translatable";
-											tGuestTeamName.innerHTML = arrTeamName[matchInfoList[2][intI]];
-											cellHvsG.appendChild(tGuestTeamName);
-
-										}
-										// StartTime(LOCAL)
-										{
-											var cellStartTime = row.insertCell(2);
-											var tStartTimeLocal = document.createElement("span");
-											tStartTimeLocal.id = "startTimeLocal_" + (intI + 1);
-											tStartTimeLocal.innerHTML = gmtDate.toLocaleString();
-											cellStartTime.appendChild(tStartTimeLocal);
-										}
-										// My holdings = WinInvest(You)+LoseInvest(You)+TieInvest(You)
-										{
-											var cellMyHoldings = row.insertCell(3);
-											var tMyHoldings = document.createElement("span");
-											tMyHoldings.id = "myHoldings_" + (intI + 1);
-											if (intI > 6) {
-												tMyHoldings.innerHTML = web3.fromWei((parseInt(matchInfoList[8][intI])+parseInt(matchInfoList[9][intI])+parseInt(matchInfoList[10][intI])), 'ether') + " ETH";
-											} else {
-												tMyHoldings.innerHTML = "-";
-											}
-											cellMyHoldings.appendChild(tMyHoldings);
-										}
-										// Bonus pool = WinInvest(Match)+LoseInvest(Match)+TieInvest(Match)
-										{
-											var cellBonusPool = row.insertCell(4);
-											var tBonusPool = document.createElement("span");
-											tBonusPool.id = "bonusPool_" + (intI + 1);
-											if (intI > 6) {
-												tBonusPool.innerHTML = web3.fromWei((parseInt(matchInfoList[5][intI])+parseInt(matchInfoList[6][intI])+parseInt(matchInfoList[7][intI])), 'ether') + " ETH";
-											} else {
-												tBonusPool.innerHTML = "-";
-											}
-											cellBonusPool.appendChild(tBonusPool);
-										}
-										// Result
-										{
-											var cellResult = row.insertCell(5);
-											var tResult = document.createElement("span");
-											tResult.id = "result_" + (intI + 1);
-											tResult.className = "translatable";
-											tResult.innerHTML = arrOutcomeName[matchInfoList[4][intI]];
-											cellResult.appendChild(tResult);
-										}
-									}
-									translateTo(lang);
-								}
+								// Group : "matchInfoList"
+								updateTableWithMatchInfoList(matchInfoList, 1, 48, "matchInfoList");
+								// Round Of 16 : "matchInfoList_1"
+								updateTableWithMatchInfoList(matchInfoList, 49, 56, "matchInfoList_1");
+								// Quarter Finals : "matchInfoList_2"
+								updateTableWithMatchInfoList(matchInfoList, 57, 60, "matchInfoList_2");
+								// Semi Finals : "matchInfoList_3"
+								updateTableWithMatchInfoList(matchInfoList, 61, 62, "matchInfoList_3");
+								// Play Off For Third Place : "matchInfoList_4"
+								updateTableWithMatchInfoList(matchInfoList, 63, 63, "matchInfoList_4");
+								// Final : "matchInfoList_5"
+								updateTableWithMatchInfoList(matchInfoList, 64, 64, "matchInfoList_5");
 							} else
 								console.error(error);
 						});
@@ -822,8 +753,101 @@ function getMatchInfoList01() {
 			} else
 				console.error(error);
 		});
+
+		translateTo(lang);
 	} catch (err) {
 		document.getElementById("matchInfo_title").innerHTML = err;
+	}
+}
+
+function updateTableWithMatchInfoList(tableList, startMatchId, endMatchId, tableId) {
+	if (tableList["length"] > 0) {
+		// matchInfo_title : "matchInfoList"
+		var table = document.getElementById(tableId);
+
+		var tableRows = table.getElementsByTagName('tr');
+		var rowCount = tableRows.length;
+		for (var intI = rowCount - 1; intI > 0; intI--) {
+		   table.deleteRow(intI);
+		}
+
+		for (var intI = (startMatchId - 1); intI < endMatchId; intI++) {
+			var gmtDate  = new Date('1970-01-01 00:00:00+00:00');
+			// Match start at gmtDate([GMT Start Date] + [diffSeconds from contract])
+			gmtDate.setSeconds(gmtDate.getSeconds() + matchInfoList[3][intI]);
+
+			var row = table.insertRow(table.rows.length);
+			// Match No.
+			{
+				var cellMatchNo = row.insertCell(0);
+				var tMatchNo = document.createElement("span");
+				tMatchNo.id = "matchNo_" + (intI + 1);
+				tMatchNo.innerHTML = matchInfoList[0][intI];
+				cellMatchNo.appendChild(tMatchNo);
+			}
+			// HostTeam vs GuestTeam
+			{
+				var cellHvsG = row.insertCell(1);
+
+				var tHostTeamName = document.createElement("span");
+				tHostTeamName.id = "hostTeamName_" + (intI + 1);
+				tHostTeamName.className = "translatable";
+				tHostTeamName.innerHTML = arrTeamName[matchInfoList[1][intI]];
+				cellHvsG.appendChild(tHostTeamName);
+
+				var tVS = document.createElement("span");
+				tVS.innerHTML = "  vs  "
+				cellHvsG.appendChild(tVS);
+
+				var tGuestTeamName = document.createElement("span");
+				tGuestTeamName.id = "guestTeamName_" + (intI + 1);
+				tGuestTeamName.className = "translatable";
+				tGuestTeamName.innerHTML = arrTeamName[matchInfoList[2][intI]];
+				cellHvsG.appendChild(tGuestTeamName);
+
+			}
+			// StartTime(LOCAL)
+			{
+				var cellStartTime = row.insertCell(2);
+				var tStartTimeLocal = document.createElement("span");
+				tStartTimeLocal.id = "startTimeLocal_" + (intI + 1);
+				tStartTimeLocal.innerHTML = gmtDate.toLocaleString();
+				cellStartTime.appendChild(tStartTimeLocal);
+			}
+			// My holdings = WinInvest(You)+LoseInvest(You)+TieInvest(You)
+			{
+				var cellMyHoldings = row.insertCell(3);
+				var tMyHoldings = document.createElement("span");
+				tMyHoldings.id = "myHoldings_" + (intI + 1);
+				if (intI > 6) {
+					tMyHoldings.innerHTML = web3.fromWei((parseInt(matchInfoList[8][intI])+parseInt(matchInfoList[9][intI])+parseInt(matchInfoList[10][intI])), 'ether') + " ETH";
+				} else {
+					tMyHoldings.innerHTML = "-";
+				}
+				cellMyHoldings.appendChild(tMyHoldings);
+			}
+			// Bonus pool = WinInvest(Match)+LoseInvest(Match)+TieInvest(Match)
+			{
+				var cellBonusPool = row.insertCell(4);
+				var tBonusPool = document.createElement("span");
+				tBonusPool.id = "bonusPool_" + (intI + 1);
+				if (intI > 6) {
+					tBonusPool.innerHTML = web3.fromWei((parseInt(matchInfoList[5][intI])+parseInt(matchInfoList[6][intI])+parseInt(matchInfoList[7][intI])), 'ether') + " ETH";
+				} else {
+					tBonusPool.innerHTML = "-";
+				}
+				cellBonusPool.appendChild(tBonusPool);
+			}
+			// Result
+			{
+				var cellResult = row.insertCell(5);
+				var tResult = document.createElement("span");
+				tResult.id = "result_" + (intI + 1);
+				tResult.className = "translatable";
+				tResult.innerHTML = arrOutcomeName[matchInfoList[4][intI]];
+				cellResult.appendChild(tResult);
+			}
+		}
 	}
 }
 

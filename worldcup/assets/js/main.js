@@ -116,7 +116,7 @@
 				tab.click(function(e) {
 
 					var x = jQuery(this),
-						y = x.data('tab');
+						y = x.attr('tab');
 
 					// Set Classes on Tabs
 						tab.removeClass('active');
@@ -124,7 +124,7 @@
 
 					// Show/Hide Tab Content
 						tabs.removeClass('active');
-						t.find('.' + y).addClass('active');
+						t.find('#' + y).addClass('active');
 
 					e.preventDefault();
 
