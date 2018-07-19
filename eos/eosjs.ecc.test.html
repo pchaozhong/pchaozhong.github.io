@@ -9,9 +9,31 @@
   <script src="https://cdn.jsdelivr.net/npm/eosjs-ecc@4.0.2/lib/eosjs-ecc.min.js"
         integrity="sha512-5esVQ4sQT8XLWek5KUEIQbFfxu2EZdet8DNDkIdchp4Y1e0b+xkMozwUdFii5bJa3Zk/vgr1ZP235Uf9ULCrkA=="
         crossorigin="anonymous"></script>
+  <script>
+      function keyInfo() {
+          // [object Promise]
+          eosjs_ecc.randomKey().then(privateKey => {
+              // wif
+              document.getElementById("privateKeyInfoTxt").innerHTML = privateKey;
+              // EOSkey...
+              document.getElementById("publicKeyInfoTxt").innerHTML = eosjs_ecc.privateToPublic(privateKey);
+          });
+      }
+  </script>
 
 </head>
 <body>
-  See console object: eosjs_ecc
+  <h1>See console object: eosjs_ecc</h1>
+  <hr />
+  <h1>Test of EosJs_Ecc : RandomKey</h1>
+  <input type="button" name="keyInfo" id="keyInfo" value="doClick" onClick="keyInfo();" />
+  <hr />
+  <span>KeyInfo :</span>
+  <br />
+  <span>Private Key :</span>
+  <span id="privateKeyInfoTxt">Please click the button !</span>
+  <br />
+  <span>Public Key :</span>
+  <span id="publicKeyInfoTxt">Please click the button !</span>
 </body>
 </html>
