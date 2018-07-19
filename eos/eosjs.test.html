@@ -1,0 +1,23 @@
+<!--
+sha512-4M+2te9VpDRu+8YD2sJtPjUo92WfNcUcD3jzwe5gcyjevGmqBuZpSpN2UbUtiJl1fNOqkJO8VQ2y3rfFatc6ZQ== lib/eos.js
+sha512-IDRAIcOGQTZN3jE/TvTiG3czpjzmWPiYi0+mwWbJVdYwPfbhD2YtzlpD4+rKE+MIuysseAenToyLNoO1whNFUg== lib/eos.min.js
+sha512-eqTZ81MJdAliK6erbjeUgKF/ShmhUsSo7LL1GX6KRYsYDFVm0kL6eETHVJl6JBITVLXWMJZ6oFfh1wronuTgqA== lib/eos.min.js.map
+-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/eosjs@15.0.6/lib/eos.min.js"
+        integrity="sha512-IDRAIcOGQTZN3jE/TvTiG3czpjzmWPiYi0+mwWbJVdYwPfbhD2YtzlpD4+rKE+MIuysseAenToyLNoO1whNFUg=="
+        crossorigin="anonymous"></script>
+  <script>
+  eos = Eos({
+    httpEndpoint: 'http://ayeaye.cypherglass.com:8888',
+    chainId: '038f4b0fc8ff18a4f0842a8f0564611f6e96e8535901dd45e43ac8691a1c4dca',
+    verbose: true
+  })
+  </script>
+</head>
+<body>
+  See console object: Eos
+</body>
+</html>
