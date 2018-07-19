@@ -17,9 +17,12 @@ sha512-eqTZ81MJdAliK6erbjeUgKF/ShmhUsSo7LL1GX6KRYsYDFVm0kL6eETHVJl6JBITVLXWMJZ6o
   })
   </script>
   <script>
-      function accountInfo() {
+      function accountInfo(account) {
           // [object Promise]
-          eos.getAccount('eosio').then(function (value){
+          eos.getInfo({}).then(function (value){
+              document.getElementById("infoTxt").innerHTML = JSON.stringify(value);
+          });
+          eos.getAccount(account).then(function (value){
               document.getElementById("accountInfoTxt").innerHTML = JSON.stringify(value);
           });
       }
@@ -27,9 +30,15 @@ sha512-eqTZ81MJdAliK6erbjeUgKF/ShmhUsSo7LL1GX6KRYsYDFVm0kL6eETHVJl6JBITVLXWMJZ6o
 </head>
 <body>
   <h1>See console object: Eos</h1>
-  <br />
-  <h1>Test of EosJs : GetAccount</h1>
+  <hr />
+  <h1>Test of EosJs : API</h1>
   <input type="button" name="accountInfo" id="accountInfo" value="doClick" onClick="accountInfo('eosio');" />
+  <hr />
+  <span>GetInfo :</span>
+  <br />
+  <span id="infoTxt">Please click the button !</span>
+  <hr />
+  <span>GetAccount :</span>
   <br />
   <span id="accountInfoTxt">Please click the button !</span>
 </body>
