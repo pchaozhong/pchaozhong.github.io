@@ -16,8 +16,21 @@ sha512-eqTZ81MJdAliK6erbjeUgKF/ShmhUsSo7LL1GX6KRYsYDFVm0kL6eETHVJl6JBITVLXWMJZ6o
     verbose: true
   })
   </script>
+  <script>
+      function accountInfo() {
+          // [object Promise]
+          eos.getAccount('eosio').then(function (value){
+              document.getElementById("accountInfoTxt").innerHTML = JSON.stringify(value);
+          });
+      }
+  </script>
 </head>
 <body>
-  See console object: Eos
+  <h1>See console object: Eos</h1>
+  <br />
+  <h1>Test of EosJs : GetAccount</h1>
+  <input type="button" name="accountInfo" id="accountInfo" value="doClick" onClick="accountInfo('eosio');" />
+  <br />
+  <span id="accountInfoTxt">Please click the button !</span>
 </body>
 </html>

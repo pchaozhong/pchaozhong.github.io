@@ -1,0 +1,28 @@
+
+cli:
+eos.getAccount('eosio')
+
+request:
+api > post 	 http://ayeaye.cypherglass.com:8888/v1/chain/get_account {"account_name":"eosio"}
+
+response:
+api < response 	 http://ayeaye.cypherglass.com:8888/v1/chain/get_account {"account_name":"eosio","head_block_num":6331148,"head_block_time":"2018-07-19T00:23:23.500","privileged":true,"last_code_update":"2018-07-13T15:40:27.500","created":"2018-06-09T00:00:00.000","core_liquid_balance":"2945090578.7019 EOS","ram_quota":102731349,"net_weight":1032540000,"cpu_weight":1075420000,"net_limit":{"used":31839,"available":"20668577890","max":"20668609729"},"cpu_limit":{"used":17137199,"available":4089648178,"max":4106785377},"ram_usage":40437883,"permissions":[{"perm_name":"active","parent":"owner","required_auth":{"threshold":1,"keys":[{"key":"EOS6CttW6XFfeRXaiqbD1Hoc9xPfVJrJ9RVZqA8tNTDLriNEyamFY","weight":1}],"accounts":[],"waits":[]}},{"perm_name":"owner","parent":"","required_auth":{"threshold":1,"keys":[{"key":"EOS6CttW6XFfeRXaiqbD1Hoc9xPfVJrJ9RVZqA8tNTDLriNEyamFY","weight":1}],"accounts":[],"waits":[]}}],"total_resources":{"owner":"eosio","net_weight":"103254.0000 EOS","cpu_weight":"107542.0000 EOS","ram_bytes":102731349},"self_delegated_bandwidth":{"from":"eosio","to":"eosio","net_weight":"100000.0000 EOS","cpu_weight":"100000.0000 EOS"},"refund_request":null,"voter_info":{"owner":"eosio","proxy":"","producers":[],"staked":"4802001100000","last_vote_weight":"0.00000000000000000","proxied_vote_weight":"0.00000000000000000","is_proxy":0}}
+
+
+
+
+eos.getAccount('eosio').then(function (value){
+	console.log(value);
+});
+{account_name: "eosio", head_block_num: 6333970, head_block_time: "2018-07-19T00:48:35.500", privileged: true, last_code_update: "2018-07-13T15:40:27.500", …}account_name: "eosio"core_liquid_balance: "2945070368.7019 EOS"cpu_limit: {used: 17128586, available: 4089656337, max: 4106784923}cpu_weight: 1075420000created: "2018-06-09T00:00:00.000"head_block_num: 6333970head_block_time: "2018-07-19T00:48:35.500"last_code_update: "2018-07-13T15:40:27.500"net_limit: {used: 31461, available: "20668575985", max: "20668607446"}net_weight: 1032540000permissions: (2) [{…}, {…}]privileged: trueram_quota: 102731349ram_usage: 40438363refund_request: nullself_delegated_bandwidth: {from: "eosio", to: "eosio", net_weight: "100000.0000 EOS", cpu_weight: "100000.0000 EOS"}total_resources: {owner: "eosio", net_weight: "103254.0000 EOS", cpu_weight: "107542.0000 EOS", ram_bytes: 102731349}voter_info: {owner: "eosio", proxy: "", producers: Array(0), staked: "4802001100000", last_vote_weight: "0.00000000000000000", …}__proto__: Object
+
+
+eos.getAccount('eosio').then(function (value){
+	console.log(JSON.stringify(value));
+});
+
+{"account_name":"eosio","head_block_num":6334164,"head_block_time":"2018-07-19T00:50:23.000","privileged":true,"last_code_update":"2018-07-13T15:40:27.500","created":"2018-06-09T00:00:00.000","core_liquid_balance":"2945060368.7019 EOS","ram_quota":102731349,"net_weight":1032540000,"cpu_weight":1075420000,"net_limit":{"used":31534,"available":"20668575912","max":"20668607446"},"cpu_limit":{"used":17128182,"available":4089656741,"max":4106784923},"ram_usage":40438603,"permissions":[{"perm_name":"active","parent":"owner","required_auth":{"threshold":1,"keys":[{"key":"EOS6CttW6XFfeRXaiqbD1Hoc9xPfVJrJ9RVZqA8tNTDLriNEyamFY","weight":1}],"accounts":[],"waits":[]}},{"perm_name":"owner","parent":"","required_auth":{"threshold":1,"keys":[{"key":"EOS6CttW6XFfeRXaiqbD1Hoc9xPfVJrJ9RVZqA8tNTDLriNEyamFY","weight":1}],"accounts":[],"waits":[]}}],"total_resources":{"owner":"eosio","net_weight":"103254.0000 EOS","cpu_weight":"107542.0000 EOS","ram_bytes":102731349},"self_delegated_bandwidth":{"from":"eosio","to":"eosio","net_weight":"100000.0000 EOS","cpu_weight":"100000.0000 EOS"},"refund_request":null,"voter_info":{"owner":"eosio","proxy":"","producers":[],"staked":"4802001100000","last_vote_weight":"0.00000000000000000","proxied_vote_weight":"0.00000000000000000","is_proxy":0}}
+
+
+
+
