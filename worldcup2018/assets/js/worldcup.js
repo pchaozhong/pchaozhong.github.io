@@ -684,7 +684,7 @@ function getUserAccountInfo() {
 	document.getElementById("userAccountInfo").innerHTML = "";
 	document.getElementById("doPredictionInfo").innerHTML = "";
 	try {
-		WorldCup2018.getUserAccountInfo(function(error, result){
+		WorldCup2018.getUserAccountInfo({from: web3.eth.accounts[0]}, function(error, result){
 			if(!error) {
 				console.log(result);
 
