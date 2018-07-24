@@ -24,5 +24,107 @@ eos.getAccount('eosio').then(function (value){
 {"account_name":"eosio","head_block_num":6334164,"head_block_time":"2018-07-19T00:50:23.000","privileged":true,"last_code_update":"2018-07-13T15:40:27.500","created":"2018-06-09T00:00:00.000","core_liquid_balance":"2945060368.7019 EOS","ram_quota":102731349,"net_weight":1032540000,"cpu_weight":1075420000,"net_limit":{"used":31534,"available":"20668575912","max":"20668607446"},"cpu_limit":{"used":17128182,"available":4089656741,"max":4106784923},"ram_usage":40438603,"permissions":[{"perm_name":"active","parent":"owner","required_auth":{"threshold":1,"keys":[{"key":"EOS6CttW6XFfeRXaiqbD1Hoc9xPfVJrJ9RVZqA8tNTDLriNEyamFY","weight":1}],"accounts":[],"waits":[]}},{"perm_name":"owner","parent":"","required_auth":{"threshold":1,"keys":[{"key":"EOS6CttW6XFfeRXaiqbD1Hoc9xPfVJrJ9RVZqA8tNTDLriNEyamFY","weight":1}],"accounts":[],"waits":[]}}],"total_resources":{"owner":"eosio","net_weight":"103254.0000 EOS","cpu_weight":"107542.0000 EOS","ram_bytes":102731349},"self_delegated_bandwidth":{"from":"eosio","to":"eosio","net_weight":"100000.0000 EOS","cpu_weight":"100000.0000 EOS"},"refund_request":null,"voter_info":{"owner":"eosio","proxy":"","producers":[],"staked":"4802001100000","last_vote_weight":"0.00000000000000000","proxied_vote_weight":"0.00000000000000000","is_proxy":0}}
 
 
+eos.getAccount('zyixjmpxrrpr').then(function (value){
+	console(JSON.stringify(value));
+});
+
+api > post 	 https://mainnet.genereos.io/v1/chain/get_account {"account_name":"zyixjmpxrrpr"}
+
+api < response 	 https://mainnet.genereos.io/v1/chain/get_account
+
+{
+"account_name":"zyixjmpxrrpr",
+"head_block_num":7475222,
+"head_block_time":"2018-07-24T05:11:25.000",
+"privileged":false,
+"last_code_update":"2018-07-23T16:14:24.000",
+"created":"2018-07-23T13:08:03.000",
+"core_liquid_balance":"146563.6186 EOS",
+"ram_quota":6713453,
+"net_weight":301000,
+"cpu_weight":5701000,
+"net_limit":
+ {
+  "used":32614,
+  "available":18960535,
+  "max":18993149
+ },
+"cpu_limit":
+ {
+  "used":30554,
+  "available":11868822,
+  "max":11899376
+ },
+"ram_usage":632075,
+"permissions":[
+ {
+  "perm_name":"active",
+  "parent":"owner",
+  "required_auth":
+   {
+    "threshold":1,
+    "keys":[
+     {
+      "key":"EOS5oFNVdcV8vuppeVMspXdDBuwHvM9UqZQuqkm8rXidffgbgnY86",
+      "weight":1
+     }
+    ],
+    "accounts":[
+     {
+      "permission":
+       {
+        "actor":"zyixjmpxrrpr",
+        "permission":"eosio.code"
+       },
+      "weight":1
+     }
+    ],
+    "waits":[]
+   }
+ },
+ {
+  "perm_name":"owner",
+  "parent":"",
+  "required_auth":
+   {
+    "threshold":1,
+    "keys":[
+     {
+      "key":"EOS5oFNVdcV8vuppeVMspXdDBuwHvM9UqZQuqkm8rXidffgbgnY86",
+      "weight":1
+     }
+    ],
+    "accounts":[],
+    "waits":[]
+   }
+ }
+],
+"total_resources":
+ {
+  "owner":"zyixjmpxrrpr",
+  "net_weight":"30.1000 EOS",
+  "cpu_weight":"570.1000 EOS",
+  "ram_bytes":6713453
+ },
+"self_delegated_bandwidth":
+ {
+  "from":"zyixjmpxrrpr",
+  "to":"zyixjmpxrrpr",
+  "net_weight":"30.1000 EOS",
+  "cpu_weight":"570.1000 EOS"
+ },
+"refund_request":null,
+"voter_info":
+ {
+  "owner":"zyixjmpxrrpr",
+  "proxy":"",
+  "producers":[],
+  "staked":6002000,
+  "last_vote_weight":"0.00000000000000000",
+  "proxied_vote_weight":"0.00000000000000000",
+  "is_proxy":0
+ }
+}
+
 
 
