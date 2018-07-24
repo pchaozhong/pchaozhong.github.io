@@ -24,6 +24,8 @@ sha512-eqTZ81MJdAliK6erbjeUgKF/ShmhUsSo7LL1GX6KRYsYDFVm0kL6eETHVJl6JBITVLXWMJZ6o
   })
   </script>
   <script>
+      // accountInfo('eosio');
+      // accountInfo('zyixjmpxrrpr'); --> eosfo.io
       function accountInfo(account) {
           // [object Promise]
           eos.getInfo({}).then(function (value){
@@ -39,7 +41,7 @@ sha512-eqTZ81MJdAliK6erbjeUgKF/ShmhUsSo7LL1GX6KRYsYDFVm0kL6eETHVJl6JBITVLXWMJZ6o
   <h1>See console object: Eos</h1>
   <hr />
   <h1>Test of EosJs : API</h1>
-  <input type="button" name="accountInfo" id="accountInfo" value="doClick" onClick="accountInfo('eosio');" />
+  <input type="button" name="accountInfo" id="accountInfo" value="doClick" onClick="accountInfo('zyixjmpxrrpr');" />
   <hr />
   <span>GetInfo :</span>
   <br />
