@@ -127,4 +127,65 @@ api < response 	 https://mainnet.genereos.io/v1/chain/get_account
 }
 
 
+eos.getAccount('ez2me4zworld').then(function (value){
+	console(JSON.stringify(value));
+});
+
+api > post 	 https://mainnet.genereos.io/v1/chain/get_account {"account_name":"ez2me4zworld"}
+
+api < response 	 https://mainnet.genereos.io/v1/chain/get_account
+
+{
+ "account_name":"ez2me4zworld",
+ "head_block_num":7509836,
+ "head_block_time":"2018-07-24T10:01:43.500",
+ "privileged":false,
+ "last_code_update":"1970-01-01T00:00:00.000",
+ "created":"2018-07-24T09:47:14.500",
+ "ram_quota":3979,
+ "net_weight":1000,
+ "cpu_weight":1000,
+ "net_limit":{"used":0,"available":63176,"max":63176},
+ "cpu_limit":{"used":0,"available":2178,"max":2178},
+ "ram_usage":3446,
+ "permissions":[
+  {
+   "perm_name":"active",
+   "parent":"owner",
+   "required_auth":
+   {
+    "threshold":1,
+    "keys":[
+     {
+      "key":"EOS53LseWcP8q8we6ZDu3nMUk8Acu7L8sr6KLBqMei26D32BXDh1K",
+      "weight":1
+     }
+    ],
+    "accounts":[],
+    "waits":[]
+   }
+  },
+  {
+   "perm_name":"owner",
+   "parent":"",
+   "required_auth":
+   {
+    "threshold":1,
+    "keys":[
+     {
+      "key":"EOS69ZrJjvbaUrxCoaPEGSHxr2ehzeqakdHX62LTwn4EnTB4ZpG3S",
+      "weight":1
+     }
+    ],
+    "accounts":[],
+    "waits":[]
+   }
+  }
+ ],
+ "total_resources":{"owner":"ez2me4zworld","net_weight":"0.1000 EOS","cpu_weight":"0.1000 EOS","ram_bytes":3979},
+ "self_delegated_bandwidth":{"from":"ez2me4zworld","to":"ez2me4zworld","net_weight":"0.1000 EOS","cpu_weight":"0.1000 EOS"},
+ "refund_request":null,
+ "voter_info":{"owner":"ez2me4zworld","proxy":"","producers":[],"staked":2000,"last_vote_weight":"0.00000000000000000","proxied_vote_weight":"0.00000000000000000","is_proxy":0}
+}
+
 
