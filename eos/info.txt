@@ -376,6 +376,91 @@ api < response 	 https://mainnet.genereos.io/v1/chain/get_account
 
 ************************************************************************************************************************************
 ************************************************************************************************************************************
+eos.getAccount('accountcreat').then(function (value){
+    console(JSON.stringify(value));
+});
+
+api > post 	 https://api1.eosdublin.io/v1/chain/get_account {"account_name":"accountcreat"}
+
+api < response 	 https://api1.eosdublin.io/v1/chain/get_account 
+
+{
+	"account_name":"accountcreat",
+	"head_block_num":10031608,
+	"head_block_time":"2018-08-08T06:27:54.000",
+	"privileged":false,
+	"last_code_update":"2018-07-17T01:19:04.000",
+	"created":"2018-06-16T22:40:39.500",
+	"ram_quota":310343,
+	"net_weight":60000,
+	"cpu_weight":870000,
+	"net_limit":{
+		"used":7014,
+		"available":3860651,
+		"max":3867665
+	},
+	"cpu_limit":{
+		"used":168135,
+		"available":1584152,
+		"max":1752287
+	},
+	"ram_usage":293617,
+	"permissions":[
+		{
+			"perm_name":"active",
+			"parent":"owner",
+			"required_auth":{
+				"threshold":1,
+				"keys":[
+					{
+						"key":"EOS7ss3n5jGaYSNqRdZqZreXbYhUrcgyf72w6gGqtRJSEFy5BWEA5",
+						"weight":1
+					}
+				],
+				"accounts":[
+					{
+						"permission":{
+							"actor":"accountcreat",
+							"permission":"eosio.code"
+						},
+						"weight":1
+					}
+				],
+				"waits":[]
+			}
+		},
+		{
+			"perm_name":"owner",
+			"parent":"",
+			"required_auth":{
+				"threshold":1,
+				"keys":[
+					{
+						"key":"EOS7ss3n5jGaYSNqRdZqZreXbYhUrcgyf72w6gGqtRJSEFy5BWEA5",
+						"weight":1
+					}
+				],
+				"accounts":[],
+				"waits":[]
+			}
+		}
+	],
+	"total_resources":{
+		"owner":"accountcreat",
+		"net_weight":"6.0000 EOS",
+		"cpu_weight":"87.0000 EOS",
+		"ram_bytes":310343
+	},
+	"self_delegated_bandwidth":null,
+	"refund_request":null,
+	"voter_info":null
+}
+************************************************************************************************************************************
+************************************************************************************************************************************
+
+
+************************************************************************************************************************************
+************************************************************************************************************************************
 eos.getAccount('ez2me4zworld').then(function (value){
 	console(JSON.stringify(value));
 });
@@ -435,6 +520,96 @@ api < response 	 https://mainnet.genereos.io/v1/chain/get_account
  "self_delegated_bandwidth":{"from":"ez2me4zworld","to":"ez2me4zworld","net_weight":"0.1000 EOS","cpu_weight":"0.1000 EOS"},
  "refund_request":null,
  "voter_info":{"owner":"ez2me4zworld","proxy":"","producers":[],"staked":2000,"last_vote_weight":"0.00000000000000000","proxied_vote_weight":"0.00000000000000000","is_proxy":0}
+}
+************************************************************************************************************************************
+************************************************************************************************************************************
+
+
+************************************************************************************************************************************
+************************************************************************************************************************************
+eos.getAccount('kasumigaseki').then(function (value){
+    console(JSON.stringify(value));
+});
+
+api > post 	 https://api1.eosdublin.io/v1/chain/get_account {"account_name":"kasumigaseki"}
+
+api < response 	 https://api1.eosdublin.io/v1/chain/get_account 
+
+{
+	"account_name":"kasumigaseki",
+	"head_block_num":10029683,
+	"head_block_time":"2018-08-08T06:11:50.000",
+	"privileged":false,
+	"last_code_update":"1970-01-01T00:00:00.000",
+	"created":"2018-07-30T15:26:41.000",
+	"ram_quota":99191,
+	"net_weight":50500,
+	"cpu_weight":101500,
+	"net_limit":{
+		"used":664,
+		"available":3263377,
+		"max":3264041
+	},
+	"cpu_limit":{
+		"used":13866,
+		"available":188232,
+		"max":202098
+	},
+	"ram_usage":3974,
+	"permissions":[
+		{
+			"perm_name":"active",
+			"parent":"owner",
+			"required_auth":{
+				"threshold":1,
+				"keys":[
+					{
+						"key":"EOS66nyVvLagMwrWSvPMrJ8jVHs1YTW3QJPawmWSiGG4oYmYZz7LX",
+						"weight":1
+					}
+				],
+				"accounts":[],
+				"waits":[]
+			}
+		},
+		{
+			"perm_name":"owner",
+			"parent":"",
+			"required_auth":{
+				"threshold":1,
+				"keys":[
+					{
+						"key":"EOS73R9mf361gD18iuvXPo9AjaXVuM6WvLjKERWQG4FD5xGA6yJ5L",
+						"weight":1
+					}
+				],
+				"accounts":[],
+				"waits":[]
+			}
+		}
+	],
+	"total_resources":{
+		"owner":"kasumigaseki",
+		"net_weight":"5.0500 EOS",
+		"cpu_weight":"10.1500 EOS",
+		"ram_bytes":99191
+	},
+	"self_delegated_bandwidth":{
+		"from":"kasumigaseki",
+		"to":"kasumigaseki",
+		"net_weight":"5.0500 EOS",
+		"cpu_weight":"10.1500 EOS"
+	},
+	"refund_request":null,
+	"voter_info":{
+		"owner":"kasumigaseki",
+		"proxy":"",
+		"producers":[],
+		"staked":232000,
+		"last_vote_weight":"0.00000000000000000",
+		"proxied_vote_weight":"0.00000000000000000",
+		"is_proxy":0
+	}
 }
 ************************************************************************************************************************************
 ************************************************************************************************************************************
