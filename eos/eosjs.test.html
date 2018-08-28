@@ -35,8 +35,34 @@ sha512-eqTZ81MJdAliK6erbjeUgKF/ShmhUsSo7LL1GX6KRYsYDFVm0kL6eETHVJl6JBITVLXWMJZ6o
           eos.getAccount(account).then(function (value){
               document.getElementById("accountInfoTxt").innerHTML = JSON.stringify(value);
           });
-          var parameter = [{ creator:'inita', name:'mynewacct', owner:'EOS7BYvK3cUWQUso2fAgGwg1iF6CwC1s772DesozffxJ3pHFBZP9r', active:'EOS4yXNR2bQSpaK46edjVgFPyEneTxiUxc6gNfxHfhP3tLrmD6e8e', recovery:'inita', deposit:'1 EOS' }];
-          eos.newAccount(parameter);
+
+          // var parameter = [{ creator:'inita', name:'mynewacct', owner:'EOS7BYvK3cUWQUso2fAgGwg1iF6CwC1s772DesozffxJ3pHFBZP9r', active:'EOS4yXNR2bQSpaK46edjVgFPyEneTxiUxc6gNfxHfhP3tLrmD6e8e', recovery:'inita', deposit:'1 EOS' }];
+          // eos.newAccount(parameter);
+          wif = '5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3'
+          pubkey = 'EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV'
+
+          eos.transaction(tr => {
+            tr.newaccount({
+              creator: 'eosio',
+              name: 'myaccount',
+              owner: pubkey,
+              active: pubkey
+            })
+
+            tr.buyrambytes({
+              payer: 'eosio',
+              receiver: 'myaccount',
+              bytes: 8192
+            })
+
+            tr.delegatebw({
+              from: 'eosio',
+              receiver: 'myaccount',
+              stake_net_quantity: '10.0000 SYS',
+              stake_cpu_quantity: '10.0000 SYS',
+              transfer: 0
+            })
+          })
       }
   </script>
 </head>
