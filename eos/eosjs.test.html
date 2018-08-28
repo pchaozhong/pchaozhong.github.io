@@ -35,10 +35,8 @@ sha512-eqTZ81MJdAliK6erbjeUgKF/ShmhUsSo7LL1GX6KRYsYDFVm0kL6eETHVJl6JBITVLXWMJZ6o
           eos.getAccount(account).then(function (value){
               document.getElementById("accountInfoTxt").innerHTML = JSON.stringify(value);
           });
-          var parameter = "{ creator:'inita', name:'mynewacct', owner:'EOS7BYvK3cUWQUso2fAgGwg1iF6CwC1s772DesozffxJ3pHFBZP9r', active:'EOS4yXNR2bQSpaK46edjVgFPyEneTxiUxc6gNfxHfhP3tLrmD6e8e', recovery:'inita', deposit:'1 EOS' }"
-          eos.newAccount(parameter).then(function (value){
-              document.getElementById("accountInfoTxt").innerHTML = JSON.stringify(value);
-          });
+          var parameter = [{ creator:'inita', name:'mynewacct', owner:'EOS7BYvK3cUWQUso2fAgGwg1iF6CwC1s772DesozffxJ3pHFBZP9r', active:'EOS4yXNR2bQSpaK46edjVgFPyEneTxiUxc6gNfxHfhP3tLrmD6e8e', recovery:'inita', deposit:'1 EOS' }];
+          eos.newAccount(parameter);
       }
   </script>
 </head>
